@@ -5,4 +5,15 @@
 /Ares.Web.Admin/bin
 /Ares.Web.Admin/obj/Debug
 /packages
+/.vs/RestaurantDiscount.Ares/v14
+/Ares.Core/bin/Debug
+/Ares.Core/obj/Debug
+/Ares.Data.Ef/bin/Debug
+/Ares.Data.Ef/obj/Debug
+/Ares.Database/bin/Debug
+/Ares.Database/obj/Debug
+/Ares.Infrastructure/bin/Debug
+/Ares.Infrastructure/obj/Debug
+/Ares.WebApi/bin
+/Ares.WebApi/obj/Debug
 /.vs/RestaurantDiscount.Ares/v14/.suo
