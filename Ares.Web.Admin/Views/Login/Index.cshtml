@@ -1,0 +1,26 @@
+﻿
+@model Ares.Core.Domain.LoginModel
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Logins</title>
+</head>
+<body>
+    <div>
+        @using (Html.BeginForm("Login", "Login", FormMethod.Post))
+        {
+            @Html.TextBoxFor(m => m.UserName)
+            @Html.ValidationMessageFor(m => m.UserName, "请输入用户名！", new { style = "color: #f00" })
+            @Html.PasswordFor(m => m.Password)
+            @Html.ValidationMessageFor(m => m.Password, "请输入密码！", new { style = "color: #f00" })
+            @Html.CheckBoxFor(m => m.RememberMe)
+            @Html.LabelFor(m => m.RememberMe)
+            @Html.ActionLink("忘记密码", "forgotpwd", null, new { @class = "rt", target = "_blank" })
+            <input type="submit" value="登陆微博" />
+        }   
+    </div>
+</body>
+</html>
