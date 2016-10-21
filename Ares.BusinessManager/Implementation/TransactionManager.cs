@@ -13,15 +13,22 @@ namespace Ares.BusinessManager.Implementation
 {
     public class TransactionManager : ITransactionManager
     {
+        private ITransactionRepository _transactionRepository;
+
+        public TransactionManager(ITransactionRepository transactionRepository)
+        {
+            _transactionRepository = transactionRepository;
+        }
+
         
         public IEnumerable<Transaction> FindTopTransactionByUser(int employeeId)
         {
-            throw new NotImplementedException();
+            return _transactionRepository.FindAll(e => e.EmployeeId == employeeId && e.TransactionDateTime >= DateTime.Now.AddDays(-DateTime.Now.Day), "TransactionDateTime" ,0, 5);
         }
 
         public IEnumerable<Transaction> FindTransactionsHistory(int employeeId, int pageIndex, int pageSize)
         {
-            throw new NotImplementedException();
+            return _transactionRepository.FindAll(e => e.EmployeeId == employeeId, "TransactionDateTime",pageIndex, pageSize);
         }
 
         public IEnumerable<Transaction> FindTransactionsHistoryByCustomer(int customerId, int pageIndex, int pageSize)
