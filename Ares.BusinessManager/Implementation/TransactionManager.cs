@@ -23,5 +23,10 @@ namespace Ares.BusinessManager.Implementation
         {
             throw new NotImplementedException();
         }
+
+        public IEnumerable<Transaction> FindTransactionsHistoryByCustomer(int customerId, int pageIndex, int pageSize)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

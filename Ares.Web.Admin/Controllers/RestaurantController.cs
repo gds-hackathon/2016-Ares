@@ -29,8 +29,9 @@ namespace Ares.Web.Admin.Controllers
             if (cookie != null && !string.IsNullOrEmpty(cookie.Value))
             {
                 userId = cookie.Value;
-            }
+                var customer = _userManager.GetCustomerByUserId(int.Parse(userId));
 
+            }
             //_userManager
             return View();
         }

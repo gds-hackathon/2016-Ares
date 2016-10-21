@@ -13,14 +13,28 @@ namespace Ares.BusinessManager.Implementation
     public class UserManager : IUserManager
     {
         private IEmployeeRepository _employeeRepository;
+        private ICustomerRepository _customerRepository;
 
-        public UserManager(IEmployeeRepository employeeRepository)
+        public UserManager(
+            IEmployeeRepository employeeRepository,
+            ICustomerRepository customerRepository)
         {
             _employeeRepository = employeeRepository;
+            _customerRepository = customerRepository;
         }
         public Employee FindById(int employeeId)
         {
             return _employeeRepository.FindAll(e => e.UserId == employeeId).FirstOrDefault();
+        }
+
+        public Customer GetCustomerByUserId(int userId)
+        {
+            return _customerRepository.FindAll(e => e.UserId == userId).FirstOrDefault();
+        }
+
+        public Employee GetEmployeeByUserId(int userId)
+        {
+            return _employeeRepository.FindAll(e => e.UserId == userId).FirstOrDefault();
         }
     }
 }

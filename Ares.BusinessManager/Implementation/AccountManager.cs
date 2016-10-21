@@ -46,15 +46,12 @@ namespace Ares.BusinessManager.Implementation
             var user = _userRoleRepository.FindAll(c => c.UserName == userName && c.Password == hashedPsd).FirstOrDefault();
             if (user == null)
             {
-                throw new Exception("UserName or Password is invalid.");
-            }
-            var role = _roleTypeRepository.FindAll(r => r.RoleId == user.RoleId).FirstOrDefault();
-            if (user == null)
-            {
-                throw new Exception("UserName or Password is invalid.");
+                throw new Exception("PhoneNumber or Password is invalid.");
             }
             else
             {
+                var role = _roleTypeRepository.FindAll(r => r.RoleId == user.RoleId).FirstOrDefault();
+
                 loginResult.UserId = user.UserId;
                 if (role != null)
                 {
@@ -66,8 +63,8 @@ namespace Ares.BusinessManager.Implementation
                             break;
                         case RoleTypes.Employee:
                             throw new Exception("Employee can not login this service.");
-                            //_formsAuthentication.SetAuthenticationToken(user.UserId.ToString(), "Employee");
-                            //break;
+                        //_formsAuthentication.SetAuthenticationToken(user.UserId.ToString(), "Employee");
+                        //break;
                         case RoleTypes.Administrator:
                             _formsAuthentication.SetAuthenticationToken(user.UserId.ToString(), "Administrator");
                             break;
@@ -118,6 +115,60 @@ namespace Ares.BusinessManager.Implementation
                     break;
             }
 
+        }
+
+        public LoginResult LoginByPhoneNum(string phoneNum, string password)
+        {
+            var loginResult = new LoginResult();
+            var hashedPsd = _hashingService.Hash(password);
+            var user = _userRoleRepository.FindAll(c => c.PhoneNum == phoneNum && c.Password == hashedPsd).FirstOrDefault();
+            if (user == null)
+            {
+                throw new Exception("UserName or Password is invalid.");
+            }
+            else
+            {
+                var role = _roleTypeRepository.FindAll(r => r.RoleId == user.RoleId).FirstOrDefault();
+
+                loginResult.UserId = user.UserId;
+                if (role != null)
+                {
+                    loginResult.RoleType = (RoleTypes)Enum.Parse(typeof(RoleTypes), role.RoleType_);
+                    switch (loginResult.RoleType)
+                    {
+                        case RoleTypes.Customer:
+                            _formsAuthentication.SetAuthenticationToken(user.UserId.ToString(), "Customer");
+                            break;
+                        case RoleTypes.Employee:
+                            throw new Exception("Employee can not login this service.");
+                        //_formsAuthentication.SetAuthenticationToken(user.UserId.ToString(), "Employee");
+                        //break;
+                        case RoleTypes.Administrator:
+                            _formsAuthentication.SetAuthenticationToken(user.UserId.ToString(), "Administrator");
+                            break;
+                        default:
+                            break;
+                    }
+                }
+
+            }
+
+            return loginResult;
+        }
+
+        public void ChangePassword(int userId, string oldPassword, string newPassword)
+        {
+            var hashedPsd = _hashingService.Hash(oldPassword);
+            var user = _userRoleRepository.FindAll(c => c.UserId == userId && c.Password == hashedPsd).FirstOrDefault();
+            if (user == null)
+            {
+                throw new Exception("No user or Password is invalid.");
+            }
+            else
+            {
+                user.Password = _hashingService.Hash(newPassword);
+                _userRoleRepository.Save(user);
+            }
         }
     }
 }
