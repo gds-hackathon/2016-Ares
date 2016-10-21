@@ -40,11 +40,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Implementation\AccountManager.cs" />
     <Compile Include="Interfaces\IAccountManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Implementation\" />
+    <ProjectReference Include="..\Ares.Core\Ares.Core.csproj">
+      <Project>{6f059027-e727-4ded-90e7-01b6dca0b239}</Project>
+      <Name>Ares.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ares.Data.Ef\Ares.Data.Ef.csproj">
+      <Project>{258dc0cd-5fca-4d54-98ee-d7d40d34bb6b}</Project>
+      <Name>Ares.Data.Ef</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ares.Infrastructure\Ares.Infrastructure.csproj">
+      <Project>{778D695D-B080-4FD6-BE6F-0683320F63A5}</Project>
+      <Name>Ares.Infrastructure</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

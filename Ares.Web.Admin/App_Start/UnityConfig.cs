@@ -4,6 +4,11 @@ using Microsoft.Practices.Unity.Configuration;
 using Ares.Core.Domain;
 using Ares.Core.Repositories;
 using Ares.Data.Ef.Repositories;
+using Ares.Infrastructure.Security;
+using Ares.BusinessManager.Interfaces;
+using Ares.BusinessManager.Implementation;
+using Ares.Data.Ef.UnitOfWork;
+using Ares.Data.Ef;
 
 namespace Ares.Web.Admin
 {
@@ -45,6 +50,10 @@ namespace Ares.Web.Admin
             container.RegisterType<IBalanceTypeRepository, BalanceTypeRepository>();
             container.RegisterType<ICustomerRepository, CustomerRepository>();
             container.RegisterType<IRoleTypeRepository, RoleTypeRepository>();
+            container.RegisterType<IHashingService, DefaultPasswordHasher>();
+            container.RegisterType<IAccountManager, AccountManager>();
+            container.RegisterType<IUnitOfWork, UnitOfWork>();
+            container.RegisterType<IDbContext, GdAresDbContext>();
         }
     }
 }

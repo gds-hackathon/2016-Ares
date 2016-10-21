@@ -1,15 +1,19 @@
-﻿
-@model Ares.Core.Domain.LoginModel
+﻿@model Ares.Core.Domain.LoginModel
+
+@{
+    Layout = null;
+}
 
 <!DOCTYPE html>
 
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Logins</title>
+    <title>Login</title>
+    <link rel="stylesheet" href="~/Content/bootstrap.css" />
 </head>
 <body>
-    <div>
+    <div class="container">
         @using (Html.BeginForm("Login", "Login", FormMethod.Post))
         {
             @Html.TextBoxFor(m => m.UserName)
@@ -20,7 +24,7 @@
             @Html.LabelFor(m => m.RememberMe)
             @Html.ActionLink("忘记密码", "forgotpwd", null, new { @class = "rt", target = "_blank" })
             <input type="submit" value="登陆微博" />
-        }   
+        }
     </div>
 </body>
 </html>
