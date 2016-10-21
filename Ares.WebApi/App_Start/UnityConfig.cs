@@ -36,6 +36,8 @@ namespace Ares.WebApi
 
             // Business manager
             container.RegisterType<IAccountManager, AccountManager>();
+            container.RegisterType<IUserManager, UserManager>();
+            container.RegisterType<ITransactionManager, TransactionManager>();
 
             // Infrastructure
             container.RegisterType<IHashingService, DefaultPasswordHasher>();

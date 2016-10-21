@@ -41,7 +41,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Implementation\AccountManager.cs" />
+    <Compile Include="Implementation\TransactionManager.cs" />
+    <Compile Include="Implementation\UserManager.cs" />
     <Compile Include="Interfaces\IAccountManager.cs" />
+    <Compile Include="Interfaces\ITransactionManager.cs" />
+    <Compile Include="Interfaces\IUserManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

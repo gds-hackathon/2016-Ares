@@ -11,7 +11,9 @@ namespace Ares.Contract.Response
 
         public decimal Balance { get; set; }
 
-        
+        public int Count { get; set; }
+
+
 
     }
 }
