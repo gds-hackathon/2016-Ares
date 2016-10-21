@@ -26,6 +26,7 @@ namespace Ares.CodeGeneration
         public int UserId { get; set; } // UserID
         public System.DateTime ChangedDate { get; set; } // ChangedDate
         public int SettlementRating { get; set; } // SettlementRating
+        public System.Guid Guid { get; set; } // GUID
 
         public Customer()
         {
@@ -33,6 +34,7 @@ namespace Ares.CodeGeneration
             CreatedDate = System.DateTime.Now;
             ChangedDate = System.DateTime.Now;
             SettlementRating = 100;
+            Guid = System.Guid.NewGuid();
         }
     }
 

@@ -14,12 +14,17 @@ namespace Ares.CodeGeneration
 {
 
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.24.0.0")]
-    public class SettlementForCustomerReturnModel
+    public class CheckTransactionByEmpIdReturnModel
     {
-        public System.String CustomerName { get; set; }
+        public System.Int32 TransactionID { get; set; }
+        public System.Int32 EmployeeID { get; set; }
         public System.Int32 CustomerID { get; set; }
-        public System.Int32? TransCount { get; set; }
-        public System.Decimal? NeedPay { get; set; }
+        public System.DateTime TransactionDateTime { get; set; }
+        public System.Decimal TotalAmount { get; set; }
+        public System.Decimal DiscountAmount { get; set; }
+        public System.Int32? OrderID { get; set; }
+        public System.DateTime CreatedDate { get; set; }
+        public System.DateTime ChangedDate { get; set; }
     }
 
 }

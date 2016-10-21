@@ -28,6 +28,7 @@ namespace Ares.CodeGeneration
         public System.Data.Entity.DbSet<sys_ScriptDeploymentStatus> sys_ScriptDeploymentStatus { get; set; } // script_deployment_status
         public System.Data.Entity.DbSet<Sysdiagram> Sysdiagrams { get; set; } // sysdiagrams
         public System.Data.Entity.DbSet<Transaction> Transactions { get; set; } // Transactions
+        public System.Data.Entity.DbSet<TransactionRating> TransactionRatings { get; set; } // TransactionRating
         public System.Data.Entity.DbSet<UserRole> UserRoles { get; set; } // UserRole
 
         static GdAresDbContext()
@@ -88,6 +89,7 @@ namespace Ares.CodeGeneration
             modelBuilder.Configurations.Add(new sys_ScriptDeploymentStatusMapping());
             modelBuilder.Configurations.Add(new SysdiagramMapping());
             modelBuilder.Configurations.Add(new TransactionMapping());
+            modelBuilder.Configurations.Add(new TransactionRatingMapping());
             modelBuilder.Configurations.Add(new UserRoleMapping());
         }
 
@@ -103,6 +105,7 @@ namespace Ares.CodeGeneration
             modelBuilder.Configurations.Add(new sys_ScriptDeploymentStatusMapping(schema));
             modelBuilder.Configurations.Add(new SysdiagramMapping(schema));
             modelBuilder.Configurations.Add(new TransactionMapping(schema));
+            modelBuilder.Configurations.Add(new TransactionRatingMapping(schema));
             modelBuilder.Configurations.Add(new UserRoleMapping(schema));
             return modelBuilder;
         }
@@ -260,6 +263,128 @@ namespace Ares.CodeGeneration
                 realPay = (decimal) realPayParam.Value;
  
             return (int) procResultParam.Value;
+        }
+
+        public System.Collections.Generic.List<CheckTransactionByCustomerIdReturnModel> CheckTransactionByCustomerId(int? customerId)
+        {
+            int procResult;
+            return CheckTransactionByCustomerId(customerId, out procResult);
+        }
+
+        public System.Collections.Generic.List<CheckTransactionByCustomerIdReturnModel> CheckTransactionByCustomerId(int? customerId, out int procResult)
+        {
+            var customerIdParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@CustomerID", SqlDbType = System.Data.SqlDbType.Int, Direction = System.Data.ParameterDirection.Input, Value = customerId.GetValueOrDefault(), Precision = 10, Scale = 0 };
+            if (!customerId.HasValue)
+                customerIdParam.Value = System.DBNull.Value;
+
+            var procResultParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@procResult", SqlDbType = System.Data.SqlDbType.Int, Direction = System.Data.ParameterDirection.Output };
+            var procResultData = Database.SqlQuery<CheckTransactionByCustomerIdReturnModel>("EXEC @procResult = [dbo].[checkTransactionByCustomerID] @CustomerID", customerIdParam, procResultParam).ToList();
+
+            procResult = (int) procResultParam.Value;
+            return procResultData;
+        }
+
+        public async System.Threading.Tasks.Task<System.Collections.Generic.List<CheckTransactionByCustomerIdReturnModel>> CheckTransactionByCustomerIdAsync(int? customerId)
+        {
+            var customerIdParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@CustomerID", SqlDbType = System.Data.SqlDbType.Int, Direction = System.Data.ParameterDirection.Input, Value = customerId.GetValueOrDefault(), Precision = 10, Scale = 0 };
+            if (!customerId.HasValue)
+                customerIdParam.Value = System.DBNull.Value;
+
+            var procResultData = await Database.SqlQuery<CheckTransactionByCustomerIdReturnModel>("EXEC [dbo].[checkTransactionByCustomerID] @CustomerID", customerIdParam).ToListAsync();
+
+            return procResultData;
+        }
+
+        public System.Collections.Generic.List<CheckTransactionByEmpIdReturnModel> CheckTransactionByEmpId(int? employeeId)
+        {
+            int procResult;
+            return CheckTransactionByEmpId(employeeId, out procResult);
+        }
+
+        public System.Collections.Generic.List<CheckTransactionByEmpIdReturnModel> CheckTransactionByEmpId(int? employeeId, out int procResult)
+        {
+            var employeeIdParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@EmployeeID", SqlDbType = System.Data.SqlDbType.Int, Direction = System.Data.ParameterDirection.Input, Value = employeeId.GetValueOrDefault(), Precision = 10, Scale = 0 };
+            if (!employeeId.HasValue)
+                employeeIdParam.Value = System.DBNull.Value;
+
+            var procResultParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@procResult", SqlDbType = System.Data.SqlDbType.Int, Direction = System.Data.ParameterDirection.Output };
+            var procResultData = Database.SqlQuery<CheckTransactionByEmpIdReturnModel>("EXEC @procResult = [dbo].[checkTransactionByEmpID] @EmployeeID", employeeIdParam, procResultParam).ToList();
+
+            procResult = (int) procResultParam.Value;
+            return procResultData;
+        }
+
+        public async System.Threading.Tasks.Task<System.Collections.Generic.List<CheckTransactionByEmpIdReturnModel>> CheckTransactionByEmpIdAsync(int? employeeId)
+        {
+            var employeeIdParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@EmployeeID", SqlDbType = System.Data.SqlDbType.Int, Direction = System.Data.ParameterDirection.Input, Value = employeeId.GetValueOrDefault(), Precision = 10, Scale = 0 };
+            if (!employeeId.HasValue)
+                employeeIdParam.Value = System.DBNull.Value;
+
+            var procResultData = await Database.SqlQuery<CheckTransactionByEmpIdReturnModel>("EXEC [dbo].[checkTransactionByEmpID] @EmployeeID", employeeIdParam).ToListAsync();
+
+            return procResultData;
+        }
+
+        public CountTransactionByEmpIdReturnModel CountTransactionByEmpId(int? employeeId)
+        {
+            var employeeIdParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@EmployeeID", SqlDbType = System.Data.SqlDbType.Int, Direction = System.Data.ParameterDirection.Input, Value = employeeId.GetValueOrDefault(), Precision = 10, Scale = 0 };
+            if (!employeeId.HasValue)
+                employeeIdParam.Value = System.DBNull.Value;
+
+
+            var procResultData = new CountTransactionByEmpIdReturnModel();
+            var cmd = Database.Connection.CreateCommand();
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.CommandText = "[dbo].[countTransactionByEmpID]";
+            cmd.Parameters.Add(employeeIdParam);
+
+            try
+            {
+                Database.Connection.Open();
+                var reader = cmd.ExecuteReader();
+                var objectContext = ((System.Data.Entity.Infrastructure.IObjectContextAdapter) this).ObjectContext;
+
+                procResultData.ResultSet1 = objectContext.Translate<CountTransactionByEmpIdReturnModel.ResultSetModel1>(reader).ToList();
+                reader.NextResult();
+
+                procResultData.ResultSet2 = objectContext.Translate<CountTransactionByEmpIdReturnModel.ResultSetModel2>(reader).ToList();
+            }
+            finally
+            {
+                Database.Connection.Close();
+            }
+            return procResultData;
+        }
+
+        public async System.Threading.Tasks.Task<CountTransactionByEmpIdReturnModel> CountTransactionByEmpIdAsync(int? employeeId)
+        {
+            var employeeIdParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@EmployeeID", SqlDbType = System.Data.SqlDbType.Int, Direction = System.Data.ParameterDirection.Input, Value = employeeId.GetValueOrDefault(), Precision = 10, Scale = 0 };
+            if (!employeeId.HasValue)
+                employeeIdParam.Value = System.DBNull.Value;
+
+
+            var procResultData = new CountTransactionByEmpIdReturnModel();
+            var cmd = Database.Connection.CreateCommand();
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.CommandText = "[dbo].[countTransactionByEmpID]";
+            cmd.Parameters.Add(employeeIdParam);
+
+            try
+            {
+                Database.Connection.Open();
+                var reader = await cmd.ExecuteReaderAsync().ConfigureAwait(false);
+                var objectContext = ((System.Data.Entity.Infrastructure.IObjectContextAdapter) this).ObjectContext;
+
+                procResultData.ResultSet1 = objectContext.Translate<CountTransactionByEmpIdReturnModel.ResultSetModel1>(reader).ToList();
+                await reader.NextResultAsync().ConfigureAwait(false);
+
+                procResultData.ResultSet2 = objectContext.Translate<CountTransactionByEmpIdReturnModel.ResultSetModel2>(reader).ToList();
+            }
+            finally
+            {
+                Database.Connection.Close();
+            }
+            return procResultData;
         }
 
         public System.Collections.Generic.List<LoginCheckReturnModel> LoginCheck(string userName, string phoneNum, string password)
