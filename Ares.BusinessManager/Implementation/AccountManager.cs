@@ -20,6 +20,7 @@ namespace Ares.BusinessManager.Implementation
         private IUserRoleRepository _userRoleRepository;
         private IRoleTypeRepository _roleTypeRepository;
         private IFormsAuthentication _formsAuthentication;
+        private IBalanceTypeRepository _balanceTypeRepository;
 
         public AccountManager(
             IHashingService hashingService,
@@ -28,7 +29,8 @@ namespace Ares.BusinessManager.Implementation
             IAdministratorRepository administratorRepository,
             IUserRoleRepository userRoleRepository,
             IRoleTypeRepository roleTypeRepository,
-            IFormsAuthentication formsAuthentication)
+            IFormsAuthentication formsAuthentication,
+            IBalanceTypeRepository balanceType)
         {
             _customerRepository = customerRepository;
             _employeeRepository = employeeRepository;
@@ -37,6 +39,7 @@ namespace Ares.BusinessManager.Implementation
             _userRoleRepository = userRoleRepository;
             _roleTypeRepository = roleTypeRepository;
             _formsAuthentication = formsAuthentication;
+            _balanceTypeRepository = balanceType;
         }
 
         public LoginResult Login(string userName, string password)
@@ -207,6 +210,31 @@ namespace Ares.BusinessManager.Implementation
             }
 
             return loginResult;
+        }
+
+        public void UpdateBalanceType(BalanceType balanceType)
+        {
+            if (_balanceTypeRepository.FindAll(b => b.BalanceTypeId == balanceType.BalanceTypeId).FirstOrDefault() == null)
+            {
+                throw new Exception("No related Balance ID");
+            }
+
+            _balanceTypeRepository.Save(balanceType);
+        }
+
+        public void AddBalanceType(BalanceType newBalanceType)
+        {
+            _balanceTypeRepository.Add(newBalanceType);
+        }
+
+        public BalanceType GetBalanceType(int balanceTypeId)
+        {
+            return _balanceTypeRepository.FindAll(f => f.BalanceTypeId == balanceTypeId).FirstOrDefault();
+        }
+
+        public IEnumerable<BalanceType> FindAllBalanceTypes()
+        {
+            return _balanceTypeRepository.FindAll();
         }
     }
 }
