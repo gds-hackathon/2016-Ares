@@ -28,7 +28,7 @@ namespace Ares.WebApi.Controllers
 
 
 
-        [Route("~/Restaurant/v1/Login")]
+        [Route("~/Restaurant/v1/Account/Login")]
         [HttpPost]
         public LoginResponse Login([FromBody]LoginRequest request)
         {
