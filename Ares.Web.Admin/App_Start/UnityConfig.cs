@@ -1,8 +1,11 @@
 using System;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.Configuration;
+using Ares.Core.Domain;
+using Ares.Core.Repositories;
+using Ares.Data.Ef.Repositories;
 
-namespace Ares.Web.Admin.App_Start
+namespace Ares.Web.Admin
 {
     /// <summary>
     /// Specifies the Unity configuration for the main container.
@@ -35,8 +38,13 @@ namespace Ares.Web.Admin.App_Start
             // NOTE: To load from web.config uncomment the line below. Make sure to add a Microsoft.Practices.Unity.Configuration to the using statements.
             // container.LoadConfiguration();
 
-            // TODO: Register your types here
-            // container.RegisterType<IProductRepository, ProductRepository>();
+            // Repositories
+            container.RegisterType<IAdministratorRepository, AdministratorRepository>();
+            container.RegisterType<IEmployeeRepository, EmployeeRepository>();
+            container.RegisterType<IUserRoleRepository, UserRoleRepository>();
+            container.RegisterType<IBalanceTypeRepository, BalanceTypeRepository>();
+            container.RegisterType<ICustomerRepository, CustomerRepository>();
+            container.RegisterType<IRoleTypeRepository, RoleTypeRepository>();
         }
     }
 }

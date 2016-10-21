@@ -17,8 +17,12 @@ namespace Ares.Web.Admin
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
+            // For performance
             ViewEngines.Engines.Clear();
             ViewEngines.Engines.Add(new RazorViewEngine());
+
+            // Ioc
+            UnityWebActivator.Start();
         }
 
         protected void Application_AuthenticateRequest(object sender, EventArgs e)
