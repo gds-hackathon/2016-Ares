@@ -24,7 +24,7 @@ namespace Ares.WebApi.Controllers
             _userManager = userManager;
         }
 
-        [Route("~/Restaurant/v1/User/Employee/{employeeId}")]
+        [Route("~/Restaurant/v1/User/Employee")]
         [HttpGet]
         public EmployeeResponse GetEmployee([FromUri]int employeeId)
         {
