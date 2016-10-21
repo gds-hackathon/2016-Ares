@@ -20,3 +20,7 @@
 /.vs/config/applicationhost.config
 /Ares.Database/Ares.Database.jfm
 /Ares.Database/Ares.Database.dbmdl
+/Ares.BusinessManager/bin/Debug
+/Ares.BusinessManager/obj/Debug
+/Ares.CodeGeneration/bin/Debug
+/Ares.CodeGeneration/obj/Debug

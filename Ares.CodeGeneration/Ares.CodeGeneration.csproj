@@ -1,0 +1,164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8A604787-2681-4FB6-9F78-26CCA1F00CAB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Ares.CodeGeneration</RootNamespace>
+    <AssemblyName>Ares.CodeGeneration</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Administrator.cs">
+      <DependentUpon>GDAres.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AdministratorMapping.cs">
+      <DependentUpon>GDAres.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BalanceType.cs">
+      <DependentUpon>GDAres.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BalanceTypeMapping.cs">
+      <DependentUpon>GDAres.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Customer.cs">
+      <DependentUpon>GDAres.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerMapping.cs">
+      <DependentUpon>GDAres.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Employee.cs">
+      <DependentUpon>GDAres.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeMapping.cs">
+      <DependentUpon>GDAres.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FakeDbSet.cs">
+      <DependentUpon>GDAres.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FakeGdAresDbContext.cs">
+      <DependentUpon>GDAres.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GDAres.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GDAres.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GdAresDbContext.cs">
+      <DependentUpon>GDAres.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IGdAresDbContext.cs">
+      <DependentUpon>GDAres.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoleType.cs">
+      <DependentUpon>GDAres.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RoleTypeMapping.cs">
+      <DependentUpon>GDAres.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SpHelpdiagramdefinitionReturnModel.cs">
+      <DependentUpon>GDAres.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SpHelpdiagramsReturnModel.cs">
+      <DependentUpon>GDAres.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sysdiagram.cs">
+      <DependentUpon>GDAres.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SysdiagramMapping.cs">
+      <DependentUpon>GDAres.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sys_DatabaseFirewallRule.cs">
+      <DependentUpon>GDAres.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sys_DatabaseFirewallRuleMapping.cs">
+      <DependentUpon>GDAres.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sys_ScriptDeployment.cs">
+      <DependentUpon>GDAres.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sys_ScriptDeploymentMapping.cs">
+      <DependentUpon>GDAres.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sys_ScriptDeploymentStatus.cs">
+      <DependentUpon>GDAres.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sys_ScriptDeploymentStatusMapping.cs">
+      <DependentUpon>GDAres.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Test1ReturnModel.cs">
+      <DependentUpon>GDAres.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserRole.cs">
+      <DependentUpon>GDAres.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserRoleMapping.cs">
+      <DependentUpon>GDAres.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="GDAres.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GDAres.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="EF.Reverse.POCO.Core.ttinclude" />
+    <None Include="EF.Reverse.POCO.ttinclude" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

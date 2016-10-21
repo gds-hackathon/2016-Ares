@@ -41,13 +41,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Domain\Administrator.cs" />
+    <Compile Include="Domain\BalanceType.cs" />
+    <Compile Include="Domain\Customer.cs" />
+    <Compile Include="Domain\Employee.cs" />
     <Compile Include="Domain\IAggregateRoot.cs" />
+    <Compile Include="Domain\RoleType.cs" />
+    <Compile Include="Domain\UserRole.cs" />
     <Compile Include="Domain\LoginModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\IAdministratorRepository.cs" />
+    <Compile Include="Repositories\IBalanceTypeRepository.cs" />
+    <Compile Include="Repositories\ICustomerRepository.cs" />
+    <Compile Include="Repositories\IEmployeeRepository.cs" />
     <Compile Include="Repositories\IReadOnlyRepository.cs" />
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Repositories\IRepositoryAsync.cs" />
+    <Compile Include="Repositories\IRoleTypeRepository.cs" />
+    <Compile Include="Repositories\IUserRoleRepository.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
