@@ -69,6 +69,7 @@
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Repositories\IRepositoryAsync.cs" />
     <Compile Include="Repositories\IRoleTypeRepository.cs" />
+    <Compile Include="Repositories\ITransactionRatingRepository.cs" />
     <Compile Include="Repositories\ITransactionRepository.cs" />
     <Compile Include="Repositories\IUserRoleRepository.cs" />
   </ItemGroup>

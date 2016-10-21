@@ -28,7 +28,7 @@ namespace Ares.WebApi.Controllers
 
         [Route("~/Restaurant/v1/Transaction/ConsumInfo")]
         [HttpGet]
-        public ConsumInfoResponse ConsumInfo(int employeeId)
+        public ConsumInfoResponse ConsumInfo([FromUri]int employeeId)
         {
             ConsumInfoResponse response = new ConsumInfoResponse();
 
