@@ -7,6 +7,11 @@ namespace Ares.Contract.Response
     [DataContract]
     public class LoginResponse : BaseResponse
     {
+        public string NickName { get; set; }
+
+        public decimal Balance { get; set; }
+
+        
 
     }
 }
