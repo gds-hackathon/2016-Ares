@@ -55,6 +55,7 @@
     <Compile Include="Domain\TransactionRating.cs" />
     <Compile Include="Domain\UserRole.cs" />
     <Compile Include="Domain\LoginModel.cs" />
+    <Compile Include="Dto\EmployeeTransactionSummaryDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IAdministratorRepository.cs" />
     <Compile Include="Repositories\IBalanceTypeRepository.cs" />
