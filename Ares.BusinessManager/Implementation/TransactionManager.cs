@@ -37,10 +37,11 @@ namespace Ares.BusinessManager.Implementation
             return _transactionRepository.FindEmployeeTransactionSummary(employeeId);
         }
 
-        public decimal CalculateDiscount(int? employeeId, int? customerId, decimal? totalAmount)
+        public decimal CalculateDiscount(int? employeeId, int? customerId, decimal? totalAmount,out int? transactionId)
         {
             decimal? realPay = 0;
-            var result = _transactionRepository.CalculateDiscount(employeeId, customerId, totalAmount, out realPay);
+            transactionId = 0;
+              var result = _transactionRepository.CalculateDiscount(employeeId, customerId, totalAmount, out realPay,out transactionId);
             return realPay.HasValue ? realPay.Value: totalAmount.Value;
 
         }

@@ -65,9 +65,6 @@
     <Compile Include="BalanceTypeMapping.cs">
       <DependentUpon>GDAres.tt</DependentUpon>
     </Compile>
-    <Compile Include="CalculateDiscountReturnModel.cs">
-      <DependentUpon>GDAres.tt</DependentUpon>
-    </Compile>
     <Compile Include="CheckTransactionByCustomerIdReturnModel.cs">
       <DependentUpon>GDAres.tt</DependentUpon>
     </Compile>

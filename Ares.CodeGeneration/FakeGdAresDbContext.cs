@@ -107,18 +107,12 @@ namespace Ares.CodeGeneration
             return System.Threading.Tasks.Task.FromResult(AddNewEmployee(employeeId, employeeName, balance, password, userName, phoneNum, out procResult));
         }
 
-        public System.Collections.Generic.List<CalculateDiscountReturnModel> CalculateDiscount(int? employeeId, int? customerId, decimal? totalAmount, out decimal? realPay)
-        {
-            int procResult;
-            return CalculateDiscount(employeeId, customerId, totalAmount, out realPay, out procResult);
-        }
-
-        public System.Collections.Generic.List<CalculateDiscountReturnModel> CalculateDiscount(int? employeeId, int? customerId, decimal? totalAmount, out decimal? realPay, out int procResult)
+        public int CalculateDiscount(int? employeeId, int? customerId, decimal? totalAmount, out decimal? realPay, out int? transactionId)
         {
             realPay = default(decimal);
-
-            procResult = 0;
-            return new System.Collections.Generic.List<CalculateDiscountReturnModel>();
+            transactionId = default(int);
+ 
+            return 0;
         }
 
         public System.Collections.Generic.List<CheckTransactionByCustomerIdReturnModel> CheckTransactionByCustomerId(int? customerId)

@@ -243,13 +243,7 @@ namespace Ares.CodeGeneration
             return procResultData;
         }
 
-        public System.Collections.Generic.List<CalculateDiscountReturnModel> CalculateDiscount(int? employeeId, int? customerId, decimal? totalAmount, out decimal? realPay)
-        {
-            int procResult;
-            return CalculateDiscount(employeeId, customerId, totalAmount, out realPay, out procResult);
-        }
-
-        public System.Collections.Generic.List<CalculateDiscountReturnModel> CalculateDiscount(int? employeeId, int? customerId, decimal? totalAmount, out decimal? realPay, out int procResult)
+        public int CalculateDiscount(int? employeeId, int? customerId, decimal? totalAmount, out decimal? realPay, out int? transactionId)
         {
             var employeeIdParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@EmployeeID", SqlDbType = System.Data.SqlDbType.Int, Direction = System.Data.ParameterDirection.Input, Value = employeeId.GetValueOrDefault(), Precision = 10, Scale = 0 };
             if (!employeeId.HasValue)
@@ -264,15 +258,20 @@ namespace Ares.CodeGeneration
                 totalAmountParam.Value = System.DBNull.Value;
 
             var realPayParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@RealPay", SqlDbType = System.Data.SqlDbType.Money, Direction = System.Data.ParameterDirection.Output, Precision = 19, Scale = 4 };
+            var transactionIdParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@TransactionID", SqlDbType = System.Data.SqlDbType.Int, Direction = System.Data.ParameterDirection.Output, Precision = 10, Scale = 0 };
             var procResultParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@procResult", SqlDbType = System.Data.SqlDbType.Int, Direction = System.Data.ParameterDirection.Output };
-            var procResultData = Database.SqlQuery<CalculateDiscountReturnModel>("EXEC @procResult = [dbo].[calculateDiscount] @EmployeeID, @CustomerID, @TotalAmount, @RealPay OUTPUT", employeeIdParam, customerIdParam, totalAmountParam, realPayParam, procResultParam).ToList();
+ 
+            Database.ExecuteSqlCommand("EXEC @procResult = [dbo].[calculateDiscount] @EmployeeID, @CustomerID, @TotalAmount, @RealPay OUTPUT, @TransactionID OUTPUT", employeeIdParam, customerIdParam, totalAmountParam, realPayParam, transactionIdParam, procResultParam);
             if (IsSqlParameterNull(realPayParam))
                 realPay = null;
             else
                 realPay = (decimal) realPayParam.Value;
-
-            procResult = (int) procResultParam.Value;
-            return procResultData;
+            if (IsSqlParameterNull(transactionIdParam))
+                transactionId = null;
+            else
+                transactionId = (int) transactionIdParam.Value;
+ 
+            return (int) procResultParam.Value;
         }
 
         public System.Collections.Generic.List<CheckTransactionByCustomerIdReturnModel> CheckTransactionByCustomerId(int? customerId)

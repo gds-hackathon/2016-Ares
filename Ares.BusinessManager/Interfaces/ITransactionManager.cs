@@ -18,7 +18,7 @@ namespace Ares.BusinessManager.Interfaces
 
         CountTransactionByEmpIdReturnModel FindEmployeeTransactionSummary(int employeeId);
 
-        decimal CalculateDiscount(int? employeeId, int? customerId, decimal? totalAmount);
+        decimal CalculateDiscount(int? employeeId, int? customerId, decimal? totalAmount,out int? transactionId);
 
         System.Collections.Generic.List<CheckTransactionByCustomerIdReturnModel> CheckTransactionByCustomerId(int? customerId);
 
