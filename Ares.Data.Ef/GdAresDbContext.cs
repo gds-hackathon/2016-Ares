@@ -35,6 +35,7 @@ namespace Ares.Data.Ef
             modelBuilder.Configurations.Add(new EmployeeMapping());
             modelBuilder.Configurations.Add(new RoleTypeMapping());
             modelBuilder.Configurations.Add(new UserRoleMapping());
+            modelBuilder.Configurations.Add(new TransactionMapping());
         }
 
         public static System.Data.Entity.DbModelBuilder CreateModel(System.Data.Entity.DbModelBuilder modelBuilder, string schema)
@@ -44,6 +45,7 @@ namespace Ares.Data.Ef
             modelBuilder.Configurations.Add(new CustomerMapping(schema));
             modelBuilder.Configurations.Add(new EmployeeMapping(schema));
             modelBuilder.Configurations.Add(new RoleTypeMapping(schema));
+            modelBuilder.Configurations.Add(new TransactionMapping(schema));
             modelBuilder.Configurations.Add(new UserRoleMapping(schema));
             return modelBuilder;
         }
@@ -67,6 +69,7 @@ namespace Ares.Data.Ef
         public System.Data.Entity.DbSet<Employee> Employees { get; set; } // Employee
         public System.Data.Entity.DbSet<RoleType> RoleTypes { get; set; } // RoleType
         public System.Data.Entity.DbSet<UserRole> UserRoles { get; set; } // UserRole
+        public System.Data.Entity.DbSet<Transaction> Transactions { get; set; } // Transaction
 
     }
 }

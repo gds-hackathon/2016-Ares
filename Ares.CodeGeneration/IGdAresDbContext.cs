@@ -24,6 +24,7 @@ namespace Ares.CodeGeneration
         System.Data.Entity.DbSet<sys_ScriptDeployment> sys_ScriptDeployments { get; set; } // script_deployments
         System.Data.Entity.DbSet<sys_ScriptDeploymentStatus> sys_ScriptDeploymentStatus { get; set; } // script_deployment_status
         System.Data.Entity.DbSet<Sysdiagram> Sysdiagrams { get; set; } // sysdiagrams
+        System.Data.Entity.DbSet<Transaction> Transactions { get; set; } // Transactions
         System.Data.Entity.DbSet<UserRole> UserRoles { get; set; } // UserRole
 
         int SaveChanges();
@@ -31,14 +32,19 @@ namespace Ares.CodeGeneration
         System.Threading.Tasks.Task<int> SaveChangesAsync(System.Threading.CancellationToken cancellationToken);
 
         // Stored Procedures
-        int AddNewAdmin(string adminName);
+        int AddNewAdmin(string adminName, string password, string userName, string phoneNum);
         // AddNewAdminAsync cannot be created due to having out parameters, or is relying on the procedure result (int)
 
-        int AddNewCustomer(string customerName, int? discountRating, byte[] discountPicture);
+        int AddNewCustomer(string customerName, int? discountRating, byte[] discountPicture, string password, string userName, string phoneNum);
         // AddNewCustomerAsync cannot be created due to having out parameters, or is relying on the procedure result (int)
 
-        int AddNewEmployee(int? employeeId, string employeeName, int? balance);
-        // AddNewEmployeeAsync cannot be created due to having out parameters, or is relying on the procedure result (int)
+        System.Collections.Generic.List<AddNewEmployeeReturnModel> AddNewEmployee(int? employeeId, string employeeName, int? balance, string password, string userName, string phoneNum);
+        System.Collections.Generic.List<AddNewEmployeeReturnModel> AddNewEmployee(int? employeeId, string employeeName, int? balance, string password, string userName, string phoneNum, out int procResult);
+        System.Threading.Tasks.Task<System.Collections.Generic.List<AddNewEmployeeReturnModel>> AddNewEmployeeAsync(int? employeeId, string employeeName, int? balance, string password, string userName, string phoneNum);
+
+        System.Collections.Generic.List<LoginCheckReturnModel> LoginCheck(string userName, string phoneNum, string password);
+        System.Collections.Generic.List<LoginCheckReturnModel> LoginCheck(string userName, string phoneNum, string password, out int procResult);
+        System.Threading.Tasks.Task<System.Collections.Generic.List<LoginCheckReturnModel>> LoginCheckAsync(string userName, string phoneNum, string password);
 
         int SpAlterdiagram(string diagramname, int? ownerId, int? version, byte[] definition);
         // SpAlterdiagramAsync cannot be created due to having out parameters, or is relying on the procedure result (int)

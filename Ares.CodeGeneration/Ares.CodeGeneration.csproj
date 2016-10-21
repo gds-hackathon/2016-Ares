@@ -50,6 +50,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddNewEmployeeReturnModel.cs">
+      <DependentUpon>GDAres.tt</DependentUpon>
+    </Compile>
     <Compile Include="Administrator.cs">
       <DependentUpon>GDAres.tt</DependentUpon>
     </Compile>
@@ -91,6 +94,9 @@
     <Compile Include="IGdAresDbContext.cs">
       <DependentUpon>GDAres.tt</DependentUpon>
     </Compile>
+    <Compile Include="LoginCheckReturnModel.cs">
+      <DependentUpon>GDAres.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoleType.cs">
       <DependentUpon>GDAres.tt</DependentUpon>
@@ -129,6 +135,12 @@
       <DependentUpon>GDAres.tt</DependentUpon>
     </Compile>
     <Compile Include="Test1ReturnModel.cs">
+      <DependentUpon>GDAres.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Transaction.cs">
+      <DependentUpon>GDAres.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TransactionMapping.cs">
       <DependentUpon>GDAres.tt</DependentUpon>
     </Compile>
     <Compile Include="UserRole.cs">

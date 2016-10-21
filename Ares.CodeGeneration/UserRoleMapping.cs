@@ -31,6 +31,9 @@ namespace Ares.CodeGeneration
             Property(x => x.RoleId).HasColumnName(@"RoleID").IsRequired().HasColumnType("int");
             Property(x => x.CreatedDate).HasColumnName(@"CreatedDate").IsRequired().HasColumnType("datetime");
             Property(x => x.ChangedDate).HasColumnName(@"ChangedDate").IsRequired().HasColumnType("datetime");
+            Property(x => x.UserName).HasColumnName(@"UserName").IsOptional().IsUnicode(false).HasColumnType("varchar").HasMaxLength(500);
+            Property(x => x.PhoneNum).HasColumnName(@"PhoneNum").IsOptional().IsUnicode(false).HasColumnType("varchar").HasMaxLength(50);
+            Property(x => x.Password).HasColumnName(@"Password").IsOptional().IsUnicode(false).HasColumnType("varchar").HasMaxLength(500);
         }
     }
 
