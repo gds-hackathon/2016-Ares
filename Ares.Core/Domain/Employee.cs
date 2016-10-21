@@ -13,7 +13,7 @@ namespace Ares.Core.Domain
         public int BalanceTypeId { get; set; } // BalanceTypeID
         public int UserId { get; set; } // UserID
         public System.DateTime ChangedDate { get; set; } // ChangedDate
-        public bool? Gender { get; set; } // Gender
+        public bool Gender { get; set; }
 
         public Employee()
         {

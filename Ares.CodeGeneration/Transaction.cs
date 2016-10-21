@@ -26,12 +26,14 @@ namespace Ares.CodeGeneration
         public int? OrderId { get; set; } // OrderID
         public System.DateTime CreatedDate { get; set; } // CreatedDate
         public System.DateTime ChangedDate { get; set; } // ChangedDate
+        public bool IsSuccessful { get; set; } // IsSuccessful
 
         public Transaction()
         {
             TransactionDateTime = System.DateTime.Now;
             CreatedDate = System.DateTime.Now;
             ChangedDate = System.DateTime.Now;
+            IsSuccessful = false;
         }
     }
 

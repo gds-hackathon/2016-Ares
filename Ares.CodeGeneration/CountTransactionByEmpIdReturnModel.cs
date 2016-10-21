@@ -20,7 +20,7 @@ namespace Ares.CodeGeneration
         public class ResultSetModel1
         {
             public System.String CustomerName { get; set; }
-            public System.Int32 CustomerID { get; set; }
+            public System.Int32? CustomerID { get; set; }
             public System.Int32? TransCount { get; set; }
             public System.Decimal? TotalAmount { get; set; }
             public System.Decimal? DiscountAmount { get; set; }

@@ -31,6 +31,7 @@ namespace Ares.WebApi.Controllers
         {
             IEnumerable<CusomerListResponse> list = _userManaget.FindCustomerList().Select(e => new CusomerListResponse
             {
+               
                 CustomerName = e.CustomerName,
                 Discount = e.DiscountRating,
                 Rating = e.RateLevel.Value,
