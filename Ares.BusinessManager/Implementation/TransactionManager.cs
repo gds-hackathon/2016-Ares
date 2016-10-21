@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Ares.Core.Repositories;
+using Ares.Core.Dto;
 
 namespace Ares.BusinessManager.Implementation
 {
@@ -34,6 +35,11 @@ namespace Ares.BusinessManager.Implementation
         public IEnumerable<Transaction> FindTransactionsHistoryByCustomer(int customerId, int pageIndex, int pageSize)
         {
             return _transactionRepository.FindAll(e => e.CustomerId == customerId, "TransactionDateTime", pageIndex, pageSize);
+        }
+
+        public CountTransactionByEmpIdReturnModel FindEmployeeTransactionSummary(int employeeId)
+        {
+            return _transactionRepository.FindEmployeeTransactionSummary(employeeId);
         }
     }
 }
