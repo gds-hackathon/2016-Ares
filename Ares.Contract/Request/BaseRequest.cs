@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 
 namespace Ares.Contract.Request
 {
-    [DataMember]
+    [DataContract]
     public class BaseRequest
     {
     }
