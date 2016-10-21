@@ -14,18 +14,30 @@
 </head>
 <body>
     <div class="container">
-        <div class=""
-        @using (Html.BeginForm("Login", "Login", FormMethod.Post))
-        {
-            @Html.TextBoxFor(m => m.UserName)
-            @Html.ValidationMessageFor(m => m.UserName, "请输入用户名！", new { style = "color: #f00" })
-            @Html.PasswordFor(m => m.Password)
-            @Html.ValidationMessageFor(m => m.Password, "请输入密码！", new { style = "color: #f00" })
-            @Html.CheckBoxFor(m => m.RememberMe)
-            @Html.LabelFor(m => m.RememberMe)
-            @Html.ActionLink("忘记密码", "forgotpwd", null, new { @class = "rt", target = "_blank" })
-            <input type="submit" value="登陆微博" />
-        }
+        <!--login modal-->
+        <div id="loginModal" class="modal show" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="text-center">Login</h1>
+                    </div>
+                    <div class="modal-body">
+                        @Html.BeginForm("Login", "Login", FormMethod.Post, new { @class = "form col-md-12 center-block" })
+                        <div class="form-group">
+                            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control input-lg", placeholder = "User Name" })
+                            @*<input type="text" class="form-control input-lg" placeholder="UserName">*@
+                        </div>
+                        <div class="form-group">
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control input-lg", placeholder = "Password" })
+                            @*<input type="password" class="form-control input-lg" placeholder="Password">*@
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-primary btn-lg btn-block">Sign In</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>
