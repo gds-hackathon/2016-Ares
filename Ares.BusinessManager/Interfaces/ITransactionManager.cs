@@ -20,5 +20,7 @@ namespace Ares.BusinessManager.Interfaces
 
         decimal CalculateDiscount(int? employeeId, int? customerId, decimal? totalAmount);
 
+        System.Collections.Generic.List<CheckTransactionByCustomerIdReturnModel> CheckTransactionByCustomerId(int? customerId);
+
     }
 }

@@ -232,6 +232,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ConfigurationController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -331,10 +332,12 @@
     <Content Include="Views\Shared\DisplayTemplates\CanonicalHelperModel.cshtml" />
     <Content Include="Views\Employee\Transactions.cshtml" />
     <Content Include="Views\Restaurant\Transactions.cshtml" />
+    <Content Include="Views\Summary\GetCustomerTransHistory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Administrator\" />
+    <Folder Include="Views\Base\" />
     <Folder Include="Views\Logs\" />
   </ItemGroup>
   <ItemGroup>

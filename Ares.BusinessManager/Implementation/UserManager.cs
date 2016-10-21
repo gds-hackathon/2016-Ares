@@ -54,7 +54,8 @@ namespace Ares.BusinessManager.Implementation
             {
                 throw new ArgumentNullException("qrCode");
             }
-            return _customerRepository.FindAll(c => c.Guid == Guid.Parse(qrCode)).FirstOrDefault();
+            Guid code = Guid.Parse(qrCode);
+            return _customerRepository.FindAll(c => c.Guid == code).FirstOrDefault();
         }
 
         public void UpdateCustomer(Customer customer)
