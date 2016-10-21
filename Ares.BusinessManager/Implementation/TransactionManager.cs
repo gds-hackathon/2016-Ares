@@ -33,7 +33,7 @@ namespace Ares.BusinessManager.Implementation
 
         public IEnumerable<Transaction> FindTransactionsHistoryByCustomer(int customerId, int pageIndex, int pageSize)
         {
-            throw new NotImplementedException();
+            return _transactionRepository.FindAll(e => e.CustomerId == customerId, "TransactionDateTime", pageIndex, pageSize);
         }
     }
 }

@@ -170,5 +170,43 @@ namespace Ares.BusinessManager.Implementation
                 _userRoleRepository.Save(user);
             }
         }
+
+        public LoginResult EmployeeLogin(string userName, string password)
+        {
+            var loginResult = new LoginResult();
+            var hashedPsd = _hashingService.Hash(password);
+            var user = _userRoleRepository.FindAll(c => c.UserName == userName && c.Password == hashedPsd).FirstOrDefault();
+            if (user == null)
+            {
+                throw new Exception("PhoneNumber or Password is invalid.");
+            }
+            else
+            {
+                var role = _roleTypeRepository.FindAll(r => r.RoleId == user.RoleId).FirstOrDefault();
+
+                loginResult.UserId = user.UserId;
+                if (role != null)
+                {
+                    loginResult.RoleType = (RoleTypes)Enum.Parse(typeof(RoleTypes), role.RoleType_);
+                    switch (loginResult.RoleType)
+                    {
+                        case RoleTypes.Customer:
+                            _formsAuthentication.SetAuthenticationToken(user.UserId.ToString(), "Customer");
+                            break;
+                        case RoleTypes.Employee:
+                            _formsAuthentication.SetAuthenticationToken(user.UserId.ToString(), "Employee");
+                            break;
+                        case RoleTypes.Administrator:
+                            _formsAuthentication.SetAuthenticationToken(user.UserId.ToString(), "Administrator");
+                            break;
+                        default:
+                            break;
+                    }
+                }
+
+            }
+
+            return loginResult;
+        }
     }
 }
