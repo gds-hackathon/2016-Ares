@@ -36,6 +36,7 @@ namespace Ares.Data.Ef
             modelBuilder.Configurations.Add(new RoleTypeMapping());
             modelBuilder.Configurations.Add(new UserRoleMapping());
             modelBuilder.Configurations.Add(new TransactionMapping());
+            modelBuilder.Configurations.Add(new TransactionRatingMapping());
         }
 
         public static System.Data.Entity.DbModelBuilder CreateModel(System.Data.Entity.DbModelBuilder modelBuilder, string schema)
@@ -47,6 +48,7 @@ namespace Ares.Data.Ef
             modelBuilder.Configurations.Add(new RoleTypeMapping(schema));
             modelBuilder.Configurations.Add(new TransactionMapping(schema));
             modelBuilder.Configurations.Add(new UserRoleMapping(schema));
+            modelBuilder.Configurations.Add(new TransactionRatingMapping(schema));
             return modelBuilder;
         }
         public System.Linq.IQueryable<T> Find<T>() where T : class
