@@ -11,7 +11,7 @@ using System.Web.Security;
 
 namespace Ares.Web.Admin.Controllers
 {
-    public class LoginController : Controller
+    public class LoginController : BaseController
     {
         private IAccountManager _accountManager;
 
@@ -56,7 +56,7 @@ namespace Ares.Web.Admin.Controllers
                 switch (loginResult.RoleType)
                 {
                     case RoleTypes.Customer:
-                        return RedirectToAction("index", "Restaurant");
+                        return RedirectToAction("GetCustomerTransHistory", "Summary");
                     case RoleTypes.Employee:
                         return RedirectToAction("index", "Employee");
                     case RoleTypes.Administrator:

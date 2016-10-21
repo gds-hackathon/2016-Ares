@@ -52,7 +52,7 @@
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
                     <li>
-                        @Html.ActionLink(" Summary", "Index", "Home", null, new { @class = "fa fa-dashboard" })
+                        @Html.ActionLink(" Summary", "GetCustomerTransHistory", "Summary", null, new { @class = "fa fa-dashboard" })
                     </li>
                     <li>
                         @Html.ActionLink(" Restaurants Management", "Index", "Restaurant", null, new { @class = "fa fa-shopping-cart" })
@@ -65,9 +65,9 @@
                         <li>
                             @Html.ActionLink(" Configurations", "Index", "Configuration", null, new { @class = "fa fa-qrcode" })
                         </li>
-                        <li>
-                            @Html.ActionLink(" Logs", "Index", "Log", null, new { @class = "fa fa-table" })
-                        </li>
+                        @*<li>
+                                @Html.ActionLink(" Logs", "Index", "Log", null, new { @class = "fa fa-table" })
+                            </li>*@
                     }
                 </ul>
             </div>

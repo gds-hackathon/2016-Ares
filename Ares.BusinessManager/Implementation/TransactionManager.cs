@@ -1,14 +1,9 @@
 ﻿using Ares.BusinessManager.Interfaces;
 using Ares.Core.Domain;
+using Ares.Core.Dto;
 using Ares.Core.Repositories;
-using Ares.Infrastructure.Security;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Ares.Core.Repositories;
-using Ares.Core.Dto;
 
 namespace Ares.BusinessManager.Implementation
 {

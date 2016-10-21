@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace Ares.Web.Admin.Controllers
 {
-    public class UserProfilerController : Controller
+    public class UserProfilerController : BaseController
     {
         // GET: UserProfiler
         public ActionResult Index()

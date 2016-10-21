@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace Ares.Web.Admin.Controllers
 {
-    public class LogController : Controller
+    public class LogController : BaseController
     {
         // GET: Logs
         public ActionResult Index()
