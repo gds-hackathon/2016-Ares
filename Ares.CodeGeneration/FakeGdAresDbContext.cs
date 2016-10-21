@@ -82,7 +82,7 @@ namespace Ares.CodeGeneration
             return 0;
         }
 
-        public int AddNewCustomer(string customerName, int? discountRating, byte[] discountPicture, string password, string userName, string phoneNum)
+        public int AddNewCustomer(string customerName, int? discountRating, byte[] discountPicture, string password, string userName, string phoneNum, string address)
         {
  
             return 0;
@@ -216,20 +216,20 @@ namespace Ares.CodeGeneration
             return System.Threading.Tasks.Task.FromResult(LoginCheck(userName, phoneNum, password, out procResult));
         }
 
-        public System.Collections.Generic.List<SettlementForCustomerReturnModel> SettlementForCustomer(System.DateTime? startDate, System.DateTime? endDate)
+        public SettlementForCustomerReturnModel SettlementForCustomer(System.DateTime? startDate, System.DateTime? endDate)
         {
             int procResult;
             return SettlementForCustomer(startDate, endDate, out procResult);
         }
 
-        public System.Collections.Generic.List<SettlementForCustomerReturnModel> SettlementForCustomer(System.DateTime? startDate, System.DateTime? endDate, out int procResult)
+        public SettlementForCustomerReturnModel SettlementForCustomer(System.DateTime? startDate, System.DateTime? endDate, out int procResult)
         {
 
             procResult = 0;
-            return new System.Collections.Generic.List<SettlementForCustomerReturnModel>();
+            return new SettlementForCustomerReturnModel();
         }
 
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<SettlementForCustomerReturnModel>> SettlementForCustomerAsync(System.DateTime? startDate, System.DateTime? endDate)
+        public System.Threading.Tasks.Task<SettlementForCustomerReturnModel> SettlementForCustomerAsync(System.DateTime? startDate, System.DateTime? endDate)
         {
             int procResult;
             return System.Threading.Tasks.Task.FromResult(SettlementForCustomer(startDate, endDate, out procResult));

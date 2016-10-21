@@ -34,7 +34,7 @@ namespace Ares.WebApi.Controllers
                 CustomerID = e.CustomerID,
                 CustomerName = e.CustomerName,
                 Discount = e.DiscountRating,
-                Rating = e.RateLevel.Value,
+                DiscountRating = e.RateLevel.Value,
                 Address = e.Address,
                 Success = true
 

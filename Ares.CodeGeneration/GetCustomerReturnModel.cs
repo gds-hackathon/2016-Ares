@@ -18,6 +18,7 @@ namespace Ares.CodeGeneration
     {
         public System.String CustomerName { get; set; }
         public System.Int32 CustomerID { get; set; }
+        public System.Int32? TransCount { get; set; }
         public System.Int32? RateLevel { get; set; }
         public System.Int32 DiscountRating { get; set; }
         public System.String Address { get; set; }

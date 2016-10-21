@@ -136,7 +136,7 @@ namespace Ares.CodeGeneration
             return (int) procResultParam.Value;
         }
 
-        public int AddNewCustomer(string customerName, int? discountRating, byte[] discountPicture, string password, string userName, string phoneNum)
+        public int AddNewCustomer(string customerName, int? discountRating, byte[] discountPicture, string password, string userName, string phoneNum, string address)
         {
             var customerNameParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@CustomerName", SqlDbType = System.Data.SqlDbType.NVarChar, Direction = System.Data.ParameterDirection.Input, Value = customerName, Size = 500 };
             if (customerNameParam.Value == null)
@@ -162,9 +162,13 @@ namespace Ares.CodeGeneration
             if (phoneNumParam.Value == null)
                 phoneNumParam.Value = System.DBNull.Value;
 
+            var addressParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@Address", SqlDbType = System.Data.SqlDbType.NVarChar, Direction = System.Data.ParameterDirection.Input, Value = address, Size = 500 };
+            if (addressParam.Value == null)
+                addressParam.Value = System.DBNull.Value;
+
             var procResultParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@procResult", SqlDbType = System.Data.SqlDbType.Int, Direction = System.Data.ParameterDirection.Output };
  
-            Database.ExecuteSqlCommand("EXEC @procResult = [dbo].[addNewCustomer] @CustomerName, @DiscountRating, @DiscountPicture, @Password, @UserName, @PhoneNum", customerNameParam, discountRatingParam, discountPictureParam, passwordParam, userNameParam, phoneNumParam, procResultParam);
+            Database.ExecuteSqlCommand("EXEC @procResult = [dbo].[addNewCustomer] @CustomerName, @DiscountRating, @DiscountPicture, @Password, @UserName, @PhoneNum, @Address", customerNameParam, discountRatingParam, discountPictureParam, passwordParam, userNameParam, phoneNumParam, addressParam, procResultParam);
  
             return (int) procResultParam.Value;
         }
@@ -461,13 +465,7 @@ namespace Ares.CodeGeneration
             return procResultData;
         }
 
-        public System.Collections.Generic.List<SettlementForCustomerReturnModel> SettlementForCustomer(System.DateTime? startDate, System.DateTime? endDate)
-        {
-            int procResult;
-            return SettlementForCustomer(startDate, endDate, out procResult);
-        }
-
-        public System.Collections.Generic.List<SettlementForCustomerReturnModel> SettlementForCustomer(System.DateTime? startDate, System.DateTime? endDate, out int procResult)
+        public SettlementForCustomerReturnModel SettlementForCustomer(System.DateTime? startDate, System.DateTime? endDate)
         {
             var startDateParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@StartDate", SqlDbType = System.Data.SqlDbType.Date, Direction = System.Data.ParameterDirection.Input, Value = startDate.GetValueOrDefault() };
             if (!startDate.HasValue)
@@ -477,14 +475,33 @@ namespace Ares.CodeGeneration
             if (!endDate.HasValue)
                 endDateParam.Value = System.DBNull.Value;
 
-            var procResultParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@procResult", SqlDbType = System.Data.SqlDbType.Int, Direction = System.Data.ParameterDirection.Output };
-            var procResultData = Database.SqlQuery<SettlementForCustomerReturnModel>("EXEC @procResult = [dbo].[settlementForCustomer] @StartDate, @EndDate", startDateParam, endDateParam, procResultParam).ToList();
 
-            procResult = (int) procResultParam.Value;
+            var procResultData = new SettlementForCustomerReturnModel();
+            var cmd = Database.Connection.CreateCommand();
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.CommandText = "[dbo].[settlementForCustomer]";
+            cmd.Parameters.Add(startDateParam);
+            cmd.Parameters.Add(endDateParam);
+
+            try
+            {
+                Database.Connection.Open();
+                var reader = cmd.ExecuteReader();
+                var objectContext = ((System.Data.Entity.Infrastructure.IObjectContextAdapter) this).ObjectContext;
+
+                procResultData.ResultSet1 = objectContext.Translate<SettlementForCustomerReturnModel.ResultSetModel1>(reader).ToList();
+                reader.NextResult();
+
+                procResultData.ResultSet2 = objectContext.Translate<SettlementForCustomerReturnModel.ResultSetModel2>(reader).ToList();
+            }
+            finally
+            {
+                Database.Connection.Close();
+            }
             return procResultData;
         }
 
-        public async System.Threading.Tasks.Task<System.Collections.Generic.List<SettlementForCustomerReturnModel>> SettlementForCustomerAsync(System.DateTime? startDate, System.DateTime? endDate)
+        public async System.Threading.Tasks.Task<SettlementForCustomerReturnModel> SettlementForCustomerAsync(System.DateTime? startDate, System.DateTime? endDate)
         {
             var startDateParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@StartDate", SqlDbType = System.Data.SqlDbType.Date, Direction = System.Data.ParameterDirection.Input, Value = startDate.GetValueOrDefault() };
             if (!startDate.HasValue)
@@ -494,8 +511,29 @@ namespace Ares.CodeGeneration
             if (!endDate.HasValue)
                 endDateParam.Value = System.DBNull.Value;
 
-            var procResultData = await Database.SqlQuery<SettlementForCustomerReturnModel>("EXEC [dbo].[settlementForCustomer] @StartDate, @EndDate", startDateParam, endDateParam).ToListAsync();
 
+            var procResultData = new SettlementForCustomerReturnModel();
+            var cmd = Database.Connection.CreateCommand();
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.CommandText = "[dbo].[settlementForCustomer]";
+            cmd.Parameters.Add(startDateParam);
+            cmd.Parameters.Add(endDateParam);
+
+            try
+            {
+                Database.Connection.Open();
+                var reader = await cmd.ExecuteReaderAsync().ConfigureAwait(false);
+                var objectContext = ((System.Data.Entity.Infrastructure.IObjectContextAdapter) this).ObjectContext;
+
+                procResultData.ResultSet1 = objectContext.Translate<SettlementForCustomerReturnModel.ResultSetModel1>(reader).ToList();
+                await reader.NextResultAsync().ConfigureAwait(false);
+
+                procResultData.ResultSet2 = objectContext.Translate<SettlementForCustomerReturnModel.ResultSetModel2>(reader).ToList();
+            }
+            finally
+            {
+                Database.Connection.Close();
+            }
             return procResultData;
         }
 
