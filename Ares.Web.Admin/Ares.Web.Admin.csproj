@@ -309,6 +309,24 @@
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Ares.BusinessManager\Ares.BusinessManager.csproj">
+      <Project>{71dfba5c-9b43-40fc-b6c2-a206eb9d6bc3}</Project>
+      <Name>Ares.BusinessManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ares.Core\Ares.Core.csproj">
+      <Project>{6f059027-e727-4ded-90e7-01b6dca0b239}</Project>
+      <Name>Ares.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ares.Data.Ef\Ares.Data.Ef.csproj">
+      <Project>{258dc0cd-5fca-4d54-98ee-d7d40d34bb6b}</Project>
+      <Name>Ares.Data.Ef</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ares.Infrastructure\Ares.Infrastructure.csproj">
+      <Project>{778d695d-b080-4fd6-be6f-0683320f63a5}</Project>
+      <Name>Ares.Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
