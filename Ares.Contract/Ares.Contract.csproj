@@ -46,6 +46,7 @@
     <Compile Include="Request\BaseRequest.cs" />
     <Compile Include="Request\CalculateDiscountRequest.cs" />
     <Compile Include="Request\ConsumInfoRequest.cs" />
+    <Compile Include="Request\CustomerRequest.cs" />
     <Compile Include="Request\CustomerValidateRequest.cs" />
     <Compile Include="Request\EmployeeRequest.cs" />
     <Compile Include="Request\LoginRequest.cs" />
@@ -53,6 +54,7 @@
     <Compile Include="Response\CalculateDiscountResponse.cs" />
     <Compile Include="Response\ConsumInfoResponse.cs" />
     <Compile Include="Response\CusomerListResponse.cs" />
+    <Compile Include="Response\CustomerResponse.cs" />
     <Compile Include="Response\CustomerValidateResponse.cs" />
     <Compile Include="Response\EmployeeResponse.cs" />
     <Compile Include="Response\LoginResponse.cs" />
