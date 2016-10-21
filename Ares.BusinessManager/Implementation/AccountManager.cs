@@ -40,6 +40,10 @@ namespace Ares.BusinessManager.Implementation
             var loginResult = new LoginResult();
             var hashedPsd = _hashingService.Hash(password);
             var user = _userRoleRepository.FindAll(c => c.UserName == userName && c.Password == hashedPsd).FirstOrDefault();
+            if (user == null)
+            {
+                throw new Exception("UserName or Password is invalid.");
+            }
             var role = _roleTypeRepository.FindAll(r => r.RoleId == user.RoleId).FirstOrDefault();
             if (user == null)
             {
