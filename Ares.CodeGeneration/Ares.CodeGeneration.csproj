@@ -100,6 +100,9 @@
     <Compile Include="GdAresDbContext.cs">
       <DependentUpon>GDAres.tt</DependentUpon>
     </Compile>
+    <Compile Include="GetCustomerReturnModel.cs">
+      <DependentUpon>GDAres.tt</DependentUpon>
+    </Compile>
     <Compile Include="IGdAresDbContext.cs">
       <DependentUpon>GDAres.tt</DependentUpon>
     </Compile>

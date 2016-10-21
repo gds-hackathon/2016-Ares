@@ -28,7 +28,7 @@ namespace Ares.CodeGeneration
             HasKey(x => x.CustomerId);
 
             Property(x => x.CustomerId).HasColumnName(@"CustomerID").IsRequired().HasColumnType("int").HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.Identity);
-            Property(x => x.CustomerName).HasColumnName(@"CustomerName").IsRequired().IsUnicode(false).HasColumnType("varchar").HasMaxLength(500);
+            Property(x => x.CustomerName).HasColumnName(@"CustomerName").IsRequired().HasColumnType("nvarchar").HasMaxLength(500);
             Property(x => x.Isactive).HasColumnName(@"Isactive").IsRequired().HasColumnType("bit");
             Property(x => x.DiscountRating).HasColumnName(@"DiscountRating").IsRequired().HasColumnType("int");
             Property(x => x.DiscountPicture).HasColumnName(@"DiscountPicture").IsOptional().HasColumnType("image").HasMaxLength(2147483647);
@@ -37,6 +37,7 @@ namespace Ares.CodeGeneration
             Property(x => x.ChangedDate).HasColumnName(@"ChangedDate").IsRequired().HasColumnType("datetime");
             Property(x => x.SettlementRating).HasColumnName(@"SettlementRating").IsRequired().HasColumnType("int");
             Property(x => x.Guid).HasColumnName(@"GUID").IsRequired().HasColumnType("uniqueidentifier");
+            Property(x => x.Address).HasColumnName(@"Address").IsOptional().HasColumnType("nvarchar").HasMaxLength(500);
         }
     }
 

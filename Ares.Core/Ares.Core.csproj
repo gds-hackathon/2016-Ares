@@ -59,6 +59,7 @@
     <Compile Include="Domain\LoginModel.cs" />
     <Compile Include="Dto\CountTransactionByEmpIdReturnModel.cs" />
     <Compile Include="Dto\EmployeeTransactionSummaryDto.cs" />
+    <Compile Include="Dto\GetCustomerReturnModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IAdministratorRepository.cs" />
     <Compile Include="Repositories\IBalanceTypeRepository.cs" />

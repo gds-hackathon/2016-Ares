@@ -57,6 +57,10 @@ namespace Ares.CodeGeneration
         CountTransactionByEmpIdReturnModel CountTransactionByEmpId(int? employeeId);
         System.Threading.Tasks.Task<CountTransactionByEmpIdReturnModel> CountTransactionByEmpIdAsync(int? employeeId);
 
+        System.Collections.Generic.List<GetCustomerReturnModel> GetCustomer();
+        System.Collections.Generic.List<GetCustomerReturnModel> GetCustomer(out int procResult);
+        System.Threading.Tasks.Task<System.Collections.Generic.List<GetCustomerReturnModel>> GetCustomerAsync();
+
         System.Collections.Generic.List<LoginCheckReturnModel> LoginCheck(string userName, string phoneNum, string password);
         System.Collections.Generic.List<LoginCheckReturnModel> LoginCheck(string userName, string phoneNum, string password, out int procResult);
         System.Threading.Tasks.Task<System.Collections.Generic.List<LoginCheckReturnModel>> LoginCheckAsync(string userName, string phoneNum, string password);

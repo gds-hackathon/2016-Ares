@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Ares.Core.Dto;
 
 namespace Ares.BusinessManager.Implementation
 {
@@ -35,6 +36,11 @@ namespace Ares.BusinessManager.Implementation
         public Employee GetEmployeeByUserId(int userId)
         {
             return _employeeRepository.FindAll(e => e.UserId == userId).FirstOrDefault();
+        }
+
+        public IEnumerable<GetCustomerReturnModel> FindCustomerList()
+        {
+            return _customerRepository.GetCustomer();
         }
     }
 }

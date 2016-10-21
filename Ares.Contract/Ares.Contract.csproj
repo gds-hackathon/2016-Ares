@@ -46,6 +46,7 @@
     <Compile Include="Request\BaseRequest.cs" />
     <Compile Include="Request\LoginRequest.cs" />
     <Compile Include="Response\BaseResponse.cs" />
+    <Compile Include="Response\CusomerListResponse.cs" />
     <Compile Include="Response\LoginResponse.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

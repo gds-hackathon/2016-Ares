@@ -28,7 +28,7 @@ namespace Ares.CodeGeneration
             HasKey(x => x.EmployeeId);
 
             Property(x => x.EmployeeId).HasColumnName(@"EmployeeID").IsRequired().HasColumnType("int").HasDatabaseGeneratedOption(System.ComponentModel.DataAnnotations.Schema.DatabaseGeneratedOption.None);
-            Property(x => x.EmployeeName).HasColumnName(@"EmployeeName").IsRequired().IsUnicode(false).HasColumnType("varchar").HasMaxLength(500);
+            Property(x => x.EmployeeName).HasColumnName(@"EmployeeName").IsRequired().HasColumnType("nvarchar").HasMaxLength(500);
             Property(x => x.Isactive).HasColumnName(@"Isactive").IsRequired().HasColumnType("bit");
             Property(x => x.CreatedDate).HasColumnName(@"CreatedDate").IsRequired().HasColumnType("datetime");
             Property(x => x.BalanceTypeId).HasColumnName(@"BalanceTypeID").IsRequired().HasColumnType("int");

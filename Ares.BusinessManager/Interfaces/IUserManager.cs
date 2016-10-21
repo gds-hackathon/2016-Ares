@@ -1,4 +1,6 @@
 ﻿using Ares.Core.Domain;
+using Ares.Core.Dto;
+using System.Collections.Generic;
 
 namespace Ares.BusinessManager.Interfaces
 {
@@ -9,5 +11,7 @@ namespace Ares.BusinessManager.Interfaces
         Employee GetEmployeeByUserId(int userId);
 
         Customer GetCustomerByUserId(int userId);
+
+        IEnumerable<GetCustomerReturnModel> FindCustomerList();
     }
 }
