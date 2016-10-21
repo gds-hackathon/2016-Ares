@@ -36,16 +36,15 @@ namespace Ares.CodeGeneration
         int AddNewAdmin(string adminName, string password, string userName, string phoneNum);
         // AddNewAdminAsync cannot be created due to having out parameters, or is relying on the procedure result (int)
 
-        int AddNewCustomer(string customerName, int? discountRating, byte[] discountPicture, string password, string userName, string phoneNum);
+        int AddNewCustomer(string customerName, int? discountRating, byte[] discountPicture, string password, string userName, string phoneNum, string address);
         // AddNewCustomerAsync cannot be created due to having out parameters, or is relying on the procedure result (int)
 
         System.Collections.Generic.List<AddNewEmployeeReturnModel> AddNewEmployee(int? employeeId, string employeeName, int? balance, string password, string userName, string phoneNum);
         System.Collections.Generic.List<AddNewEmployeeReturnModel> AddNewEmployee(int? employeeId, string employeeName, int? balance, string password, string userName, string phoneNum, out int procResult);
         System.Threading.Tasks.Task<System.Collections.Generic.List<AddNewEmployeeReturnModel>> AddNewEmployeeAsync(int? employeeId, string employeeName, int? balance, string password, string userName, string phoneNum);
 
-        System.Collections.Generic.List<CalculateDiscountReturnModel> CalculateDiscount(int? employeeId, int? customerId, decimal? totalAmount, out decimal? realPay);
-        System.Collections.Generic.List<CalculateDiscountReturnModel> CalculateDiscount(int? employeeId, int? customerId, decimal? totalAmount, out decimal? realPay, out int procResult);
-        // CalculateDiscountAsync cannot be created due to having out parameters, or is relying on the procedure result (System.Collections.Generic.List<CalculateDiscountReturnModel>)
+        int CalculateDiscount(int? employeeId, int? customerId, decimal? totalAmount, out decimal? realPay, out int? transactionId);
+        // CalculateDiscountAsync cannot be created due to having out parameters, or is relying on the procedure result (int)
 
         System.Collections.Generic.List<CheckTransactionByCustomerIdReturnModel> CheckTransactionByCustomerId(int? customerId);
         System.Collections.Generic.List<CheckTransactionByCustomerIdReturnModel> CheckTransactionByCustomerId(int? customerId, out int procResult);
@@ -66,9 +65,8 @@ namespace Ares.CodeGeneration
         System.Collections.Generic.List<LoginCheckReturnModel> LoginCheck(string userName, string phoneNum, string password, out int procResult);
         System.Threading.Tasks.Task<System.Collections.Generic.List<LoginCheckReturnModel>> LoginCheckAsync(string userName, string phoneNum, string password);
 
-        System.Collections.Generic.List<SettlementForCustomerReturnModel> SettlementForCustomer(System.DateTime? startDate, System.DateTime? endDate);
-        System.Collections.Generic.List<SettlementForCustomerReturnModel> SettlementForCustomer(System.DateTime? startDate, System.DateTime? endDate, out int procResult);
-        System.Threading.Tasks.Task<System.Collections.Generic.List<SettlementForCustomerReturnModel>> SettlementForCustomerAsync(System.DateTime? startDate, System.DateTime? endDate);
+        SettlementForCustomerReturnModel SettlementForCustomer(System.DateTime? startDate, System.DateTime? endDate);
+        System.Threading.Tasks.Task<SettlementForCustomerReturnModel> SettlementForCustomerAsync(System.DateTime? startDate, System.DateTime? endDate);
 
         int SpAlterdiagram(string diagramname, int? ownerId, int? version, byte[] definition);
         // SpAlterdiagramAsync cannot be created due to having out parameters, or is relying on the procedure result (int)

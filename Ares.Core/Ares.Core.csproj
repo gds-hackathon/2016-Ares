@@ -58,6 +58,7 @@
     <Compile Include="Domain\TransactionRating.cs" />
     <Compile Include="Domain\UserRole.cs" />
     <Compile Include="Domain\LoginModel.cs" />
+    <Compile Include="Dto\CalculateDiscountReturnModel.cs" />
     <Compile Include="Dto\CheckTransactionByCustomerIdReturnModel.cs" />
     <Compile Include="Dto\CountTransactionByEmpIdReturnModel.cs" />
     <Compile Include="Dto\EmployeeTransactionSummaryDto.cs" />

@@ -8,5 +8,8 @@ namespace Ares.Contract.Response
     {
         [DataMember]
         public decimal RealPay { get; set; }
+
+        [DataMember]
+        public int TransactionId { get; set; }
     }
 }

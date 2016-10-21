@@ -9,7 +9,7 @@ namespace Ares.Core.Repositories
     {
         CountTransactionByEmpIdReturnModel FindEmployeeTransactionSummary(int employeeId);
 
-        int CalculateDiscount(int? employeeId, int? customerId, decimal? totalAmount, out decimal? realPay);
+        int CalculateDiscount(int? employeeId, int? customerId, decimal? totalAmount, out decimal? realPay, out int? transactionId);
 
         System.Collections.Generic.List<CheckTransactionByCustomerIdReturnModel> CheckTransactionByCustomerId(int? customerId, out int procResult);
 

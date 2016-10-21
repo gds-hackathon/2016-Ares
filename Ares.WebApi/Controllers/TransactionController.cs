@@ -69,7 +69,9 @@ namespace Ares.WebApi.Controllers
             {
                 response.Success = false;
             }
-            var realPay = _transactionManager.CalculateDiscount(request.EmployeeId, request.CustomerId, request.TotalAmount);
+            int? transactionId = 0;
+            var realPay = _transactionManager.CalculateDiscount(request.EmployeeId, request.CustomerId, request.TotalAmount,out transactionId);
+            response.TransactionId = transactionId.HasValue ? transactionId.Value:0;
             response.Success = true;
             response.RealPay = realPay;
             return response;
