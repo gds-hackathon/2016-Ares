@@ -12,5 +12,7 @@ namespace Ares.Core.Dto
         public System.Int32? RateLevel { get; set; }
         public System.Int32 DiscountRating { get; set; }
         public System.String Address { get; set; }
+
+        public System.Int32 CustomerID { get; set; }
     }
 }
