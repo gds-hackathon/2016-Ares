@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Ares.Core.Dto.SettlementForCustomerReturnModel>
+
+<h2>Summary</h2>
+<br />
+@Html.ActionLink("Last one month", "GetAdministratorTransHistory", new { startDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1), endDate = DateTime.Now })
+@Html.ActionLink("Last two month", "GetAdministratorTransHistory", new { startDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month - 1, 1), endDate = DateTime.Now })
+@Html.ActionLink("Last three month", "GetAdministratorTransHistory", new { startDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month - 2, 1), endDate = DateTime.Now })
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CustomerID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CustomerName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TransCount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DiscountAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SettlementRating)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NeedPay)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TransCount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalAmount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiscountAmount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SettlementRating)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NeedPay)
+            </td>
+            @*<td>
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>*@
+        </tr>
+    }
+
+</table>

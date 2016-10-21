@@ -37,7 +37,7 @@ namespace Ares.Data.Ef.Repositories
             var realPayParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@RealPay", SqlDbType = System.Data.SqlDbType.Money, Direction = System.Data.ParameterDirection.Output, Precision = 19, Scale = 4 };
             var procResultParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@procResult", SqlDbType = System.Data.SqlDbType.Int, Direction = System.Data.ParameterDirection.Output };
 
-           this.ActiveContext.Database.ExecuteSqlCommand("EXEC @procResult = [dbo].[calculateDiscount] @EmployeeID, @CustomerID, @TotalAmount, @RealPay OUTPUT", employeeIdParam, customerIdParam, totalAmountParam, realPayParam, procResultParam);
+            this.ActiveContext.Database.ExecuteSqlCommand("EXEC @procResult = [dbo].[calculateDiscount] @EmployeeID, @CustomerID, @TotalAmount, @RealPay OUTPUT", employeeIdParam, customerIdParam, totalAmountParam, realPayParam, procResultParam);
             if (IsSqlParameterNull(realPayParam))
                 realPay = null;
             else
@@ -89,5 +89,21 @@ namespace Ares.Data.Ef.Repositories
             return procResultData;
         }
 
+        public System.Collections.Generic.List<SettlementForCustomerReturnModel> SettlementForCustomer(System.DateTime? startDate, System.DateTime? endDate, out int procResult)
+        {
+            var startDateParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@StartDate", SqlDbType = System.Data.SqlDbType.Date, Direction = System.Data.ParameterDirection.Input, Value = startDate.GetValueOrDefault() };
+            if (!startDate.HasValue)
+                startDateParam.Value = System.DBNull.Value;
+
+            var endDateParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@EndDate", SqlDbType = System.Data.SqlDbType.Date, Direction = System.Data.ParameterDirection.Input, Value = endDate.GetValueOrDefault() };
+            if (!endDate.HasValue)
+                endDateParam.Value = System.DBNull.Value;
+
+            var procResultParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@procResult", SqlDbType = System.Data.SqlDbType.Int, Direction = System.Data.ParameterDirection.Output };
+            var procResultData = this.ActiveContext.Database.SqlQuery<SettlementForCustomerReturnModel>("EXEC @procResult = [dbo].[settlementForCustomer] @StartDate, @EndDate", startDateParam, endDateParam, procResultParam).ToList();
+
+            procResult = (int)procResultParam.Value;
+            return procResultData;
+        }
     }
 }

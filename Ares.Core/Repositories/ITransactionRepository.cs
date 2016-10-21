@@ -12,5 +12,7 @@ namespace Ares.Core.Repositories
         int CalculateDiscount(int? employeeId, int? customerId, decimal? totalAmount, out decimal? realPay);
 
         System.Collections.Generic.List<CheckTransactionByCustomerIdReturnModel> CheckTransactionByCustomerId(int? customerId, out int procResult);
+
+        System.Collections.Generic.List<SettlementForCustomerReturnModel> SettlementForCustomer(System.DateTime? startDate, System.DateTime? endDate, out int procResult);
     }
 }
