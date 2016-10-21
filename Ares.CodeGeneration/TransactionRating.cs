@@ -13,13 +13,21 @@
 namespace Ares.CodeGeneration
 {
 
+    // TransactionRating
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.24.0.0")]
-    public class SettlementForCustomerReturnModel
+    public class TransactionRating
     {
-        public System.String CustomerName { get; set; }
-        public System.Int32 CustomerID { get; set; }
-        public System.Int32? TransCount { get; set; }
-        public System.Decimal? NeedPay { get; set; }
+        public int TransactionId { get; set; } // TransactionID (Primary key)
+        public short? RateLevel { get; set; } // RateLevel
+        public string FeedBack { get; set; } // FeedBack (length: 500)
+        public System.DateTime CreatedDate { get; set; } // CreatedDate
+        public System.DateTime ChangedDate { get; set; } // ChangedDate
+
+        public TransactionRating()
+        {
+            CreatedDate = System.DateTime.Now;
+            ChangedDate = System.DateTime.Now;
+        }
     }
 
 }

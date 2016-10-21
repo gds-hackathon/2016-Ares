@@ -7,8 +7,7 @@ namespace Ares.Data.Ef.Mapping
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.24.0.0")]
     public class CustomerMapping : System.Data.Entity.ModelConfiguration.EntityTypeConfiguration<Customer>
     {
-        public CustomerMapping()
-            : this("dbo")
+        public CustomerMapping(): this("dbo")
         {
         }
 
@@ -26,6 +25,7 @@ namespace Ares.Data.Ef.Mapping
             Property(x => x.UserId).HasColumnName(@"UserID").IsRequired().HasColumnType("int");
             Property(x => x.ChangedDate).HasColumnName(@"ChangedDate").IsRequired().HasColumnType("datetime");
             Property(x => x.SettlementRating).HasColumnName(@"SettlementRating").IsRequired().HasColumnType("int");
+            Property(x => x.Guid).HasColumnName(@"GUID").IsRequired().HasColumnType("uniqueidentifier");
         }
     }
 

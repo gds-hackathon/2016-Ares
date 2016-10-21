@@ -28,6 +28,7 @@ namespace Ares.CodeGeneration
         public System.Data.Entity.DbSet<sys_ScriptDeploymentStatus> sys_ScriptDeploymentStatus { get; set; }
         public System.Data.Entity.DbSet<Sysdiagram> Sysdiagrams { get; set; }
         public System.Data.Entity.DbSet<Transaction> Transactions { get; set; }
+        public System.Data.Entity.DbSet<TransactionRating> TransactionRatings { get; set; }
         public System.Data.Entity.DbSet<UserRole> UserRoles { get; set; }
 
         public FakeGdAresDbContext()
@@ -42,6 +43,7 @@ namespace Ares.CodeGeneration
             sys_ScriptDeploymentStatus = new FakeDbSet<sys_ScriptDeploymentStatus>("DeploymentId", "LogicalServer", "DatabaseName", "Status", "NumRetries");
             Sysdiagrams = new FakeDbSet<Sysdiagram>("DiagramId");
             Transactions = new FakeDbSet<Transaction>("TransactionId");
+            TransactionRatings = new FakeDbSet<TransactionRating>("TransactionId");
             UserRoles = new FakeDbSet<UserRole>("UserId");
         }
 
@@ -110,6 +112,63 @@ namespace Ares.CodeGeneration
             realPay = default(decimal);
  
             return 0;
+        }
+
+        public System.Collections.Generic.List<CheckTransactionByCustomerIdReturnModel> CheckTransactionByCustomerId(int? customerId)
+        {
+            int procResult;
+            return CheckTransactionByCustomerId(customerId, out procResult);
+        }
+
+        public System.Collections.Generic.List<CheckTransactionByCustomerIdReturnModel> CheckTransactionByCustomerId(int? customerId, out int procResult)
+        {
+
+            procResult = 0;
+            return new System.Collections.Generic.List<CheckTransactionByCustomerIdReturnModel>();
+        }
+
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<CheckTransactionByCustomerIdReturnModel>> CheckTransactionByCustomerIdAsync(int? customerId)
+        {
+            int procResult;
+            return System.Threading.Tasks.Task.FromResult(CheckTransactionByCustomerId(customerId, out procResult));
+        }
+
+        public System.Collections.Generic.List<CheckTransactionByEmpIdReturnModel> CheckTransactionByEmpId(int? employeeId)
+        {
+            int procResult;
+            return CheckTransactionByEmpId(employeeId, out procResult);
+        }
+
+        public System.Collections.Generic.List<CheckTransactionByEmpIdReturnModel> CheckTransactionByEmpId(int? employeeId, out int procResult)
+        {
+
+            procResult = 0;
+            return new System.Collections.Generic.List<CheckTransactionByEmpIdReturnModel>();
+        }
+
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<CheckTransactionByEmpIdReturnModel>> CheckTransactionByEmpIdAsync(int? employeeId)
+        {
+            int procResult;
+            return System.Threading.Tasks.Task.FromResult(CheckTransactionByEmpId(employeeId, out procResult));
+        }
+
+        public CountTransactionByEmpIdReturnModel CountTransactionByEmpId(int? employeeId)
+        {
+            int procResult;
+            return CountTransactionByEmpId(employeeId, out procResult);
+        }
+
+        public CountTransactionByEmpIdReturnModel CountTransactionByEmpId(int? employeeId, out int procResult)
+        {
+
+            procResult = 0;
+            return new CountTransactionByEmpIdReturnModel();
+        }
+
+        public System.Threading.Tasks.Task<CountTransactionByEmpIdReturnModel> CountTransactionByEmpIdAsync(int? employeeId)
+        {
+            int procResult;
+            return System.Threading.Tasks.Task.FromResult(CountTransactionByEmpId(employeeId, out procResult));
         }
 
         public System.Collections.Generic.List<LoginCheckReturnModel> LoginCheck(string userName, string phoneNum, string password)

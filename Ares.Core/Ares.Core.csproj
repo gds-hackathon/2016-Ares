@@ -52,6 +52,7 @@
     <Compile Include="Domain\RoleType.cs" />
     <Compile Include="Domain\RoleTypes.cs" />
     <Compile Include="Domain\Transaction.cs" />
+    <Compile Include="Domain\TransactionRating.cs" />
     <Compile Include="Domain\UserRole.cs" />
     <Compile Include="Domain\LoginModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -63,6 +64,7 @@
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Repositories\IRepositoryAsync.cs" />
     <Compile Include="Repositories\IRoleTypeRepository.cs" />
+    <Compile Include="Repositories\ITransactionRepository.cs" />
     <Compile Include="Repositories\IUserRoleRepository.cs" />
   </ItemGroup>
   <ItemGroup />

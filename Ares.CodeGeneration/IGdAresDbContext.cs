@@ -25,6 +25,7 @@ namespace Ares.CodeGeneration
         System.Data.Entity.DbSet<sys_ScriptDeploymentStatus> sys_ScriptDeploymentStatus { get; set; } // script_deployment_status
         System.Data.Entity.DbSet<Sysdiagram> Sysdiagrams { get; set; } // sysdiagrams
         System.Data.Entity.DbSet<Transaction> Transactions { get; set; } // Transactions
+        System.Data.Entity.DbSet<TransactionRating> TransactionRatings { get; set; } // TransactionRating
         System.Data.Entity.DbSet<UserRole> UserRoles { get; set; } // UserRole
 
         int SaveChanges();
@@ -44,6 +45,17 @@ namespace Ares.CodeGeneration
 
         int CalculateDiscount(int? employeeId, int? customerId, decimal? totalAmount, out decimal? realPay);
         // CalculateDiscountAsync cannot be created due to having out parameters, or is relying on the procedure result (int)
+
+        System.Collections.Generic.List<CheckTransactionByCustomerIdReturnModel> CheckTransactionByCustomerId(int? customerId);
+        System.Collections.Generic.List<CheckTransactionByCustomerIdReturnModel> CheckTransactionByCustomerId(int? customerId, out int procResult);
+        System.Threading.Tasks.Task<System.Collections.Generic.List<CheckTransactionByCustomerIdReturnModel>> CheckTransactionByCustomerIdAsync(int? customerId);
+
+        System.Collections.Generic.List<CheckTransactionByEmpIdReturnModel> CheckTransactionByEmpId(int? employeeId);
+        System.Collections.Generic.List<CheckTransactionByEmpIdReturnModel> CheckTransactionByEmpId(int? employeeId, out int procResult);
+        System.Threading.Tasks.Task<System.Collections.Generic.List<CheckTransactionByEmpIdReturnModel>> CheckTransactionByEmpIdAsync(int? employeeId);
+
+        CountTransactionByEmpIdReturnModel CountTransactionByEmpId(int? employeeId);
+        System.Threading.Tasks.Task<CountTransactionByEmpIdReturnModel> CountTransactionByEmpIdAsync(int? employeeId);
 
         System.Collections.Generic.List<LoginCheckReturnModel> LoginCheck(string userName, string phoneNum, string password);
         System.Collections.Generic.List<LoginCheckReturnModel> LoginCheck(string userName, string phoneNum, string password, out int procResult);

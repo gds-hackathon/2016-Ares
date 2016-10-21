@@ -65,6 +65,15 @@
     <Compile Include="BalanceTypeMapping.cs">
       <DependentUpon>GDAres.tt</DependentUpon>
     </Compile>
+    <Compile Include="CheckTransactionByCustomerIdReturnModel.cs">
+      <DependentUpon>GDAres.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CheckTransactionByEmpIdReturnModel.cs">
+      <DependentUpon>GDAres.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CountTransactionByEmpIdReturnModel.cs">
+      <DependentUpon>GDAres.tt</DependentUpon>
+    </Compile>
     <Compile Include="Customer.cs">
       <DependentUpon>GDAres.tt</DependentUpon>
     </Compile>
@@ -144,6 +153,12 @@
       <DependentUpon>GDAres.tt</DependentUpon>
     </Compile>
     <Compile Include="TransactionMapping.cs">
+      <DependentUpon>GDAres.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TransactionRating.cs">
+      <DependentUpon>GDAres.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TransactionRatingMapping.cs">
       <DependentUpon>GDAres.tt</DependentUpon>
     </Compile>
     <Compile Include="UserRole.cs">
