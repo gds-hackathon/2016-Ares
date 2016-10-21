@@ -299,12 +299,12 @@
     <Content Include="Views\Employee\_EmployeesTablePartialView.cshtml" />
     <Content Include="Views\Restaurant\_CustomersTablePartialView.cshtml" />
     <Content Include="Views\Restaurant\_UpdateView.cshtml" />
+    <Content Include="Views\Summary\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Administrator\" />
     <Folder Include="Views\Logs\" />
-    <Folder Include="Views\Summary\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
