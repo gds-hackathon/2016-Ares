@@ -31,13 +31,13 @@ namespace Ares.WebApi.Controllers
         {
             IEnumerable<CusomerListResponse> list = _userManaget.FindCustomerList().Select(e => new CusomerListResponse
             {
-               CustomerID = e.CustomerID,
+                CustomerID = e.CustomerID,
                 CustomerName = e.CustomerName,
                 Discount = e.DiscountRating,
                 Rating = e.RateLevel.Value,
                 Address = e.Address,
-                Success = true             
-            
+                Success = true
+
             });
 
             return list;
@@ -60,6 +60,23 @@ namespace Ares.WebApi.Controllers
             response.CustomerId = customer.CustomerId;
             response.IsValidate = true;
             response.Success = true;
+            return response;
+        }
+
+        [Route("~/Restaurant/v1/Customer/Detail")]
+        [HttpGet]
+        public CustomerResponse Customer([FromUri]CustomerRequest request)
+        {
+            CustomerResponse response = new CustomerResponse();
+            if (request == null)
+            {
+                response.Success = false;
+                return response;
+            }
+            var customer = _userManaget.FindByCustomerId(request.CustomerId);
+            response.CustomerName = customer.CustomerName;
+            response.DiscountRating = customer.DiscountRating;
+            response.Address = customer.Address;
             return response;
         }
     }
