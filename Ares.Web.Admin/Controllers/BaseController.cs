@@ -22,9 +22,9 @@ namespace Ares.Web.Admin.Controllers
             //LoggingFactory.GetLogger().Error(filterContext.Exception.Message, filterContext.Exception);
         }
 
-        protected override void HandleUnknownAction(string actionName)
-        {
-            RedirectToAction("Index", "Login").ExecuteResult(this.ControllerContext);
-        }
+        //protected override void HandleUnknownAction(string actionName)
+        //{
+        //    RedirectToAction("Index", "Login").ExecuteResult(this.ControllerContext);
+        //}
     }
 }

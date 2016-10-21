@@ -1,7 +1,8 @@
 ﻿@model IEnumerable<Ares.Core.Dto.CheckTransactionByCustomerIdReturnModel>
 
-
-<table class="table" class="table table-bordered table-striped">
+<h2>Summary</h2>
+<br />
+<table class="table table-bordered table-striped">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.TransactionID)
@@ -25,15 +26,8 @@
             @Html.DisplayNameFor(model => model.OrderID)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CreatedDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ChangedDate)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.IsSuccessful)
         </th>
-        <th></th>
     </tr>
 
 @foreach (var item in Model) {
@@ -58,12 +52,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.OrderID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatedDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ChangedDate)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.IsSuccessful)

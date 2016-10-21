@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace Ares.Web.Admin.Controllers
 {
-    public class ConfigurationController : Controller
+    public class ConfigurationController : BaseController
     {
         private IAccountManager _actManager;
         public ConfigurationController(IAccountManager actManager)

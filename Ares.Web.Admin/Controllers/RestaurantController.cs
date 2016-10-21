@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace Ares.Web.Admin.Controllers
 {
-    public class RestaurantController : Controller
+    public class RestaurantController : BaseController
     {
         private ITransactionManager _txnManager;
         private IUserManager _userManager;

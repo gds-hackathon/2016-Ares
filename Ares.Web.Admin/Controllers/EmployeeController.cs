@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace Ares.Web.Admin.Controllers
 {
-    public class EmployeeController : Controller
+    public class EmployeeController : BaseController
     {
         IUserManager _userManager;
         ITransactionManager _transactionManager;
