@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ares.CodeGeneration", "Ares
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ares.BusinessManager", "Ares.BusinessManager\Ares.BusinessManager.csproj", "{71DFBA5C-9B43-40FC-B6C2-A206EB9D6BC3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ares.Contract", "Ares.Contract\Ares.Contract.csproj", "{AA10166F-0742-4712-8DAA-7B71C62AEDE5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -73,6 +75,10 @@ Global
 		{71DFBA5C-9B43-40FC-B6C2-A206EB9D6BC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71DFBA5C-9B43-40FC-B6C2-A206EB9D6BC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{71DFBA5C-9B43-40FC-B6C2-A206EB9D6BC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA10166F-0742-4712-8DAA-7B71C62AEDE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA10166F-0742-4712-8DAA-7B71C62AEDE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA10166F-0742-4712-8DAA-7B71C62AEDE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA10166F-0742-4712-8DAA-7B71C62AEDE5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -86,5 +92,6 @@ Global
 		{778D695D-B080-4FD6-BE6F-0683320F63A5} = {D2F59C4A-FDE1-4FF4-B3D0-87F0D1818272}
 		{8A604787-2681-4FB6-9F78-26CCA1F00CAB} = {AD98C84B-8B4C-4570-AD14-BCB4E759291E}
 		{71DFBA5C-9B43-40FC-B6C2-A206EB9D6BC3} = {723A41C7-7EBE-4A71-8D66-54C60F0D5C70}
+		{AA10166F-0742-4712-8DAA-7B71C62AEDE5} = {723A41C7-7EBE-4A71-8D66-54C60F0D5C70}
 	EndGlobalSection
 EndGlobal
