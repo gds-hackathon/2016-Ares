@@ -35,33 +35,42 @@ namespace Ares.Web.Admin.Controllers
         [HttpPost]
         public ActionResult Login(string userName, string password)
         {
-            var loginResult = _accountManager.Login(userName, password);
-            FormsAuthenticationTicket authTicket = new FormsAuthenticationTicket(
-                    1,
-                    userName,
-                    DateTime.Now,
-                    DateTime.Now.AddMinutes(3),
-                    false,
-                    loginResult.RoleType.ToString()
-                    );
-            string encryptedTicket = FormsAuthentication.Encrypt(authTicket);
-            HttpCookie authCookie = new System.Web.HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
-
-            HttpContext.Response.Cookies.Add(authCookie);
-            HttpContext.Response.Cookies.Add(new HttpCookie(Constants.Cookie_UserIdName, loginResult.UserId.ToString()));
-            HttpContext.Response.Cookies.Add(new HttpCookie(Constants.Cookie_RoleTypeName, loginResult.RoleType.ToString()));
-
-            switch (loginResult.RoleType)
+            try
             {
-                case RoleTypes.Customer:
-                    return RedirectToAction("index", "Restaurant");
-                case RoleTypes.Employee:
-                    return RedirectToAction("index", "Employee");
-                case RoleTypes.Administrator:
-                    return RedirectToAction("index", "Summary");
-                default:
-                    break;
+                var loginResult = _accountManager.Login(userName, password);
+                FormsAuthenticationTicket authTicket = new FormsAuthenticationTicket(
+                        1,
+                        userName,
+                        DateTime.Now,
+                        DateTime.Now.AddMinutes(3),
+                        false,
+                        loginResult.RoleType.ToString()
+                        );
+                string encryptedTicket = FormsAuthentication.Encrypt(authTicket);
+                HttpCookie authCookie = new System.Web.HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
+
+                HttpContext.Response.Cookies.Add(authCookie);
+                HttpContext.Response.Cookies.Add(new HttpCookie(Constants.Cookie_UserIdName, loginResult.UserId.ToString()));
+                HttpContext.Response.Cookies.Add(new HttpCookie(Constants.Cookie_RoleTypeName, loginResult.RoleType.ToString()));
+
+                switch (loginResult.RoleType)
+                {
+                    case RoleTypes.Customer:
+                        return RedirectToAction("index", "Restaurant");
+                    case RoleTypes.Employee:
+                        return RedirectToAction("index", "Employee");
+                    case RoleTypes.Administrator:
+                        return RedirectToAction("index", "Summary");
+                    default:
+                        break;
+                }
             }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", ex.Message);
+                return View("Index");
+            }
+            
 
             return RedirectToAction("Index", "Home");
         }
