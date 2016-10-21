@@ -9,7 +9,7 @@ using System.Web.Routing;
 namespace Ares.Infrastructure.MvcExtensions
 {
     [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class, Inherited = true, AllowMultiple = true)]
-    public class CustomAuthorizeAttribute: AuthorizeAttribute
+    public class CustomAuthorizeAttribute : AuthorizeAttribute
     {
         public string Role { get; set; }
 
@@ -59,7 +59,7 @@ namespace Ares.Infrastructure.MvcExtensions
         {
             // System.Web.Security.FormsAuthentication.SignOut();
             filterContext.Result = new HttpUnauthorizedResult();
-            filterContext.RequestContext.HttpContext.Response.Redirect("~/Account/Login");
+            filterContext.RequestContext.HttpContext.Response.Redirect("~/Login");
             base.HandleUnauthorizedRequest(filterContext);
         }
     }

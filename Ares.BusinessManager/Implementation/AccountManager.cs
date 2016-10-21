@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Ares.Infrastructure.Authentication;
 
 namespace Ares.BusinessManager.Implementation
 {
@@ -18,6 +19,7 @@ namespace Ares.BusinessManager.Implementation
         private IHashingService _hashingService;
         private IUserRoleRepository _userRoleRepository;
         private IRoleTypeRepository _roleTypeRepository;
+        private IFormsAuthentication _formsAuthentication;
 
         public AccountManager(
             IHashingService hashingService,
@@ -25,7 +27,8 @@ namespace Ares.BusinessManager.Implementation
             IEmployeeRepository employeeRepository,
             IAdministratorRepository administratorRepository,
             IUserRoleRepository userRoleRepository,
-            IRoleTypeRepository roleTypeRepository)
+            IRoleTypeRepository roleTypeRepository,
+            IFormsAuthentication formsAuthentication)
         {
             _customerRepository = customerRepository;
             _employeeRepository = employeeRepository;
@@ -33,6 +36,7 @@ namespace Ares.BusinessManager.Implementation
             _hashingService = hashingService;
             _userRoleRepository = userRoleRepository;
             _roleTypeRepository = roleTypeRepository;
+            _formsAuthentication = formsAuthentication;
         }
 
         public LoginResult Login(string userName, string password)
@@ -55,7 +59,23 @@ namespace Ares.BusinessManager.Implementation
                 if (role != null)
                 {
                     loginResult.RoleType = (RoleTypes)Enum.Parse(typeof(RoleTypes), role.RoleType_);
+                    switch (loginResult.RoleType)
+                    {
+                        case RoleTypes.Customer:
+                            _formsAuthentication.SetAuthenticationToken(user.UserId.ToString(), "Customer");
+                            break;
+                        case RoleTypes.Employee:
+                            throw new Exception("Employee can not login this service.");
+                            //_formsAuthentication.SetAuthenticationToken(user.UserId.ToString(), "Employee");
+                            //break;
+                        case RoleTypes.Administrator:
+                            _formsAuthentication.SetAuthenticationToken(user.UserId.ToString(), "Administrator");
+                            break;
+                        default:
+                            break;
+                    }
                 }
+
             }
 
             return loginResult;
