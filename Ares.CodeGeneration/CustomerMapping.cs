@@ -35,6 +35,7 @@ namespace Ares.CodeGeneration
             Property(x => x.CreatedDate).HasColumnName(@"CreatedDate").IsRequired().HasColumnType("datetime");
             Property(x => x.UserId).HasColumnName(@"UserID").IsRequired().HasColumnType("int");
             Property(x => x.ChangedDate).HasColumnName(@"ChangedDate").IsRequired().HasColumnType("datetime");
+            Property(x => x.SettlementRating).HasColumnName(@"SettlementRating").IsRequired().HasColumnType("int");
         }
     }
 

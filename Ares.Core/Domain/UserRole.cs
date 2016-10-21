@@ -12,7 +12,7 @@ namespace Ares.Core.Domain
         public System.DateTime CreatedDate { get; set; } // CreatedDate
         public System.DateTime ChangedDate { get; set; } // ChangedDate
         public string UserName { get; set; } // UserName (length: 500)
-        public int? PhoneNum { get; set; } // PhoneNum
+        public string PhoneNum { get; set; } // PhoneNum (length: 50)
         public string Password { get; set; } // Password (length: 500)
 
         public UserRole()

@@ -104,6 +104,9 @@
     <Compile Include="RoleTypeMapping.cs">
       <DependentUpon>GDAres.tt</DependentUpon>
     </Compile>
+    <Compile Include="SettlementForCustomerReturnModel.cs">
+      <DependentUpon>GDAres.tt</DependentUpon>
+    </Compile>
     <Compile Include="SpHelpdiagramdefinitionReturnModel.cs">
       <DependentUpon>GDAres.tt</DependentUpon>
     </Compile>

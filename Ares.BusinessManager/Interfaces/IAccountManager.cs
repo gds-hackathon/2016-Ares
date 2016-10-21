@@ -6,7 +6,5 @@ namespace Ares.BusinessManager.Interfaces
     {
         LoginResult Login(string userName, string password);
         void RegistryUser(string loginName, int? phoneNum, string password, string name, RoleTypes roleType);
-
-
     }
 }
