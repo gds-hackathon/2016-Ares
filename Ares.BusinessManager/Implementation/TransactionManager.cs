@@ -31,6 +31,9 @@ namespace Ares.BusinessManager.Implementation
             return _transactionRepository.FindAll(e => e.EmployeeId == employeeId, "TransactionDateTime",pageIndex, pageSize);
         }
 
-
+        public IEnumerable<Transaction> FindTransactionsHistoryByCustomer(int customerId, int pageIndex, int pageSize)
+        {
+            return _transactionRepository.FindAll(e => e.CustomerId == customerId, "TransactionDateTime", pageIndex, pageSize);
+        }
     }
 }

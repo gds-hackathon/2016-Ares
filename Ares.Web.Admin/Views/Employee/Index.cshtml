@@ -1,9 +1,19 @@
-﻿
+﻿@model System.Collections.Generic.IEnumerable<Ares.Core.Domain.Transaction>
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Employees View</h2>
+<table class="table table-hover">
+    ...
+</table>
+@if (Model!=null)
+{
+    foreach (var txn in Model)
+    {
 
+    }
+}
 

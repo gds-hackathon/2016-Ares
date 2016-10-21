@@ -59,6 +59,7 @@ namespace Ares.Web.Admin
             container.RegisterType<IRoleTypeRepository, RoleTypeRepository>();
             container.RegisterType<IUserManager, UserManager>();
             container.RegisterType<IFormsAuthentication, AspFormsAuthentication>();
+            container.RegisterType<ITransactionManager, TransactionManager>();
         }
     }
 }

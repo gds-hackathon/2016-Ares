@@ -13,6 +13,7 @@ namespace Ares.BusinessManager.Interfaces
 
         IEnumerable<Transaction> FindTransactionsHistory(int employeeId,int pageIndex,int pageSize);
 
+        IEnumerable<Transaction> FindTransactionsHistoryByCustomer(int customerId, int pageIndex, int pageSize);
 
     }
 }
