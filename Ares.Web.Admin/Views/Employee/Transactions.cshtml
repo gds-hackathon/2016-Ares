@@ -1,5 +1,14 @@
-﻿@model System.Collections.Generic.IEnumerable<Ares.Core.Domain.Employee>
+﻿
+@model System.Collections.Generic.IEnumerable<Ares.Core.Domain.TransactionModel>
 
+@{
+    ViewBag.Title = "Transactions";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Transactions</h2>
+
+<br />
 <table class="table table-bordered table-striped">
     <tr>
         <th>

@@ -6,26 +6,59 @@
 }
 
 <h2>Restaurants View</h2>
+<br />
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CustomerId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CustomerName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Isactive)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DiscountRating)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SettlementRating)
+        </th>
+        <th>
+            Operations
+        </th>
+    </tr>
+    @if (Model != null)
+    {
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(item.CustomerId.ToString(), "Update", "Restaurant", new { userId = item.UserId }, new { })
 
-<div>
-    <div>
-
-        <div>
-            <div>
-                @Html.Partial("_CustomersTablePartialView", Model)
-
-                @*@Html.Pager(Model as PagedList<Ares.Core.Domain.Employee>, new PagerOptions
-                    {
-                        PageIndexParameterName = "page",
-                        PrevPageText = "<",
-                        NextPageText = ">",
-                        ShowNumericPagerItems = true,
-                        ShowFirstLast = false,
-                        ShowPrevNext = true,
-                        CssClass = "scott",
-                        MorePageText = "...",
-                    })*@
-            </div>
-        </div>
-    </div>
-</div>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustomerName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Isactive)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DiscountRating)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SettlementRating)
+                </td>
+                <td>
+                    @Html.ActionLink("Transactions", "Transactions", new { customerId = item.CustomerId, pageIndex = 0 })
+                </td>
+            </tr>
+        }
+    }
+    else
+    {
+        <tr>
+            No Data.
+        </tr>
+    }
+</table>

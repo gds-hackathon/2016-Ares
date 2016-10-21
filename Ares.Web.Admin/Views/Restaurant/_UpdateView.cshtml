@@ -4,13 +4,15 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<div class="row">
+    <div class="col-xs-12 agile-center">
+        <h3>Update Restaurant Information</h3>
+        <br />
+        <br />
+    </div>
+</div>
 @using (Html.BeginForm("Update", "Restaurant", FormMethod.Post, new { @class = "form-group" }))
 {
-    <div class="row">
-        <div class="col-xs-12 agile-center">
-            <h3>Update Restaurant Information</h3>
-        </div>
-    </div>
 
     <div class="form-group">
         <label for="CustomerName">@Html.DisplayNameFor(model => model.CustomerName)</label>

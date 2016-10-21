@@ -26,26 +26,25 @@ namespace Ares.Web.Admin.Controllers
         public ActionResult Index(int? pageIndex)
         {
             return View(_userManager.FindAllEmployees());
-            //List<TransactionModel> txnModels = null;
-            //if (!userId.HasValue)
-            //{
-            //    var cookie = HttpContext.Request.Cookies[Constants.Cookie_UserIdName];
-            //    if (cookie != null && !string.IsNullOrEmpty(cookie.Value))
-            //        userId = int.Parse(cookie.Value);
-            //}
 
-            //txnModels = new List<TransactionModel>();
-            //var employee = _userManager.GetEmployeeByUserId(userId.Value);
-            //var customer = _userManager.GetCustomerByUserId(userId.Value);
-            //var txns = _transactionManager.FindTransactionsHistory(employee.EmployeeId, pageIndex ?? 0, 10);
+        }
 
-            //foreach (var item in txns)
-            //{
-            //    var t = (TransactionModel)item;
-            //    t.CustomerName = customer.CustomerName;
-            //    txnModels.Add(t);
-            //}
-            //return View(txnModels);
+        public ActionResult Transactions(int employeeId, int pageIndex)
+        {
+            List<TransactionModel> txnModels = null;
+
+            txnModels = new List<TransactionModel>();
+            var txns = _transactionManager.FindTransactionsHistory(employeeId, pageIndex, 10);
+            var employee = _userManager.FindByEmployeeId(employeeId);
+
+            foreach (var item in txns)
+            {
+                var customer = _userManager.FindByCustomerId(item.CustomerId);
+                var t = (TransactionModel)item;
+                t.CustomerName = customer.CustomerName;
+                txnModels.Add(t);
+            }
+            return View(txnModels);
         }
     }
 }
