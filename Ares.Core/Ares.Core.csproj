@@ -48,6 +48,7 @@
     <Compile Include="Domain\Employee.cs" />
     <Compile Include="Domain\IAggregateRoot.cs" />
     <Compile Include="Domain\LoginCheckReturnModel.cs" />
+    <Compile Include="Domain\LoginResult.cs" />
     <Compile Include="Domain\RoleType.cs" />
     <Compile Include="Domain\RoleTypes.cs" />
     <Compile Include="Domain\Transaction.cs" />

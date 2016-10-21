@@ -55,6 +55,7 @@ namespace Ares.Web.Admin
             container.RegisterType<IUnitOfWork, UnitOfWork>();
             container.RegisterType<IDbContext, GdAresDbContext>();
             container.RegisterType<IUserRoleRepository, UserRoleRepository>();
+            container.RegisterType<IRoleTypeRepository, RoleTypeRepository>();
         }
     }
 }
