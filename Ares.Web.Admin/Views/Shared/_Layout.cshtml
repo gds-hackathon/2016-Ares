@@ -27,7 +27,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html"><i class="fa fa-comments"></i> <strong>GD Discount </strong></a>
+                @Html.ActionLink("ICON", "Index", "Home", null, new { @class = "navbar-brand" })
             </div>
 
             <ul class="nav navbar-top-links navbar-right">
@@ -147,15 +147,16 @@
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
+
                         <li>
-                            <a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                            @Html.ActionLink(" User Profile", "Index", "UserProfiler", null, new { @class = "fa fa-user fa-fw" })
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                            @Html.ActionLink(" Settings", "Settings", "UserProfiler", null, new { @class = "fa fa-gear fa-fw" })
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="#"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                            @Html.ActionLink(" Logout", "Logout", "UserProfiler", null, new { @class = "fa fa-sign-out fa-fw" })
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -170,20 +171,19 @@
                 <ul class="nav" id="main-menu">
 
                     <li>
-                        <a class="active-menu" href="index.html"><i class="fa fa-dashboard"></i> Summary</a>
+                        @Html.ActionLink(" Summary", "Index", "Home", null, new { @class = "fa fa-dashboard" })
                     </li>
                     <li>
-                        <a href="ui-elements.html"><i class="fa fa-desktop"></i> Employees Management</a>
+                        @Html.ActionLink(" Employees Management", "Index", "Employee", null, new { @class = "fa fa-user" })
                     </li>
                     <li>
-                        <a href="chart.html"><i class="fa fa-bar-chart-o"></i> Restaurants Management</a>
+                        @Html.ActionLink(" Restaurants Management", "Index", "Restaurant", null, new { @class = "fa fa-shopping-cart" })
                     </li>
                     <li>
-                        <a href="tab-panel.html"><i class="fa fa-qrcode"></i> Configurations</a>
-                        <!-- this may multi level dropdown-->
+                        @Html.ActionLink(" Configurations", "Index", "Configuration", null, new { @class = "fa fa-qrcode" })
                     </li>
                     <li>
-                        <a href="table.html"><i class="fa fa-table"></i> Logs</a>
+                        @Html.ActionLink(" Logs", "Index", "Log", null, new { @class = "fa fa-table" })
                     </li>
                 </ul>
 
@@ -208,15 +208,15 @@
     <script src="~/scripts/jquery.metisMenu.js"></script>
     <!-- Morris Chart Js -->
     @*<script src="assets/js/morris/raphael-2.1.0.min.js"></script>
-    <script src="assets/js/morris/morris.js"></script>
+        <script src="assets/js/morris/morris.js"></script>
 
 
-    <script src="assets/js/easypiechart.js"></script>
-    <script src="assets/js/easypiechart-data.js"></script>*@
+        <script src="assets/js/easypiechart.js"></script>
+        <script src="assets/js/easypiechart-data.js"></script>*@
 
 
     <!-- Custom Js -->
-    <script src="assets/js/custom-scripts.js"></script>
+    <script src="~/Scripts/custom-scripts.js"></script>
 
 
 </body>

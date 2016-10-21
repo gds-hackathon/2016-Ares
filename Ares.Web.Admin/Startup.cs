@@ -8,7 +8,6 @@ namespace Ares.Web.Admin
     {
         public void Configuration(IAppBuilder app)
         {
-            ConfigureAuth(app);
         }
     }
 }
