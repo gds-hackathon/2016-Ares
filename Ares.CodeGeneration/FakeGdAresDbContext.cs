@@ -105,6 +105,13 @@ namespace Ares.CodeGeneration
             return System.Threading.Tasks.Task.FromResult(AddNewEmployee(employeeId, employeeName, balance, password, userName, phoneNum, out procResult));
         }
 
+        public int CalculateDiscount(int? employeeId, int? customerId, decimal? totalAmount, out decimal? realPay)
+        {
+            realPay = default(decimal);
+ 
+            return 0;
+        }
+
         public System.Collections.Generic.List<LoginCheckReturnModel> LoginCheck(string userName, string phoneNum, string password)
         {
             int procResult;
@@ -122,6 +129,25 @@ namespace Ares.CodeGeneration
         {
             int procResult;
             return System.Threading.Tasks.Task.FromResult(LoginCheck(userName, phoneNum, password, out procResult));
+        }
+
+        public System.Collections.Generic.List<SettlementForCustomerReturnModel> SettlementForCustomer(System.DateTime? startDate, System.DateTime? endDate)
+        {
+            int procResult;
+            return SettlementForCustomer(startDate, endDate, out procResult);
+        }
+
+        public System.Collections.Generic.List<SettlementForCustomerReturnModel> SettlementForCustomer(System.DateTime? startDate, System.DateTime? endDate, out int procResult)
+        {
+
+            procResult = 0;
+            return new System.Collections.Generic.List<SettlementForCustomerReturnModel>();
+        }
+
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<SettlementForCustomerReturnModel>> SettlementForCustomerAsync(System.DateTime? startDate, System.DateTime? endDate)
+        {
+            int procResult;
+            return System.Threading.Tasks.Task.FromResult(SettlementForCustomer(startDate, endDate, out procResult));
         }
 
         public int SpAlterdiagram(string diagramname, int? ownerId, int? version, byte[] definition)

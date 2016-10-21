@@ -25,12 +25,14 @@ namespace Ares.CodeGeneration
         public System.DateTime CreatedDate { get; set; } // CreatedDate
         public int UserId { get; set; } // UserID
         public System.DateTime ChangedDate { get; set; } // ChangedDate
+        public int SettlementRating { get; set; } // SettlementRating
 
         public Customer()
         {
             DiscountRating = 0;
             CreatedDate = System.DateTime.Now;
             ChangedDate = System.DateTime.Now;
+            SettlementRating = 100;
         }
     }
 

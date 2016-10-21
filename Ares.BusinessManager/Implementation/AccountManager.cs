@@ -38,7 +38,8 @@ namespace Ares.BusinessManager.Implementation
         public LoginResult Login(string userName, string password)
         {
             var loginResult = new LoginResult();
-            var user = _userRoleRepository.FindAll(c => c.UserName == userName && c.Password == _hashingService.Hash(password)).FirstOrDefault();
+            var hashedPsd = _hashingService.Hash(password);
+            var user = _userRoleRepository.FindAll(c => c.UserName == userName && c.Password == hashedPsd).FirstOrDefault();
             var role = _roleTypeRepository.FindAll(r => r.RoleId == user.RoleId).FirstOrDefault();
             if (user == null)
             {
@@ -56,7 +57,7 @@ namespace Ares.BusinessManager.Implementation
             return loginResult;
         }
 
-        public void RegistryUser(string loginName, int? phoneNum, string password, string name, RoleTypes roleType)
+        public void RegistryUser(string loginName, string phoneNum, string password, string name, RoleTypes roleType)
         {
             // hash password
             var hashedPassword = _hashingService.Hash(password);

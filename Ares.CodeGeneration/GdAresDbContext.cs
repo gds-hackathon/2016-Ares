@@ -236,6 +236,32 @@ namespace Ares.CodeGeneration
             return procResultData;
         }
 
+        public int CalculateDiscount(int? employeeId, int? customerId, decimal? totalAmount, out decimal? realPay)
+        {
+            var employeeIdParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@EmployeeID", SqlDbType = System.Data.SqlDbType.Int, Direction = System.Data.ParameterDirection.Input, Value = employeeId.GetValueOrDefault(), Precision = 10, Scale = 0 };
+            if (!employeeId.HasValue)
+                employeeIdParam.Value = System.DBNull.Value;
+
+            var customerIdParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@CustomerID", SqlDbType = System.Data.SqlDbType.Int, Direction = System.Data.ParameterDirection.Input, Value = customerId.GetValueOrDefault(), Precision = 10, Scale = 0 };
+            if (!customerId.HasValue)
+                customerIdParam.Value = System.DBNull.Value;
+
+            var totalAmountParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@TotalAmount", SqlDbType = System.Data.SqlDbType.Money, Direction = System.Data.ParameterDirection.Input, Value = totalAmount.GetValueOrDefault(), Precision = 19, Scale = 4 };
+            if (!totalAmount.HasValue)
+                totalAmountParam.Value = System.DBNull.Value;
+
+            var realPayParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@RealPay", SqlDbType = System.Data.SqlDbType.Money, Direction = System.Data.ParameterDirection.Output, Precision = 19, Scale = 4 };
+            var procResultParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@procResult", SqlDbType = System.Data.SqlDbType.Int, Direction = System.Data.ParameterDirection.Output };
+ 
+            Database.ExecuteSqlCommand("EXEC @procResult = [dbo].[calculateDiscount] @EmployeeID, @CustomerID, @TotalAmount, @RealPay OUTPUT", employeeIdParam, customerIdParam, totalAmountParam, realPayParam, procResultParam);
+            if (IsSqlParameterNull(realPayParam))
+                realPay = null;
+            else
+                realPay = (decimal) realPayParam.Value;
+ 
+            return (int) procResultParam.Value;
+        }
+
         public System.Collections.Generic.List<LoginCheckReturnModel> LoginCheck(string userName, string phoneNum, string password)
         {
             int procResult;
@@ -278,6 +304,44 @@ namespace Ares.CodeGeneration
                 passwordParam.Value = System.DBNull.Value;
 
             var procResultData = await Database.SqlQuery<LoginCheckReturnModel>("EXEC [dbo].[loginCheck] @UserName, @PhoneNum, @Password", userNameParam, phoneNumParam, passwordParam).ToListAsync();
+
+            return procResultData;
+        }
+
+        public System.Collections.Generic.List<SettlementForCustomerReturnModel> SettlementForCustomer(System.DateTime? startDate, System.DateTime? endDate)
+        {
+            int procResult;
+            return SettlementForCustomer(startDate, endDate, out procResult);
+        }
+
+        public System.Collections.Generic.List<SettlementForCustomerReturnModel> SettlementForCustomer(System.DateTime? startDate, System.DateTime? endDate, out int procResult)
+        {
+            var startDateParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@StartDate", SqlDbType = System.Data.SqlDbType.Date, Direction = System.Data.ParameterDirection.Input, Value = startDate.GetValueOrDefault() };
+            if (!startDate.HasValue)
+                startDateParam.Value = System.DBNull.Value;
+
+            var endDateParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@EndDate", SqlDbType = System.Data.SqlDbType.Date, Direction = System.Data.ParameterDirection.Input, Value = endDate.GetValueOrDefault() };
+            if (!endDate.HasValue)
+                endDateParam.Value = System.DBNull.Value;
+
+            var procResultParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@procResult", SqlDbType = System.Data.SqlDbType.Int, Direction = System.Data.ParameterDirection.Output };
+            var procResultData = Database.SqlQuery<SettlementForCustomerReturnModel>("EXEC @procResult = [dbo].[settlementForCustomer] @StartDate, @EndDate", startDateParam, endDateParam, procResultParam).ToList();
+
+            procResult = (int) procResultParam.Value;
+            return procResultData;
+        }
+
+        public async System.Threading.Tasks.Task<System.Collections.Generic.List<SettlementForCustomerReturnModel>> SettlementForCustomerAsync(System.DateTime? startDate, System.DateTime? endDate)
+        {
+            var startDateParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@StartDate", SqlDbType = System.Data.SqlDbType.Date, Direction = System.Data.ParameterDirection.Input, Value = startDate.GetValueOrDefault() };
+            if (!startDate.HasValue)
+                startDateParam.Value = System.DBNull.Value;
+
+            var endDateParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@EndDate", SqlDbType = System.Data.SqlDbType.Date, Direction = System.Data.ParameterDirection.Input, Value = endDate.GetValueOrDefault() };
+            if (!endDate.HasValue)
+                endDateParam.Value = System.DBNull.Value;
+
+            var procResultData = await Database.SqlQuery<SettlementForCustomerReturnModel>("EXEC [dbo].[settlementForCustomer] @StartDate, @EndDate", startDateParam, endDateParam).ToListAsync();
 
             return procResultData;
         }

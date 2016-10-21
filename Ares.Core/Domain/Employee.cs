@@ -2,7 +2,6 @@
 
 namespace Ares.Core.Domain
 {
-
     // Employee
     [System.CodeDom.Compiler.GeneratedCode("EF.Reverse.POCO.Generator", "2.24.0.0")]
     public class Employee : IAggregateRoot
@@ -14,6 +13,7 @@ namespace Ares.Core.Domain
         public int BalanceTypeId { get; set; } // BalanceTypeID
         public int UserId { get; set; } // UserID
         public System.DateTime ChangedDate { get; set; } // ChangedDate
+        public bool? Gender { get; set; } // Gender
 
         public Employee()
         {
