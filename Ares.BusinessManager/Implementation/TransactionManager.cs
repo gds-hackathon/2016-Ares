@@ -49,5 +49,11 @@ namespace Ares.BusinessManager.Implementation
             return realPay.HasValue ? realPay.Value: totalAmount.Value;
 
         }
+
+        public System.Collections.Generic.List<CheckTransactionByCustomerIdReturnModel> CheckTransactionByCustomerId(int? customerId)
+        {
+            int procResult = 0;
+            return _transactionRepository.CheckTransactionByCustomerId(customerId, out procResult);
+        }
     }
 }

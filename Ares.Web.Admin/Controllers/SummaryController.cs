@@ -3,15 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Ares.Core.Domain;
+using Ares.Core.Dto;
+using Ares.Core.Repositories;
+using Ares.BusinessManager.Interfaces;
 
 namespace Ares.Web.Admin.Controllers
 {
-    public class SummaryController : Controller
+    public class SummaryController : BaseController
     {
-        // GET: Summary
-        public ActionResult Index()
+        private ITransactionManager _transactionManager;
+
+        public SummaryController()
         {
-            return View();
+
         }
+
+        public SummaryController(ITransactionManager transactionManager)
+        {
+            _transactionManager = transactionManager;
+        }
+
+     
+
     }
 }

@@ -76,5 +76,18 @@ namespace Ares.Data.Ef.Repositories
             return procResultData;
         }
 
+        public System.Collections.Generic.List<CheckTransactionByCustomerIdReturnModel> CheckTransactionByCustomerId(int? customerId, out int procResult)
+        {
+            var customerIdParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@CustomerID", SqlDbType = System.Data.SqlDbType.Int, Direction = System.Data.ParameterDirection.Input, Value = customerId.GetValueOrDefault(), Precision = 10, Scale = 0 };
+            if (!customerId.HasValue)
+                customerIdParam.Value = System.DBNull.Value;
+
+            var procResultParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@procResult", SqlDbType = System.Data.SqlDbType.Int, Direction = System.Data.ParameterDirection.Output };
+            var procResultData = this.ActiveContext.Database.SqlQuery<CheckTransactionByCustomerIdReturnModel>("EXEC @procResult = [dbo].[checkTransactionByCustomerID] @CustomerID", customerIdParam, procResultParam).ToList();
+
+            procResult = (int)procResultParam.Value;
+            return procResultData;
+        }
+
     }
 }
