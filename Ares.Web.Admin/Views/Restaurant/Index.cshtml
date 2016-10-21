@@ -1,4 +1,5 @@
-﻿
+﻿@using Webdiyer.WebControls.Mvc;
+@model System.Collections.Generic.IEnumerable<Ares.Core.Domain.Customer>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -6,3 +7,25 @@
 
 <h2>Restaurants View</h2>
 
+<div>
+    <div>
+
+        <div>
+            <div>
+                @Html.Partial("_CustomersTablePartialView", Model)
+
+                @*@Html.Pager(Model as PagedList<Ares.Core.Domain.Employee>, new PagerOptions
+                    {
+                        PageIndexParameterName = "page",
+                        PrevPageText = "<",
+                        NextPageText = ">",
+                        ShowNumericPagerItems = true,
+                        ShowFirstLast = false,
+                        ShowPrevNext = true,
+                        CssClass = "scott",
+                        MorePageText = "...",
+                    })*@
+            </div>
+        </div>
+    </div>
+</div>

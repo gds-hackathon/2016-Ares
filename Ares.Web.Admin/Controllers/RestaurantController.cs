@@ -1,5 +1,6 @@
 ﻿using Ares.BusinessManager.Interfaces;
 using Ares.Core;
+using Ares.Core.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,18 +23,27 @@ namespace Ares.Web.Admin.Controllers
         }
 
         // GET: Restaurant
-        public ActionResult Index()
+        public ActionResult Index(int? pageIndex)
         {
-            string userId;
-            var cookie = HttpContext.Request.Cookies[Constants.Cookie_UserIdName];
-            if (cookie != null && !string.IsNullOrEmpty(cookie.Value))
-            {
-                userId = cookie.Value;
-                var customer = _userManager.GetCustomerByUserId(int.Parse(userId));
+            return View(_userManager.FindAllCustomers());
 
-            }
-            //_userManager
-            return View();
+            //var customer = _userManager.GetCustomerByUserId(userId);
+            //var txns = _txnManager.FindTransactionsHistoryByCustomer(customer.CustomerId, pageIndex, 10);
+            //return View(txns);
+        }
+
+        public ActionResult Update(int userId)
+        {
+            var customer = _userManager.GetCustomerByUserId(userId);
+            return PartialView("_UpdateView", customer);
+        }
+
+        [HttpPost]
+        public ActionResult Update(Customer customer)
+        {
+            _userManager.UpdateCustomer(customer);
+            //return PartialView("_UpdateView", customer);
+            return null;
         }
     }
 }

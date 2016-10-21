@@ -54,6 +54,7 @@
     <Compile Include="Domain\RoleType.cs" />
     <Compile Include="Domain\RoleTypes.cs" />
     <Compile Include="Domain\Transaction.cs" />
+    <Compile Include="Domain\TransactionModel.cs" />
     <Compile Include="Domain\TransactionRating.cs" />
     <Compile Include="Domain\UserRole.cs" />
     <Compile Include="Domain\LoginModel.cs" />

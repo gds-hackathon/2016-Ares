@@ -36,5 +36,25 @@ namespace Ares.BusinessManager.Implementation
         {
             return _employeeRepository.FindAll(e => e.UserId == userId).FirstOrDefault();
         }
+
+        public void UpdateCustomer(Customer customer)
+        {
+            _customerRepository.Save(customer);
+        }
+
+        public void UpdateEmployee(Employee employee)
+        {
+            _employeeRepository.Save(employee);
+        }
+
+        public IEnumerable<Employee> FindAllEmployees()
+        {
+            return _employeeRepository.FindAll();
+        }
+
+        public IEnumerable<Customer> FindAllCustomers()
+        {
+            return _customerRepository.FindAll();
+        }
     }
 }

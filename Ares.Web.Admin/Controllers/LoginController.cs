@@ -58,7 +58,7 @@ namespace Ares.Web.Admin.Controllers
                 case RoleTypes.Employee:
                     return RedirectToAction("index", "Employee");
                 case RoleTypes.Administrator:
-                    return RedirectToAction("index", "Sum");
+                    return RedirectToAction("index", "Summary");
                 default:
                     break;
             }

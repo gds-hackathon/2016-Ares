@@ -1,0 +1,50 @@
+﻿@model Ares.Core.Domain.Customer
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Update", "Restaurant", FormMethod.Post, new { @class = "form-group" }))
+{
+    <div class="row">
+        <div class="col-xs-12 agile-center">
+            <h3>Update Restaurant Information</h3>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="CustomerName">@Html.DisplayNameFor(model => model.CustomerName)</label>
+        @*<input type="text" class="form-control" placeholder="CustomerName" value="@Model.CustomerName">*@
+        @Html.TextBoxFor(m => m.CustomerName, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label for="DiscountRating">@Html.DisplayNameFor(model => model.DiscountRating)</label>
+        @*<input type="number" class="form-control" placeholder="CustomerNameDiscountRating" value="@Model.DiscountRating">*@
+        @Html.TextBoxFor(m => m.DiscountRating, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label><span>Isactive @Html.CheckBoxFor(model => model.Isactive, new { @class = "checkbox" })</span>
+            @*<input type="checkbox" checked="@Model.Isactive"> *@
+        </label>
+    </div>
+    <div class="form-group">
+        <label for="SettlementRating">@Html.DisplayNameFor(model => model.SettlementRating)</label>
+        @*<input type="number" class="form-control" placeholder="SettlementRating" value="@Model.SettlementRating">*@
+        @Html.TextBoxFor(m => m.SettlementRating, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label for="Guid">@Html.DisplayNameFor(model => model.Guid)</label>
+        @*<input type="text" class="form-control" placeholder="Guid" value="@Model.Guid">*@
+        @Html.TextBoxFor(m => m.Guid, new { @class = "form-control" })
+    </div>
+
+    @Html.HiddenFor(m => m.CustomerId)
+    @Html.HiddenFor(m => m.DiscountPicture)
+    @Html.HiddenFor(m => m.UserId)
+    <div class="row">
+        <div class="col-xs-3"></div>
+        <div class="col-xs-3"><button class="btn btn-primary btn-md btn-block">Update</button></div>
+        <div class="col-xs-3"><button class="btn btn-primary btn-md btn-block">Cancel</button></div>
+    </div>
+
+}
