@@ -14,9 +14,8 @@
     <link href="~/Scripts/morris.js" rel="stylesheet" />
     <!-- Custom Styles-->
     <link href="~/Content/custom-styles.css" rel="stylesheet" />
-
-    @*@Styles.Render("~/Content/css")*@
-    @*@Scripts.Render("~/bundles/modernizr")*@
+    <!-- Google Fonts-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
 </head>
 <body>
     <div id="wrapper">
@@ -28,134 +27,15 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("ICON", "Index", "Home", null, new { @class = "navbar-brand" })
+                <a class="navbar-brand" href="/Home"><img style="height:60px" class="img-responsive" src="~/images/unnamed.png" /> </a>
             </div>
 
             <ul class="nav navbar-top-links navbar-right">
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
-                        <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-messages">
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <strong>John Doe</strong>
-                                    <span class="pull-right text-muted">
-                                        <em>Today</em>
-                                    </span>
-                                </div>
-                                <div>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s...</div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <strong>John Smith</strong>
-                                    <span class="pull-right text-muted">
-                                        <em>Yesterday</em>
-                                    </span>
-                                </div>
-                                <div>Lorem Ipsum has been the industry's standard dummy text ever since an kwilnw...</div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <strong>John Smith</strong>
-                                    <span class="pull-right text-muted">
-                                        <em>Yesterday</em>
-                                    </span>
-                                </div>
-                                <div>Lorem Ipsum has been the industry's standard dummy text ever since the...</div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a class="text-center" href="#">
-                                <strong>Read All Messages</strong>
-                                <i class="fa fa-angle-right"></i>
-                            </a>
-                        </li>
-                    </ul>
-                    <!-- /.dropdown-messages -->
-                </li>
-                <!-- /.dropdown -->
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
-                        <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-alerts">
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <i class="fa fa-comment fa-fw"></i> New Comment
-                                    <span class="pull-right text-muted small">4 min</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <i class="fa fa-twitter fa-fw"></i> 3 New Followers
-                                    <span class="pull-right text-muted small">12 min</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <i class="fa fa-envelope fa-fw"></i> Message Sent
-                                    <span class="pull-right text-muted small">4 min</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <i class="fa fa-tasks fa-fw"></i> New Task
-                                    <span class="pull-right text-muted small">4 min</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <i class="fa fa-upload fa-fw"></i> Server Rebooted
-                                    <span class="pull-right text-muted small">4 min</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a class="text-center" href="#">
-                                <strong>See All Alerts</strong>
-                                <i class="fa fa-angle-right"></i>
-                            </a>
-                        </li>
-                    </ul>
-                    <!-- /.dropdown-alerts -->
-                </li>
-                <!-- /.dropdown -->
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-
-                        <li>
-                            @Html.ActionLink(" User Profile", "Index", "UserProfiler", null, new { @class = "fa fa-user fa-fw" })
-                        </li>
-                        <li>
-                            @Html.ActionLink(" Settings", "Settings", "UserProfiler", null, new { @class = "fa fa-gear fa-fw" })
-                        </li>
-                        <li class="divider"></li>
                         <li>
                             @Html.ActionLink(" Logout", "Logout", "Login", null, new { @class = "fa fa-sign-out fa-fw" })
                         </li>
@@ -168,9 +48,8 @@
         <!--/. NAV TOP  -->
 
         @if (HttpContext.Current.Request.Cookies[Constants.Cookie_RoleTypeName].Value == "Administrator")
-            {
+        {
             <nav class="navbar-default navbar-side" role="navigation">
-                <div id="sideNav" href=""><i class="fa fa-caret-right"></i></div>
                 <div class="sidebar-collapse">
                     <ul class="nav" id="main-menu">
                         <li>
@@ -209,13 +88,11 @@
     <!-- Metis Menu Js -->
     <script src="~/scripts/jquery.metisMenu.js"></script>
     <!-- Morris Chart Js -->
-    @*<script src="assets/js/morris/raphael-2.1.0.min.js"></script>
-        <script src="assets/js/morris/morris.js"></script>
+    <script src="~/scripts/raphael-2.1.0.min.js"></script>
+    <script src="~/scripts/morris.js"></script>
 
-
-        <script src="assets/js/easypiechart.js"></script>
-        <script src="assets/js/easypiechart-data.js"></script>*@
-
+    <script src="~/scripts/easypiechart.js"></script>
+    <script src="~/scripts/easypiechart-data.js"></script>
 
     <!-- Custom Js -->
     <script src="~/Scripts/custom-scripts.js"></script>

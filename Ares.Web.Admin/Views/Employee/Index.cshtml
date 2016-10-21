@@ -2,6 +2,8 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+<h1>Employees</h1><br />
 <table class="table table-bordered table-striped">
     <tr>
         <th>
@@ -24,29 +26,29 @@
     {
         foreach (var item in Model)
         {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.EmployeeId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EmployeeName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Isactive)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BalanceTypeId)
-        </td>
-        <td>
-            @Html.ActionLink("Transactions", "Transactions", new { pageIndex = 0, employeeId = item.EmployeeId })
-        </td>
-    </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmployeeId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmployeeName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Isactive)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BalanceTypeId)
+                </td>
+                <td>
+                    @Html.ActionLink("Transactions", "Transactions", new { pageIndex = 0, employeeId = item.EmployeeId })
+                </td>
+            </tr>
         }
     }
     else
     {
-    <tr>
-        No Data.
-    </tr>
+        <tr>
+            No Data.
+        </tr>
     }
 </table>
