@@ -47,5 +47,14 @@ namespace Ares.BusinessManager.Implementation
         {
             return _employeeRepository.FindBy(employeeId);
         }
+
+        public Customer ValidateCustomer(string qrCode)
+        {
+            if (string.IsNullOrWhiteSpace(qrCode))
+            {
+                throw new ArgumentNullException("qrCode");
+            }
+           return _customerRepository.FindAll(c => c.Guid == Guid.Parse(qrCode)).FirstOrDefault();
+        }
     }
 }

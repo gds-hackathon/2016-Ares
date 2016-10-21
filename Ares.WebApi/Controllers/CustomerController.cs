@@ -43,5 +43,23 @@ namespace Ares.WebApi.Controllers
 
 
         }
+
+        [Route("~/Restaurant/v1/Customer/Verify")]
+        [HttpPost]
+        public CustomerValidateResponse IsValidateCustomer([FromBody]CustomerValidateRequest request)
+        {
+            CustomerValidateResponse response = new CustomerValidateResponse();
+            if (request == null)
+            {
+                response.Success = false;
+                response.IsValidate = false;
+
+            }
+            var customer = _userManaget.ValidateCustomer(request.QRCode);
+            response.CustomerId = customer.CustomerId;
+            response.IsValidate = true;
+            response.Success = true;
+            return response;
+        }
     }
 }

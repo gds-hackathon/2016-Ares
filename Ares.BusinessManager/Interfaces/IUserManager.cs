@@ -15,5 +15,7 @@ namespace Ares.BusinessManager.Interfaces
         Employee FindByEmployeeId(int employeeId);
 
         IEnumerable<GetCustomerReturnModel> FindCustomerList();
+
+        Customer ValidateCustomer(string qrCode);
     }
 }
