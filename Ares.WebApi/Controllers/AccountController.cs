@@ -42,7 +42,7 @@ namespace Ares.WebApi.Controllers
                     response.Success = false;
                     return response;
                 }   
-                var result = _accountManager.Login(request.UserName, request.Password);
+                var result = _accountManager.EmployeeLogin(request.UserName, request.Password);
                 if (result.RoleType == Core.Domain.RoleTypes.Employee)
                 {
                     Employee employee = _userManager.FindById(result.UserId);
