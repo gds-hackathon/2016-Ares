@@ -9,6 +9,7 @@ using Ares.BusinessManager.Interfaces;
 using Ares.BusinessManager.Implementation;
 using Ares.Data.Ef.UnitOfWork;
 using Ares.Data.Ef;
+using Ares.Infrastructure.Authentication;
 
 namespace Ares.Web.Admin
 {
@@ -57,6 +58,7 @@ namespace Ares.Web.Admin
             container.RegisterType<IUserRoleRepository, UserRoleRepository>();
             container.RegisterType<IRoleTypeRepository, RoleTypeRepository>();
             container.RegisterType<IUserManager, UserManager>();
+            container.RegisterType<IFormsAuthentication, AspFormsAuthentication>();
         }
     }
 }

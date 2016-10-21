@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Constants.cs" />
     <Compile Include="Domain\AddNewEmployeeReturnModel.cs" />
     <Compile Include="Domain\Administrator.cs" />
     <Compile Include="Domain\BalanceType.cs" />
@@ -49,6 +50,7 @@
     <Compile Include="Domain\IAggregateRoot.cs" />
     <Compile Include="Domain\LoginCheckReturnModel.cs" />
     <Compile Include="Domain\LoginResult.cs" />
+    <Compile Include="Domain\MenuModel.cs" />
     <Compile Include="Domain\RoleType.cs" />
     <Compile Include="Domain\RoleTypes.cs" />
     <Compile Include="Domain\Transaction.cs" />

@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Ares.Core;
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -165,31 +166,32 @@
             </ul>
         </nav>
         <!--/. NAV TOP  -->
-        <nav class="navbar-default navbar-side" role="navigation">
-            <div id="sideNav" href=""><i class="fa fa-caret-right"></i></div>
-            <div class="sidebar-collapse">
-                <ul class="nav" id="main-menu">
 
-                    <li>
-                        @Html.ActionLink(" Summary", "Index", "Home", null, new { @class = "fa fa-dashboard" })
-                    </li>
-                    <li>
-                        @Html.ActionLink(" Employees Management", "Index", "Employee", null, new { @class = "fa fa-user" })
-                    </li>
-                    <li>
-                        @Html.ActionLink(" Restaurants Management", "Index", "Restaurant", null, new { @class = "fa fa-shopping-cart" })
-                    </li>
-                    <li>
-                        @Html.ActionLink(" Configurations", "Index", "Configuration", null, new { @class = "fa fa-qrcode" })
-                    </li>
-                    <li>
-                        @Html.ActionLink(" Logs", "Index", "Log", null, new { @class = "fa fa-table" })
-                    </li>
-                </ul>
-
-            </div>
-
-        </nav>
+        @if (HttpContext.Current.Request.Cookies[Constants.Cookie_RoleTypeName].Value == "Administrator")
+            {
+            <nav class="navbar-default navbar-side" role="navigation">
+                <div id="sideNav" href=""><i class="fa fa-caret-right"></i></div>
+                <div class="sidebar-collapse">
+                    <ul class="nav" id="main-menu">
+                        <li>
+                            @Html.ActionLink(" Summary", "Index", "Home", null, new { @class = "fa fa-dashboard" })
+                        </li>
+                        <li>
+                            @Html.ActionLink(" Employees Management", "Index", "Employee", null, new { @class = "fa fa-user" })
+                        </li>
+                        <li>
+                            @Html.ActionLink(" Restaurants Management", "Index", "Restaurant", null, new { @class = "fa fa-shopping-cart" })
+                        </li>
+                        <li>
+                            @Html.ActionLink(" Configurations", "Index", "Configuration", null, new { @class = "fa fa-qrcode" })
+                        </li>
+                        <li>
+                            @Html.ActionLink(" Logs", "Index", "Log", null, new { @class = "fa fa-table" })
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        }
         <!-- /. NAV SIDE  -->
         <div id="page-wrapper">
             @RenderBody()
