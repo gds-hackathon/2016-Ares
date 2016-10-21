@@ -33,6 +33,7 @@ namespace Ares.CodeGeneration
             public System.Decimal? CurrentBalance { get; set; }
             public System.Decimal? TotalAmount { get; set; }
             public System.Decimal? DiscountAmount { get; set; }
+            public System.Int32? TransCount { get; set; }
         }
         public System.Collections.Generic.List<ResultSetModel2> ResultSet2;
 

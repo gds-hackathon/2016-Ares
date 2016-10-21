@@ -49,8 +49,10 @@ namespace Ares.WebApi.Controllers
                     if (employee != null)
                     {
                         response.NickName = employee.EmployeeName;
+                        response.EmployeeId = employee.EmployeeId;
                         response.Count = 0;
                         response.Balance = 0;
+                        response.Gender = employee.Gender.Value;
                        
                     }
                 }

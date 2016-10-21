@@ -16,6 +16,12 @@ namespace Ares.Contract.Response
         [DataMember]
         public int Count { get; set; }
 
+        [DataMember]
+        public int EmployeeId { get; set; }
+
+        [DataMember]
+        public bool Gender { get; set; }
+
 
 
     }
