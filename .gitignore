@@ -26,3 +26,17 @@
 /Ares.CodeGeneration/obj/Debug
 /Ares.Contract/bin/Debug
 /Ares.Contract/obj/Debug
+/Ares.BusinessManager/bin/Release
+/Ares.BusinessManager/obj/Release
+/Ares.Contract/bin/Release
+/Ares.Contract/obj/Release
+/Ares.Core/bin/Release
+/Ares.Data.Ef/bin/Release
+/Ares.Infrastructure/bin/Release
+/Ares.WebApi/obj/Release
+/Ares.WebApi/Properties/PublishProfiles
+/Ares.CodeGeneration/obj/Release
+/Ares.Core/obj/Release
+/Ares.Data.Ef/obj/Release
+/Ares.Infrastructure/obj/Release
+/Ares.Web.Admin/obj/Release
