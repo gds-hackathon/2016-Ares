@@ -295,11 +295,11 @@
     <Content Include="Views\Employee\Index.cshtml" />
     <Content Include="Views\Restaurant\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
-    <Content Include="Views\Employee\_EmployeeTransactionTable.cshtml" />
-    <Content Include="Views\Employee\_EmployeesTablePartialView.cshtml" />
     <Content Include="Views\Restaurant\_CustomersTablePartialView.cshtml" />
     <Content Include="Views\Restaurant\_UpdateView.cshtml" />
     <Content Include="Views\Summary\Index.cshtml" />
+    <Content Include="Views\Employee\Transactions.cshtml" />
+    <Content Include="Views\Restaurant\Transactions.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

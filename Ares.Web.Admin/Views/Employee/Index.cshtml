@@ -1,31 +1,52 @@
-﻿@using Webdiyer.WebControls.Mvc;
-@model System.Collections.Generic.IEnumerable<Ares.Core.Domain.Employee>
-
+﻿@model System.Collections.Generic.IEnumerable<Ares.Core.Domain.Employee>
 @{
-    ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Employees View</h2>
-<div class="main meetting_list">
-    <div class="main_tab">
-
-        <div id="divList" class="act_content_wrap">
-            <div class="act_content">
-                @Html.Partial("_EmployeesTablePartialView", Model)
-
-                @*@Html.Pager(Model as PagedList<Ares.Core.Domain.Employee>, new PagerOptions
-           {
-               PageIndexParameterName = "page",
-               PrevPageText = "<",
-               NextPageText = ">",
-               ShowNumericPagerItems = true,
-               ShowFirstLast = false,
-               ShowPrevNext = true,
-               CssClass = "scott",
-               MorePageText = "...",
-           })*@
-            </div>
-        </div>
-    </div>
-</div>
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EmployeeId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmployeeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Isactive)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BalanceTypeId)
+        </th>
+        <th>
+            Operations
+        </th>
+    </tr>
+    @if (Model != null)
+    {
+        foreach (var item in Model)
+        {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmployeeId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmployeeName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Isactive)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BalanceTypeId)
+        </td>
+        <td>
+            @Html.ActionLink("Transactions", "Transactions", new { pageIndex = 0, employeeId = item.EmployeeId })
+        </td>
+    </tr>
+        }
+    }
+    else
+    {
+    <tr>
+        No Data.
+    </tr>
+    }
+</table>

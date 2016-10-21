@@ -45,5 +45,22 @@ namespace Ares.Web.Admin.Controllers
             //return PartialView("_UpdateView", customer);
             return null;
         }
+
+        public ActionResult Transactions(int customerId, int pageIndex)
+        {
+            List<TransactionModel> txnModels = null;
+
+            txnModels = new List<TransactionModel>();
+            var txns = _txnManager.FindTransactionsHistoryByCustomer(customerId, pageIndex, 10);
+
+            foreach (var item in txns)
+            {
+                var employee = _userManager.FindByEmployeeId(item.EmployeeId);
+                var t = (TransactionModel)item;
+                t.EmployeeName = employee.EmployeeName;
+                txnModels.Add(t);
+            }
+            return View(txnModels);
+        }
     }
 }

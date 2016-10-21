@@ -32,7 +32,14 @@ namespace Ares.Core.Domain
 
         public static explicit operator TransactionModel(Transaction v)
         {
-            throw new NotImplementedException();
+            return new TransactionModel()
+            {
+                EmployeeId = v.EmployeeId,
+                DiscountAmount = v.DiscountAmount,
+                OrderId = v.OrderId,
+                TotalAmount = v.TotalAmount,
+                TransactionDateTime = v.TransactionDateTime,
+            };
         }
     }
 }

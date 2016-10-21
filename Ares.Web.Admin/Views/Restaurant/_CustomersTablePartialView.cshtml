@@ -44,7 +44,7 @@
                     @Html.DisplayFor(modelItem => item.SettlementRating)
                 </td>
                 <td>
-                    <a href="#">Transactions</a>
+                    @Html.ActionLink("Transactions", "Transactions", new { customerId = item.CustomerId, pageIndex = 0 })
                 </td>
             </tr>
         }
