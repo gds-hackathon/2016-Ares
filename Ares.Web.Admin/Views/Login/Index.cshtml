@@ -22,18 +22,20 @@
                         <h1 class="text-center">Login</h1>
                     </div>
                     <div class="modal-body">
-                        @Html.BeginForm("Login", "Login", FormMethod.Post, new { @class = "form col-md-12 center-block" })
-                        <div class="form-group">
-                            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control input-lg", placeholder = "User Name" })
-                            @*<input type="text" class="form-control input-lg" placeholder="UserName">*@
-                        </div>
-                        <div class="form-group">
-                            @Html.PasswordFor(m => m.Password, new { @class = "form-control input-lg", placeholder = "Password" })
-                            @*<input type="password" class="form-control input-lg" placeholder="Password">*@
-                        </div>
-                        <div class="form-group">
-                            <button class="btn btn-primary btn-lg btn-block">Sign In</button>
-                        </div>
+                        @using (Html.BeginForm("Login", "Login", FormMethod.Post, new { @class = "form col-md-12 center-block" }))
+                        {
+                            <div class="form-group">
+                                @Html.TextBoxFor(m => m.UserName, new { @class = "form-control input-lg", placeholder = "User Name" })
+                                @*<input type="text" class="form-control input-lg" placeholder="UserName">*@
+                            </div>
+                            <div class="form-group">
+                                @Html.PasswordFor(m => m.Password, new { @class = "form-control input-lg", placeholder = "Password" })
+                                @*<input type="password" class="form-control input-lg" placeholder="Password">*@
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-primary btn-lg btn-block">Sign In</button>
+                            </div>
+                        }
                     </div>
                 </div>
             </div>
