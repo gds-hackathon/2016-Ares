@@ -18,6 +18,9 @@ namespace Ares.Contract.Response
         [DataMember]
         public string Address { get; set; }
 
+        [DataMember]
+        public System.Int32 CustomerID { get; set; }
+
 
 
     }

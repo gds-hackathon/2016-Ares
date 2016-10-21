@@ -24,7 +24,7 @@ namespace Ares.WebApi.Controllers
             _userManager = userManager;
         }
 
-        [Route("~/Restaurant/v1/User/Employee/{employeeId}")]
+        [Route("~/Restaurant/v1/User/Employee")]
         [HttpGet]
         public EmployeeResponse GetEmployee([FromUri]int employeeId)
         {
@@ -33,7 +33,7 @@ namespace Ares.WebApi.Controllers
             response.Success = true;
             response.EmployeeId = employee.EmployeeId;
             response.NickName = employee.EmployeeName;
-            response.Gender = employee.Gender.HasValue ? employee.Gender.Value : true;
+            response.Gender = employee.Gender;
             response.Balance = 0;
             response.Count = 0;
             return response;

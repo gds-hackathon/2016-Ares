@@ -25,6 +25,7 @@ namespace Ares.CodeGeneration
         public System.Int32? OrderID { get; set; }
         public System.DateTime CreatedDate { get; set; }
         public System.DateTime ChangedDate { get; set; }
+        public System.Boolean IsSuccessful { get; set; }
     }
 
 }

@@ -34,7 +34,7 @@ namespace Ares.CodeGeneration
             Property(x => x.BalanceTypeId).HasColumnName(@"BalanceTypeID").IsRequired().HasColumnType("int");
             Property(x => x.UserId).HasColumnName(@"UserID").IsRequired().HasColumnType("int");
             Property(x => x.ChangedDate).HasColumnName(@"ChangedDate").IsRequired().HasColumnType("datetime");
-            Property(x => x.Gender).HasColumnName(@"Gender").IsOptional().HasColumnType("bit");
+            Property(x => x.Gender).HasColumnName(@"Gender").IsRequired().HasColumnType("bit");
         }
     }
 

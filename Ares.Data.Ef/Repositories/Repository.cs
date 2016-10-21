@@ -239,7 +239,14 @@ namespace Ares.Data.Ef.Repositories
 
         #endregion
 
-
+        public bool IsSqlParameterNull(System.Data.SqlClient.SqlParameter param)
+        {
+            var sqlValue = param.SqlValue;
+            var nullableValue = sqlValue as System.Data.SqlTypes.INullable;
+            if (nullableValue != null)
+                return nullableValue.IsNull;
+            return (sqlValue == null || sqlValue == System.DBNull.Value);
+        }
         /*
         #region Unit of work
         public void PersistCreationOf(IAggregateRoot entity)

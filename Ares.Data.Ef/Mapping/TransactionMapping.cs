@@ -25,6 +25,7 @@ namespace Ares.Data.Ef.Mapping
             Property(x => x.OrderId).HasColumnName(@"OrderID").IsOptional().HasColumnType("int");
             Property(x => x.CreatedDate).HasColumnName(@"CreatedDate").IsRequired().HasColumnType("datetime");
             Property(x => x.ChangedDate).HasColumnName(@"ChangedDate").IsRequired().HasColumnType("datetime");
+            Property(x => x.IsSuccessful).HasColumnName(@"IsSuccessful").IsRequired().HasColumnType("bit");
         }
     }
 

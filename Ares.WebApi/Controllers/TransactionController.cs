@@ -26,7 +26,7 @@ namespace Ares.WebApi.Controllers
 
         }
 
-        [Route("~/Restaurant/v1/Transaction/ConsumInfo/{employeeId}")]
+        [Route("~/Restaurant/v1/Transaction/ConsumInfo")]
         [HttpGet]
         public ConsumInfoResponse ConsumInfo([FromUri]int employeeId)
         {
@@ -58,9 +58,23 @@ namespace Ares.WebApi.Controllers
             response.Success = true;
             return response;
         }
-        
-        
 
+        [Route("~/Restaurant/v1/Transaction/CalculateDiscount")]
+        [HttpPost]
+        public CalculateDiscountResponse CalculateDiscount([FromBody]CalculateDiscountRequest request)
+        {
+            CalculateDiscountResponse response = new CalculateDiscountResponse();
+            if (request == null)
+            {
+                response.Success = false;
+            }
+            var realPay = _transactionManager.CalculateDiscount(request.EmployeeId, request.CustomerId, request.TotalAmount);
+            response.Success = true;
+            response.RealPay = realPay;
+            return response;
+        }
+
+       
 
 
     }

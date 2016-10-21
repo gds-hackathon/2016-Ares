@@ -14,6 +14,7 @@
         public System.DateTime CreatedDate { get; set; } // CreatedDate
         public System.DateTime ChangedDate { get; set; } // ChangedDate
 
+        public bool IsSuccessful { get; set; }
         public Transaction()
         {
             TransactionDateTime = System.DateTime.Now;

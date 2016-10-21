@@ -41,5 +41,13 @@ namespace Ares.BusinessManager.Implementation
         {
             return _transactionRepository.FindEmployeeTransactionSummary(employeeId);
         }
+
+        public decimal CalculateDiscount(int? employeeId, int? customerId, decimal? totalAmount)
+        {
+            decimal? realPay = 0;
+            var result = _transactionRepository.CalculateDiscount(employeeId, customerId, totalAmount, out realPay);
+            return realPay.HasValue ? realPay.Value: totalAmount.Value;
+
+        }
     }
 }
