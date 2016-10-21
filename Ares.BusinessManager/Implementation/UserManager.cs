@@ -42,5 +42,10 @@ namespace Ares.BusinessManager.Implementation
         {
             return _customerRepository.GetCustomer();
         }
+
+        public Employee FindByEmployeeId(int employeeId)
+        {
+            return _employeeRepository.FindBy(employeeId);
+        }
     }
 }

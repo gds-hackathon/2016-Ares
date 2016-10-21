@@ -69,6 +69,13 @@ namespace Ares.WebApi.Controllers
             
         }
 
+        [Route("~/Restaurant/v1/Account/LogOff")]
+        [HttpGet]
+        public void LogOff()
+        {
+            
+        }
+
 
     }
 }

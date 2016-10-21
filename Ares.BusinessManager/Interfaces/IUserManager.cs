@@ -12,6 +12,8 @@ namespace Ares.BusinessManager.Interfaces
 
         Customer GetCustomerByUserId(int userId);
 
+        Employee FindByEmployeeId(int employeeId);
+
         IEnumerable<GetCustomerReturnModel> FindCustomerList();
     }
 }
