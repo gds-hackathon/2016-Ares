@@ -10,7 +10,7 @@ using Ares.Contract.Response;
 
 namespace Ares.WebApi.Controllers
 {
-    public class AccountController : ApiController
+    public class AccountController : BaseController
     {
         private IAccountManager _accountManager;
 
@@ -24,15 +24,22 @@ namespace Ares.WebApi.Controllers
         }
 
 
+
         [Route("~/Restaurant/v1/Login")]
         [HttpPost]
-        public LoginResponse Login([FromBody]string userName,string password)
+        public LoginResponse Login([FromBody]LoginRequest request)
         {
             LoginResponse response = new LoginResponse();
             try
             {
-                
-                _accountManager.Login(userName, password);
+
+                if (request == null)
+                {
+                    response.ResponseMessage = "request is null";
+                    response.Success = false;
+                    return response;
+                }   
+                _accountManager.Login(request.UserName, request.Password);
                 response.Success = true;
                 return response;
             }
