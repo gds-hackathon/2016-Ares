@@ -10,12 +10,10 @@ namespace Ares.Data.Ef
         System.Data.Entity.DbSet<Employee> Employees { get; set; } // Employee
         System.Data.Entity.DbSet<RoleType> RoleTypes { get; set; } // RoleType
         System.Data.Entity.DbSet<UserRole> UserRoles { get; set; } // UserRole
+        System.Data.Entity.DbSet<Transaction> Transactions { get; set; } // Transaction
 
         int SaveChanges();
         System.Threading.Tasks.Task<int> SaveChangesAsync();
-        System.Threading.Tasks.Task<int> SaveChangesAsync(System.Threading.CancellationToken cancellationToken);
-
-      
-        
+        System.Threading.Tasks.Task<int> SaveChangesAsync(System.Threading.CancellationToken cancellationToken);        
     }
 }

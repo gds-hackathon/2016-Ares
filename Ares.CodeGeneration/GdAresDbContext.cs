@@ -27,6 +27,7 @@ namespace Ares.CodeGeneration
         public System.Data.Entity.DbSet<sys_ScriptDeployment> sys_ScriptDeployments { get; set; } // script_deployments
         public System.Data.Entity.DbSet<sys_ScriptDeploymentStatus> sys_ScriptDeploymentStatus { get; set; } // script_deployment_status
         public System.Data.Entity.DbSet<Sysdiagram> Sysdiagrams { get; set; } // sysdiagrams
+        public System.Data.Entity.DbSet<Transaction> Transactions { get; set; } // Transactions
         public System.Data.Entity.DbSet<UserRole> UserRoles { get; set; } // UserRole
 
         static GdAresDbContext()
@@ -86,6 +87,7 @@ namespace Ares.CodeGeneration
             modelBuilder.Configurations.Add(new sys_ScriptDeploymentMapping());
             modelBuilder.Configurations.Add(new sys_ScriptDeploymentStatusMapping());
             modelBuilder.Configurations.Add(new SysdiagramMapping());
+            modelBuilder.Configurations.Add(new TransactionMapping());
             modelBuilder.Configurations.Add(new UserRoleMapping());
         }
 
@@ -100,25 +102,38 @@ namespace Ares.CodeGeneration
             modelBuilder.Configurations.Add(new sys_ScriptDeploymentMapping(schema));
             modelBuilder.Configurations.Add(new sys_ScriptDeploymentStatusMapping(schema));
             modelBuilder.Configurations.Add(new SysdiagramMapping(schema));
+            modelBuilder.Configurations.Add(new TransactionMapping(schema));
             modelBuilder.Configurations.Add(new UserRoleMapping(schema));
             return modelBuilder;
         }
         
         // Stored Procedures
-        public int AddNewAdmin(string adminName)
+        public int AddNewAdmin(string adminName, string password, string userName, string phoneNum)
         {
             var adminNameParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@AdminName", SqlDbType = System.Data.SqlDbType.VarChar, Direction = System.Data.ParameterDirection.Input, Value = adminName, Size = 500 };
             if (adminNameParam.Value == null)
                 adminNameParam.Value = System.DBNull.Value;
 
+            var passwordParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@Password", SqlDbType = System.Data.SqlDbType.VarChar, Direction = System.Data.ParameterDirection.Input, Value = password, Size = 500 };
+            if (passwordParam.Value == null)
+                passwordParam.Value = System.DBNull.Value;
+
+            var userNameParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@UserName", SqlDbType = System.Data.SqlDbType.VarChar, Direction = System.Data.ParameterDirection.Input, Value = userName, Size = 500 };
+            if (userNameParam.Value == null)
+                userNameParam.Value = System.DBNull.Value;
+
+            var phoneNumParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@PhoneNum", SqlDbType = System.Data.SqlDbType.VarChar, Direction = System.Data.ParameterDirection.Input, Value = phoneNum, Size = 50 };
+            if (phoneNumParam.Value == null)
+                phoneNumParam.Value = System.DBNull.Value;
+
             var procResultParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@procResult", SqlDbType = System.Data.SqlDbType.Int, Direction = System.Data.ParameterDirection.Output };
  
-            Database.ExecuteSqlCommand("EXEC @procResult = [dbo].[addNewAdmin] @AdminName", adminNameParam, procResultParam);
+            Database.ExecuteSqlCommand("EXEC @procResult = [dbo].[addNewAdmin] @AdminName, @Password, @UserName, @PhoneNum", adminNameParam, passwordParam, userNameParam, phoneNumParam, procResultParam);
  
             return (int) procResultParam.Value;
         }
 
-        public int AddNewCustomer(string customerName, int? discountRating, byte[] discountPicture)
+        public int AddNewCustomer(string customerName, int? discountRating, byte[] discountPicture, string password, string userName, string phoneNum)
         {
             var customerNameParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@CustomerName", SqlDbType = System.Data.SqlDbType.VarChar, Direction = System.Data.ParameterDirection.Input, Value = customerName, Size = 500 };
             if (customerNameParam.Value == null)
@@ -132,14 +147,32 @@ namespace Ares.CodeGeneration
             if (discountPictureParam.Value == null)
                 discountPictureParam.Value = System.DBNull.Value;
 
+            var passwordParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@Password", SqlDbType = System.Data.SqlDbType.VarChar, Direction = System.Data.ParameterDirection.Input, Value = password, Size = 500 };
+            if (passwordParam.Value == null)
+                passwordParam.Value = System.DBNull.Value;
+
+            var userNameParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@UserName", SqlDbType = System.Data.SqlDbType.VarChar, Direction = System.Data.ParameterDirection.Input, Value = userName, Size = 500 };
+            if (userNameParam.Value == null)
+                userNameParam.Value = System.DBNull.Value;
+
+            var phoneNumParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@PhoneNum", SqlDbType = System.Data.SqlDbType.VarChar, Direction = System.Data.ParameterDirection.Input, Value = phoneNum, Size = 50 };
+            if (phoneNumParam.Value == null)
+                phoneNumParam.Value = System.DBNull.Value;
+
             var procResultParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@procResult", SqlDbType = System.Data.SqlDbType.Int, Direction = System.Data.ParameterDirection.Output };
  
-            Database.ExecuteSqlCommand("EXEC @procResult = [dbo].[addNewCustomer] @CustomerName, @DiscountRating, @DiscountPicture", customerNameParam, discountRatingParam, discountPictureParam, procResultParam);
+            Database.ExecuteSqlCommand("EXEC @procResult = [dbo].[addNewCustomer] @CustomerName, @DiscountRating, @DiscountPicture, @Password, @UserName, @PhoneNum", customerNameParam, discountRatingParam, discountPictureParam, passwordParam, userNameParam, phoneNumParam, procResultParam);
  
             return (int) procResultParam.Value;
         }
 
-        public int AddNewEmployee(int? employeeId, string employeeName, int? balance)
+        public System.Collections.Generic.List<AddNewEmployeeReturnModel> AddNewEmployee(int? employeeId, string employeeName, int? balance, string password, string userName, string phoneNum)
+        {
+            int procResult;
+            return AddNewEmployee(employeeId, employeeName, balance, password, userName, phoneNum, out procResult);
+        }
+
+        public System.Collections.Generic.List<AddNewEmployeeReturnModel> AddNewEmployee(int? employeeId, string employeeName, int? balance, string password, string userName, string phoneNum, out int procResult)
         {
             var employeeIdParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@EmployeeID", SqlDbType = System.Data.SqlDbType.Int, Direction = System.Data.ParameterDirection.Input, Value = employeeId.GetValueOrDefault(), Precision = 10, Scale = 0 };
             if (!employeeId.HasValue)
@@ -153,11 +186,100 @@ namespace Ares.CodeGeneration
             if (!balance.HasValue)
                 balanceParam.Value = System.DBNull.Value;
 
+            var passwordParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@Password", SqlDbType = System.Data.SqlDbType.VarChar, Direction = System.Data.ParameterDirection.Input, Value = password, Size = 500 };
+            if (passwordParam.Value == null)
+                passwordParam.Value = System.DBNull.Value;
+
+            var userNameParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@UserName", SqlDbType = System.Data.SqlDbType.VarChar, Direction = System.Data.ParameterDirection.Input, Value = userName, Size = 500 };
+            if (userNameParam.Value == null)
+                userNameParam.Value = System.DBNull.Value;
+
+            var phoneNumParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@PhoneNum", SqlDbType = System.Data.SqlDbType.VarChar, Direction = System.Data.ParameterDirection.Input, Value = phoneNum, Size = 50 };
+            if (phoneNumParam.Value == null)
+                phoneNumParam.Value = System.DBNull.Value;
+
             var procResultParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@procResult", SqlDbType = System.Data.SqlDbType.Int, Direction = System.Data.ParameterDirection.Output };
- 
-            Database.ExecuteSqlCommand("EXEC @procResult = [dbo].[addNewEmployee] @EmployeeID, @EmployeeName, @Balance", employeeIdParam, employeeNameParam, balanceParam, procResultParam);
- 
-            return (int) procResultParam.Value;
+            var procResultData = Database.SqlQuery<AddNewEmployeeReturnModel>("EXEC @procResult = [dbo].[addNewEmployee] @EmployeeID, @EmployeeName, @Balance, @Password, @UserName, @PhoneNum", employeeIdParam, employeeNameParam, balanceParam, passwordParam, userNameParam, phoneNumParam, procResultParam).ToList();
+
+            procResult = (int) procResultParam.Value;
+            return procResultData;
+        }
+
+        public async System.Threading.Tasks.Task<System.Collections.Generic.List<AddNewEmployeeReturnModel>> AddNewEmployeeAsync(int? employeeId, string employeeName, int? balance, string password, string userName, string phoneNum)
+        {
+            var employeeIdParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@EmployeeID", SqlDbType = System.Data.SqlDbType.Int, Direction = System.Data.ParameterDirection.Input, Value = employeeId.GetValueOrDefault(), Precision = 10, Scale = 0 };
+            if (!employeeId.HasValue)
+                employeeIdParam.Value = System.DBNull.Value;
+
+            var employeeNameParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@EmployeeName", SqlDbType = System.Data.SqlDbType.VarChar, Direction = System.Data.ParameterDirection.Input, Value = employeeName, Size = 500 };
+            if (employeeNameParam.Value == null)
+                employeeNameParam.Value = System.DBNull.Value;
+
+            var balanceParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@Balance", SqlDbType = System.Data.SqlDbType.Int, Direction = System.Data.ParameterDirection.Input, Value = balance.GetValueOrDefault(), Precision = 10, Scale = 0 };
+            if (!balance.HasValue)
+                balanceParam.Value = System.DBNull.Value;
+
+            var passwordParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@Password", SqlDbType = System.Data.SqlDbType.VarChar, Direction = System.Data.ParameterDirection.Input, Value = password, Size = 500 };
+            if (passwordParam.Value == null)
+                passwordParam.Value = System.DBNull.Value;
+
+            var userNameParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@UserName", SqlDbType = System.Data.SqlDbType.VarChar, Direction = System.Data.ParameterDirection.Input, Value = userName, Size = 500 };
+            if (userNameParam.Value == null)
+                userNameParam.Value = System.DBNull.Value;
+
+            var phoneNumParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@PhoneNum", SqlDbType = System.Data.SqlDbType.VarChar, Direction = System.Data.ParameterDirection.Input, Value = phoneNum, Size = 50 };
+            if (phoneNumParam.Value == null)
+                phoneNumParam.Value = System.DBNull.Value;
+
+            var procResultData = await Database.SqlQuery<AddNewEmployeeReturnModel>("EXEC [dbo].[addNewEmployee] @EmployeeID, @EmployeeName, @Balance, @Password, @UserName, @PhoneNum", employeeIdParam, employeeNameParam, balanceParam, passwordParam, userNameParam, phoneNumParam).ToListAsync();
+
+            return procResultData;
+        }
+
+        public System.Collections.Generic.List<LoginCheckReturnModel> LoginCheck(string userName, string phoneNum, string password)
+        {
+            int procResult;
+            return LoginCheck(userName, phoneNum, password, out procResult);
+        }
+
+        public System.Collections.Generic.List<LoginCheckReturnModel> LoginCheck(string userName, string phoneNum, string password, out int procResult)
+        {
+            var userNameParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@UserName", SqlDbType = System.Data.SqlDbType.VarChar, Direction = System.Data.ParameterDirection.Input, Value = userName, Size = 500 };
+            if (userNameParam.Value == null)
+                userNameParam.Value = System.DBNull.Value;
+
+            var phoneNumParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@PhoneNum", SqlDbType = System.Data.SqlDbType.VarChar, Direction = System.Data.ParameterDirection.Input, Value = phoneNum, Size = 50 };
+            if (phoneNumParam.Value == null)
+                phoneNumParam.Value = System.DBNull.Value;
+
+            var passwordParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@Password", SqlDbType = System.Data.SqlDbType.VarChar, Direction = System.Data.ParameterDirection.Input, Value = password, Size = 500 };
+            if (passwordParam.Value == null)
+                passwordParam.Value = System.DBNull.Value;
+
+            var procResultParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@procResult", SqlDbType = System.Data.SqlDbType.Int, Direction = System.Data.ParameterDirection.Output };
+            var procResultData = Database.SqlQuery<LoginCheckReturnModel>("EXEC @procResult = [dbo].[loginCheck] @UserName, @PhoneNum, @Password", userNameParam, phoneNumParam, passwordParam, procResultParam).ToList();
+
+            procResult = (int) procResultParam.Value;
+            return procResultData;
+        }
+
+        public async System.Threading.Tasks.Task<System.Collections.Generic.List<LoginCheckReturnModel>> LoginCheckAsync(string userName, string phoneNum, string password)
+        {
+            var userNameParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@UserName", SqlDbType = System.Data.SqlDbType.VarChar, Direction = System.Data.ParameterDirection.Input, Value = userName, Size = 500 };
+            if (userNameParam.Value == null)
+                userNameParam.Value = System.DBNull.Value;
+
+            var phoneNumParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@PhoneNum", SqlDbType = System.Data.SqlDbType.VarChar, Direction = System.Data.ParameterDirection.Input, Value = phoneNum, Size = 50 };
+            if (phoneNumParam.Value == null)
+                phoneNumParam.Value = System.DBNull.Value;
+
+            var passwordParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@Password", SqlDbType = System.Data.SqlDbType.VarChar, Direction = System.Data.ParameterDirection.Input, Value = password, Size = 500 };
+            if (passwordParam.Value == null)
+                passwordParam.Value = System.DBNull.Value;
+
+            var procResultData = await Database.SqlQuery<LoginCheckReturnModel>("EXEC [dbo].[loginCheck] @UserName, @PhoneNum, @Password", userNameParam, phoneNumParam, passwordParam).ToListAsync();
+
+            return procResultData;
         }
 
         public int SpAlterdiagram(string diagramname, int? ownerId, int? version, byte[] definition)

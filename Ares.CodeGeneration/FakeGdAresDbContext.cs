@@ -27,6 +27,7 @@ namespace Ares.CodeGeneration
         public System.Data.Entity.DbSet<sys_ScriptDeployment> sys_ScriptDeployments { get; set; }
         public System.Data.Entity.DbSet<sys_ScriptDeploymentStatus> sys_ScriptDeploymentStatus { get; set; }
         public System.Data.Entity.DbSet<Sysdiagram> Sysdiagrams { get; set; }
+        public System.Data.Entity.DbSet<Transaction> Transactions { get; set; }
         public System.Data.Entity.DbSet<UserRole> UserRoles { get; set; }
 
         public FakeGdAresDbContext()
@@ -40,6 +41,7 @@ namespace Ares.CodeGeneration
             sys_ScriptDeployments = new FakeDbSet<sys_ScriptDeployment>("DeploymentId", "CoordinatorId", "DeploymentName", "DeploymentSubmitted", "Status", "RetryPolicy", "Script");
             sys_ScriptDeploymentStatus = new FakeDbSet<sys_ScriptDeploymentStatus>("DeploymentId", "LogicalServer", "DatabaseName", "Status", "NumRetries");
             Sysdiagrams = new FakeDbSet<Sysdiagram>("DiagramId");
+            Transactions = new FakeDbSet<Transaction>("TransactionId");
             UserRoles = new FakeDbSet<UserRole>("UserId");
         }
 
@@ -72,22 +74,54 @@ namespace Ares.CodeGeneration
         }
 
         // Stored Procedures
-        public int AddNewAdmin(string adminName)
+        public int AddNewAdmin(string adminName, string password, string userName, string phoneNum)
         {
  
             return 0;
         }
 
-        public int AddNewCustomer(string customerName, int? discountRating, byte[] discountPicture)
+        public int AddNewCustomer(string customerName, int? discountRating, byte[] discountPicture, string password, string userName, string phoneNum)
         {
  
             return 0;
         }
 
-        public int AddNewEmployee(int? employeeId, string employeeName, int? balance)
+        public System.Collections.Generic.List<AddNewEmployeeReturnModel> AddNewEmployee(int? employeeId, string employeeName, int? balance, string password, string userName, string phoneNum)
         {
- 
-            return 0;
+            int procResult;
+            return AddNewEmployee(employeeId, employeeName, balance, password, userName, phoneNum, out procResult);
+        }
+
+        public System.Collections.Generic.List<AddNewEmployeeReturnModel> AddNewEmployee(int? employeeId, string employeeName, int? balance, string password, string userName, string phoneNum, out int procResult)
+        {
+
+            procResult = 0;
+            return new System.Collections.Generic.List<AddNewEmployeeReturnModel>();
+        }
+
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<AddNewEmployeeReturnModel>> AddNewEmployeeAsync(int? employeeId, string employeeName, int? balance, string password, string userName, string phoneNum)
+        {
+            int procResult;
+            return System.Threading.Tasks.Task.FromResult(AddNewEmployee(employeeId, employeeName, balance, password, userName, phoneNum, out procResult));
+        }
+
+        public System.Collections.Generic.List<LoginCheckReturnModel> LoginCheck(string userName, string phoneNum, string password)
+        {
+            int procResult;
+            return LoginCheck(userName, phoneNum, password, out procResult);
+        }
+
+        public System.Collections.Generic.List<LoginCheckReturnModel> LoginCheck(string userName, string phoneNum, string password, out int procResult)
+        {
+
+            procResult = 0;
+            return new System.Collections.Generic.List<LoginCheckReturnModel>();
+        }
+
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<LoginCheckReturnModel>> LoginCheckAsync(string userName, string phoneNum, string password)
+        {
+            int procResult;
+            return System.Threading.Tasks.Task.FromResult(LoginCheck(userName, phoneNum, password, out procResult));
         }
 
         public int SpAlterdiagram(string diagramname, int? ownerId, int? version, byte[] definition)
