@@ -17,3 +17,6 @@
 /Ares.WebApi/bin
 /Ares.WebApi/obj/Debug
 /.vs/RestaurantDiscount.Ares/v14/.suo
+/.vs/config/applicationhost.config
+/Ares.Database/Ares.Database.jfm
+/Ares.Database/Ares.Database.dbmdl
