@@ -171,6 +171,25 @@ namespace Ares.CodeGeneration
             return System.Threading.Tasks.Task.FromResult(CountTransactionByEmpId(employeeId, out procResult));
         }
 
+        public System.Collections.Generic.List<GetCustomerReturnModel> GetCustomer()
+        {
+            int procResult;
+            return GetCustomer(out procResult);
+        }
+
+        public System.Collections.Generic.List<GetCustomerReturnModel> GetCustomer(out int procResult)
+        {
+
+            procResult = 0;
+            return new System.Collections.Generic.List<GetCustomerReturnModel>();
+        }
+
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<GetCustomerReturnModel>> GetCustomerAsync()
+        {
+            int procResult;
+            return System.Threading.Tasks.Task.FromResult(GetCustomer(out procResult));
+        }
+
         public System.Collections.Generic.List<LoginCheckReturnModel> LoginCheck(string userName, string phoneNum, string password)
         {
             int procResult;

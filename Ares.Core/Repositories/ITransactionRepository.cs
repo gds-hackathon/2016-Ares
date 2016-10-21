@@ -7,6 +7,6 @@ namespace Ares.Core.Repositories
 {
     public interface ITransactionRepository:IRepository<Transaction,int>
     {
-        
+        CountTransactionByEmpIdReturnModel FindEmployeeTransactionSummary(int employeeId);
     }
 }

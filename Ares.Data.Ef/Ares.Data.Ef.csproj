@@ -70,6 +70,7 @@
     <Compile Include="Repositories\EmployeeRepository.cs" />
     <Compile Include="Repositories\Repository.cs" />
     <Compile Include="Repositories\RoleTypeRepository.cs" />
+    <Compile Include="Repositories\TransactionRatingRepository.cs" />
     <Compile Include="Repositories\TransactionRepository.cs" />
     <Compile Include="Repositories\UserRoleRepository.cs" />
     <Compile Include="UnitOfWork\IDbContext.cs" />

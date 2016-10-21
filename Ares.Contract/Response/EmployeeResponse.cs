@@ -1,11 +1,10 @@
-﻿using System.Runtime;
-using System.ServiceModel;
+﻿using System.ServiceModel;
 using System.Runtime.Serialization;
 
 namespace Ares.Contract.Response
 {
     [DataContract]
-    public class LoginResponse : BaseResponse
+    public class EmployeeResponse:BaseResponse
     {
         [DataMember]
         public string NickName { get; set; }
@@ -21,8 +20,6 @@ namespace Ares.Contract.Response
 
         [DataMember]
         public bool Gender { get; set; }
-
-
 
     }
 }

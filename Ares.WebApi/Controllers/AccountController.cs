@@ -49,8 +49,10 @@ namespace Ares.WebApi.Controllers
                     if (employee != null)
                     {
                         response.NickName = employee.EmployeeName;
+                        response.EmployeeId = employee.EmployeeId;
                         response.Count = 0;
                         response.Balance = 0;
+                        response.Gender = employee.Gender.HasValue ? employee.Gender.Value:false;
                        
                     }
                 }
@@ -64,6 +66,13 @@ namespace Ares.WebApi.Controllers
                 response.ResponseMessage = ex.Message;
             }
             return response;
+            
+        }
+
+        [Route("~/Restaurant/v1/Account/LogOff")]
+        [HttpGet]
+        public void LogOff()
+        {
             
         }
 

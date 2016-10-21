@@ -27,6 +27,7 @@ namespace Ares.CodeGeneration
         public System.DateTime ChangedDate { get; set; } // ChangedDate
         public int SettlementRating { get; set; } // SettlementRating
         public System.Guid Guid { get; set; } // GUID
+        public string Address { get; set; } // Address (length: 500)
 
         public Customer()
         {

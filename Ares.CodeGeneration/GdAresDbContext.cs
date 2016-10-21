@@ -138,7 +138,7 @@ namespace Ares.CodeGeneration
 
         public int AddNewCustomer(string customerName, int? discountRating, byte[] discountPicture, string password, string userName, string phoneNum)
         {
-            var customerNameParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@CustomerName", SqlDbType = System.Data.SqlDbType.VarChar, Direction = System.Data.ParameterDirection.Input, Value = customerName, Size = 500 };
+            var customerNameParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@CustomerName", SqlDbType = System.Data.SqlDbType.NVarChar, Direction = System.Data.ParameterDirection.Input, Value = customerName, Size = 500 };
             if (customerNameParam.Value == null)
                 customerNameParam.Value = System.DBNull.Value;
 
@@ -181,7 +181,7 @@ namespace Ares.CodeGeneration
             if (!employeeId.HasValue)
                 employeeIdParam.Value = System.DBNull.Value;
 
-            var employeeNameParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@EmployeeName", SqlDbType = System.Data.SqlDbType.VarChar, Direction = System.Data.ParameterDirection.Input, Value = employeeName, Size = 500 };
+            var employeeNameParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@EmployeeName", SqlDbType = System.Data.SqlDbType.NVarChar, Direction = System.Data.ParameterDirection.Input, Value = employeeName, Size = 500 };
             if (employeeNameParam.Value == null)
                 employeeNameParam.Value = System.DBNull.Value;
 
@@ -214,7 +214,7 @@ namespace Ares.CodeGeneration
             if (!employeeId.HasValue)
                 employeeIdParam.Value = System.DBNull.Value;
 
-            var employeeNameParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@EmployeeName", SqlDbType = System.Data.SqlDbType.VarChar, Direction = System.Data.ParameterDirection.Input, Value = employeeName, Size = 500 };
+            var employeeNameParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@EmployeeName", SqlDbType = System.Data.SqlDbType.NVarChar, Direction = System.Data.ParameterDirection.Input, Value = employeeName, Size = 500 };
             if (employeeNameParam.Value == null)
                 employeeNameParam.Value = System.DBNull.Value;
 
@@ -384,6 +384,28 @@ namespace Ares.CodeGeneration
             {
                 Database.Connection.Close();
             }
+            return procResultData;
+        }
+
+        public System.Collections.Generic.List<GetCustomerReturnModel> GetCustomer()
+        {
+            int procResult;
+            return GetCustomer(out procResult);
+        }
+
+        public System.Collections.Generic.List<GetCustomerReturnModel> GetCustomer(out int procResult)
+        {
+            var procResultParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@procResult", SqlDbType = System.Data.SqlDbType.Int, Direction = System.Data.ParameterDirection.Output };
+            var procResultData = Database.SqlQuery<GetCustomerReturnModel>("EXEC @procResult = [dbo].[getCustomer] ", procResultParam).ToList();
+
+            procResult = (int) procResultParam.Value;
+            return procResultData;
+        }
+
+        public async System.Threading.Tasks.Task<System.Collections.Generic.List<GetCustomerReturnModel>> GetCustomerAsync()
+        {
+            var procResultData = await Database.SqlQuery<GetCustomerReturnModel>("EXEC [dbo].[getCustomer] ").ToListAsync();
+
             return procResultData;
         }
 

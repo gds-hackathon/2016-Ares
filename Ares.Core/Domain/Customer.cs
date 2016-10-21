@@ -25,6 +25,8 @@ namespace Ares.Core.Domain
         public int SettlementRating { get; set; } // SettlementRating
         public System.Guid Guid { get; set; } // GUID
 
+        public string Address { get; set; }
+
         public Customer()
         {
             DiscountRating = 0;

@@ -1,4 +1,5 @@
 ﻿using Ares.Core.Domain;
+using Ares.Core.Dto;
 using System.Collections.Generic;
 
 namespace Ares.BusinessManager.Interfaces
@@ -17,5 +18,11 @@ namespace Ares.BusinessManager.Interfaces
 
         IEnumerable<Employee> FindAllEmployees();
         IEnumerable<Customer> FindAllCustomers();
+
+        Employee FindByEmployeeId(int employeeId);
+
+        IEnumerable<GetCustomerReturnModel> FindCustomerList();
+
+        Customer ValidateCustomer(string qrCode);
     }
 }
