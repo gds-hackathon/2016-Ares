@@ -10,6 +10,7 @@ using Ares.BusinessManager.Implementation;
 using Ares.Data.Ef.UnitOfWork;
 using Ares.Data.Ef;
 using Ares.Infrastructure.Authentication;
+using Ares.Infrastructure.Logging;
 
 namespace Ares.Web.Admin
 {
@@ -60,7 +61,8 @@ namespace Ares.Web.Admin
             container.RegisterType<IUserManager, UserManager>();
             container.RegisterType<IFormsAuthentication, AspFormsAuthentication>();
             container.RegisterType<ITransactionManager, TransactionManager>(); 
-            container.RegisterType<ITransactionRepository, TransactionRepository>(); 
+            container.RegisterType<ITransactionRepository, TransactionRepository>();
+            container.RegisterType<ILogger, Log4NetAdapter>();
         }
     }
 }

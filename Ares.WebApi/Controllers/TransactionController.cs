@@ -8,6 +8,7 @@ using Ares.BusinessManager.Interfaces;
 using Ares.Contract.Request;
 using Ares.Contract.Response;
 using Ares.Core.Domain;
+using Ares.Core;
 
 namespace Ares.WebApi.Controllers
 {

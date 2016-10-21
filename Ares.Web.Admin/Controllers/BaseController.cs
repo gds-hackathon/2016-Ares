@@ -18,8 +18,8 @@ namespace Ares.Web.Admin.Controllers
 
         protected override void OnException(ExceptionContext filterContext)
         {
-            //base.OnException(filterContext);
-            LoggingFactory.GetLogger().Error(filterContext.Exception.Message, filterContext.Exception);
+            base.OnException(filterContext);
+            //LoggingFactory.GetLogger().Error(filterContext.Exception.Message, filterContext.Exception);
         }
 
         protected override void HandleUnknownAction(string actionName)
