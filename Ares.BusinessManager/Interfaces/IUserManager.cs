@@ -12,6 +12,13 @@ namespace Ares.BusinessManager.Interfaces
 
         Customer GetCustomerByUserId(int userId);
 
+        void UpdateCustomer(Customer customer);
+
+        void UpdateEmployee(Employee employee);
+
+        IEnumerable<Employee> FindAllEmployees();
+        IEnumerable<Customer> FindAllCustomers();
+
         Employee FindByEmployeeId(int employeeId);
 
         IEnumerable<GetCustomerReturnModel> FindCustomerList();
