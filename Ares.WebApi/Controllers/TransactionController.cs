@@ -77,7 +77,24 @@ namespace Ares.WebApi.Controllers
             return response;
         }
 
-       
+        [Route("~/Restaurant/v1/Transaction/SetSuccess")]
+        [HttpPost]
+        public void UpdateTransactionStatus(int transactionId)
+        {
+
+        }
+
+        //[HttpGet]
+        //public IEnumerable<TransactionRatingResponse> GetTransactionRatingListByCusId(int customerId)
+        //{
+
+        //}
+
+        //[HttpGet]
+        //public IEnumerable<TransactionRatingResponse> GetTransactionRatingListByEmployeeId(int employeeId)
+        //{
+
+        //}
 
 
     }
