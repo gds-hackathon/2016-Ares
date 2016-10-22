@@ -81,7 +81,7 @@ namespace Ares.WebApi.Controllers
         [HttpPost]
         public void UpdateTransactionStatus(int transactionId)
         {
-
+            _transactionManager.SetTransSucess(transactionId);
         }
 
         [Route("~/Restaurant/v1/Transaction/CustomerTransRatingList")]
@@ -114,6 +114,22 @@ namespace Ares.WebApi.Controllers
                 Score = Convert.ToInt32(c.RateLevel)
             }).ToList();
             return result;
+        }
+
+        [Route("~/Restaurant/v1/Transaction/Comment")]
+        [HttpPost]
+        public SubmitCommentResponse SubmitComment([FromBody]SubmitCommentRequest request)
+        {
+            SubmitCommentResponse response = new SubmitCommentResponse();
+
+            TransactionRating comment = new TransactionRating();
+            comment.FeedBack = request.Comment;
+            comment.RateLevel = request.Score;
+            comment.TransactionId = request.Transactionid;
+            _transactionManager.SubmitComment(comment);
+
+            response.Success = true;
+            return response;
         }
 
 

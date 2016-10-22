@@ -35,6 +35,7 @@ namespace Ares.WebApi
             container.RegisterType<IRoleTypeRepository, RoleTypeRepository>();
             container.RegisterType<ITransactionRepository, TransactionRepository>();
             container.RegisterType<ITransInfoDetailRepository, TransInfoDetailRepository>();
+            container.RegisterType<ITransactionRatingRepository, TransactionRatingRepository>();
             
 
             // Business manager

@@ -11,11 +11,13 @@ namespace Ares.BusinessManager.Implementation
     {
         private ITransactionRepository _transactionRepository;
         private ITransInfoDetailRepository _transactionDetailInfoRepository;
+        private ITransactionRatingRepository _transRatingRepository;
 
-        public TransactionManager(ITransactionRepository transactionRepository,ITransInfoDetailRepository transactionInfoDetailRespository)
+        public TransactionManager(ITransactionRepository transactionRepository,ITransInfoDetailRepository transactionInfoDetailRespository,ITransactionRatingRepository transRatingRepository)
         {
             _transactionRepository = transactionRepository;
             _transactionDetailInfoRepository = transactionInfoDetailRespository;
+            _transRatingRepository = transRatingRepository;
         }
 
 
@@ -72,5 +74,20 @@ namespace Ares.BusinessManager.Implementation
             return _transactionDetailInfoRepository.FindAll(c => c.EmployeeId == employeeId);
         }
 
+        public void SubmitComment(TransactionRating comment)
+        {
+            if (comment == null)
+            {
+                throw new ArgumentNullException("comment");
+            }
+            _transRatingRepository.Add(comment);
+        }
+
+        public void SetTransSucess(int transactionId)
+        {
+            var transaction = _transactionRepository.FindBy(transactionId);
+            transaction.IsSuccessful = true;
+            _transactionRepository.Save(transaction);
+        }
     }
 }

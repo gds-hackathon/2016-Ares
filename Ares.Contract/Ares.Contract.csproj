@@ -50,6 +50,7 @@
     <Compile Include="Request\CustomerValidateRequest.cs" />
     <Compile Include="Request\EmployeeRequest.cs" />
     <Compile Include="Request\LoginRequest.cs" />
+    <Compile Include="Request\SubmitCommentRequest.cs" />
     <Compile Include="Response\BaseResponse.cs" />
     <Compile Include="Response\CalculateDiscountResponse.cs" />
     <Compile Include="Response\ConsumInfoResponse.cs" />
@@ -58,6 +59,7 @@
     <Compile Include="Response\CustomerValidateResponse.cs" />
     <Compile Include="Response\EmployeeResponse.cs" />
     <Compile Include="Response\LoginResponse.cs" />
+    <Compile Include="Response\SubmitCommentResponse.cs" />
     <Compile Include="Response\TransactionRatingResponse.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

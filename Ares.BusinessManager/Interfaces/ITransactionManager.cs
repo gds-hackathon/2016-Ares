@@ -27,5 +27,9 @@ namespace Ares.BusinessManager.Interfaces
         IEnumerable<TransInfoDetail> GetTransInfoDetailByCusId(int customerId);
 
         IEnumerable<TransInfoDetail> GetTransInfoDetailByEmployeeId(int employeeId);
+
+        void SubmitComment(TransactionRating comment);
+
+        void SetTransSucess(int transactionId);
     }
 }
