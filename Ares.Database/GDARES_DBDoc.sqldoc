@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Version="2" ApproxVals="16" Server="g1kbhjg80q.database.windows.net" Database="" IntegratedSecurity="False" User="ares" password="z1R++L4STLl0DTPZAVso3g==">
+  <Options>
+    <Option uri="http://sqldoc/project/selections/databases/user/[GDARES]/include/" value="True" />
+    <Option uri="http://sqldoc/project/description/" value="" />
+    <Option uri="http://sqldoc/project/outputstyle/selected/" value="StandardHTML" />
+    <Option uri="http://sqldoc/project/name/" value="g1kbhjg80q.database.windows.net Documentation" />
+    <Option uri="http://sqldoc/project/outputname/" value="g1kbhjg80q.database.windows.net_documentation" />
+    <Option uri="http://sqldoc/project/cover/include/" value="True" />
+    <Option uri="http://sqldoc/project/outputpath/" value="C:\Users\Hui\Documents\My Database Documentation" />
+    <Option uri="http://sqldoc/project/outputname/addtimestamp/" value="True" />
+    <Option uri="http://sqldoc/project/footer/date/format/" value="yyyy'年'M'月'd'日' H:mm:ss" />
+    <Option uri="http://sqldoc/project/header/breadcrumbs/include/" value="True" />
+    <Option uri="http://sqldoc/project/header/text/" value="" />
+    <Option uri="http://sqldoc/project/footer/copyright/text/" value="Copyright 2016 - All Rights Reserved" />
+    <Option uri="http://sqldoc/project/author/" value="Hui" />
+    <Option uri="http://sqldoc/project/outputstyle/word/pagesize" value="Letter" />
+    <Option uri="http://sqldoc/project/toc/populate/" value="True" />
+    <Option uri="http://sqldoc/project/logo/" value="" />
+  </Options>
+</Project>
