@@ -7,7 +7,11 @@
 
 <h2>Restaurants View</h2>
 <br />
-@Html.ActionLink(" Registry User", "Registry", "Restaurant", new {@class= "glyphicon glyphicon-user" })
+@if (HttpContext.Current.Request.Cookies[Ares.Core.Constants.Cookie_RoleTypeName].Value == "Administrator")
+{
+    @Html.ActionLink(" Registry User", "Registry", "Restaurant", new { @class = "glyphicon glyphicon-user" })
+
+}
 
 <table class="table table-bordered table-striped">
     <tr>
