@@ -26,7 +26,26 @@ namespace Ares.Web.Admin.Controllers
             var cookie = HttpContext.Request.Cookies[FormsAuthentication.FormsCookieName];
             if (cookie != null && !string.IsNullOrEmpty(cookie.Value))
             {
-                return RedirectToAction("Index", "Home");
+                var c = HttpContext.Request.Cookies[Constants.Cookie_RoleTypeName];
+                if (c != null)
+                {
+                    var role = (RoleTypes)Enum.Parse(typeof(RoleTypes), c.Value);
+                    switch (role)
+                    {
+                        case RoleTypes.Customer:
+                            return RedirectToAction("GetCustomerTransHistory", "Summary");
+                        case RoleTypes.Employee:
+                            return RedirectToAction("index", "Employee");
+                        case RoleTypes.Administrator:
+                            return RedirectToAction("GetAdministratorTransHistory", "Summary");
+                        default:
+                            break;
+                    }
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
             }
 
             return View();
@@ -70,7 +89,7 @@ namespace Ares.Web.Admin.Controllers
                 ModelState.AddModelError("", ex.Message);
                 return View("Index");
             }
-            
+
 
             return RedirectToAction("Index", "Home");
         }

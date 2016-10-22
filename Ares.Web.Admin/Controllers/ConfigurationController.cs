@@ -1,5 +1,6 @@
 ﻿using Ares.BusinessManager.Interfaces;
 using Ares.Core.Domain;
+using Ares.Infrastructure.MvcExtensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,25 +17,32 @@ namespace Ares.Web.Admin.Controllers
             _actManager = actManager;
         }
 
+        [CustomAuthorize(Role = "Administrator")]
         // GET: Configurations
         public ActionResult Index()
         {
             return View(_actManager.FindAllBalanceTypes());
         }
 
-        [HttpPost]
-        public ActionResult UpdateBalance(BalanceType balanceType)
+        [CustomAuthorize(Role = "Administrator")]
+        public ActionResult UpdateBalance(int? balanceTypeId, int? newValue)
         {
             try
             {
-                _actManager.UpdateBalanceType(balanceType);
+                if (balanceTypeId.HasValue)
+                {
+                    var balanceType = _actManager.GetBalanceType(balanceTypeId.Value);
+                    balanceType.Balance = newValue;
+                    _actManager.UpdateBalanceType(balanceType);
+
+                }
             }
             catch (Exception ex)
             {
-                return Json(ex.Message);
+                return View("index", _actManager.FindAllBalanceTypes());
             }
 
-            return Json(1);
+            return View("index", _actManager.FindAllBalanceTypes());
         }
     }
 }

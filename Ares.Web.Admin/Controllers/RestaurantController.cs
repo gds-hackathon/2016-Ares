@@ -26,10 +26,6 @@ namespace Ares.Web.Admin.Controllers
         public ActionResult Index(int? pageIndex)
         {
             return View(_userManager.FindAllCustomers());
-
-            //var customer = _userManager.GetCustomerByUserId(userId);
-            //var txns = _txnManager.FindTransactionsHistoryByCustomer(customer.CustomerId, pageIndex, 10);
-            //return View(txns);
         }
 
         public ActionResult Update(int userId)
@@ -43,7 +39,7 @@ namespace Ares.Web.Admin.Controllers
         {
             _userManager.UpdateCustomer(customer);
             //return PartialView("_UpdateView", customer);
-            return null;
+            return RedirectToAction("index", new { pageIndex = 0 });
         }
 
         public ActionResult Transactions(int customerId, int pageIndex)
@@ -57,7 +53,7 @@ namespace Ares.Web.Admin.Controllers
             {
                 var employee = _userManager.FindByEmployeeId(item.EmployeeId);
                 var t = (TransactionModel)item;
-                t.EmployeeName = employee.EmployeeName;
+                t.EmployeeName = employee == null ? "N/A" : employee.EmployeeName;
                 txnModels.Add(t);
             }
             return View(txnModels);

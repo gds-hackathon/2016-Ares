@@ -1,61 +1,45 @@
 ﻿@model System.Collections.Generic.IEnumerable<Ares.Core.Domain.BalanceType>
-
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <h2>Configurations View</h2>
-
 <br />
-@using (Ajax.BeginForm("UpdateBalance", "Configuration", new AjaxOptions
-{
-    HttpMethod = "POST"
-}))
-{
-    <table id="target" class="table table-bordered table-striped">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.BalanceTypeId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Balance)
-            </th>
-            <th>
-                Operations
-            </th>
-        </tr>
-        @if (Model != null)
-        {
-            foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.BalanceTypeId)
-                    </td>
-                    <td>
-                        @Html.TextBoxFor(modelItem => item.Balance)
-                    </td>
-                    <td>
-                        <input type="submit" value="update" />
-                    </td>
-                </tr>
-            }
-        }
-        else
+<table id="target" class="table table-bordered table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BalanceTypeId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Balance)
+        </th>
+        <th>
+            Operations
+        </th>
+    </tr>
+    @if (Model != null)
+    {
+        foreach (var item in Model)
         {
             <tr>
-                No Data.
+                <td>
+                    @Html.DisplayFor(modelItem => item.BalanceTypeId)
+                </td>
+                <td>
+                    @Html.TextBoxFor(modelItem => item.Balance)
+                </td>
+                <td>
+                    @Ajax.ActionLink("Update", "UpdateBalance", new AjaxOptions())
+
+                </td>
+
             </tr>
         }
-    </table>
-
-}
-<script>
-    function FailureLogin(data) {
-
     }
-    function SuccessLogin() {
-        alert("Success update!");
+    else
+    {
+        <tr>
+            No Data.
+        </tr>
     }
-</script>
+</table>
