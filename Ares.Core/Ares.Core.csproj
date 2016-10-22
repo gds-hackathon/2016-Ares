@@ -51,6 +51,7 @@
     <Compile Include="Domain\LoginCheckReturnModel.cs" />
     <Compile Include="Domain\LoginResult.cs" />
     <Compile Include="Domain\MenuModel.cs" />
+    <Compile Include="Domain\RegistryModel.cs" />
     <Compile Include="Domain\RoleType.cs" />
     <Compile Include="Domain\RoleTypes.cs" />
     <Compile Include="Domain\Transaction.cs" />

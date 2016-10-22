@@ -13,13 +13,16 @@ namespace Ares.Web.Admin.Controllers
     {
         private ITransactionManager _txnManager;
         private IUserManager _userManager;
+        private IAccountManager _accountManager;
 
         public RestaurantController(
             ITransactionManager txnManager,
-            IUserManager userManager)
+            IUserManager userManager,
+            IAccountManager accountManager)
         {
             _txnManager = txnManager;
             _userManager = userManager;
+            _accountManager = accountManager;
         }
 
         // GET: Restaurant
@@ -57,6 +60,22 @@ namespace Ares.Web.Admin.Controllers
                 txnModels.Add(t);
             }
             return View(txnModels);
+        }
+
+        public ActionResult Registry()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Registry(RegistryModel cu)
+        {
+            if (!string.IsNullOrEmpty(cu.LoginName))
+            {
+                _accountManager.RegistryUser(cu.LoginName, cu.PhoneNum, cu.Password, cu.Name, RoleTypes.Customer);
+            }
+
+            return RedirectToAction("Index");
         }
     }
 }

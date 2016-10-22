@@ -7,6 +7,8 @@
 
 <h2>Restaurants View</h2>
 <br />
+@Html.ActionLink(" Registry User", "Registry", "Restaurant", new {@class= "glyphicon glyphicon-user" })
+
 <table class="table table-bordered table-striped">
     <tr>
         <th>
@@ -32,33 +34,33 @@
     {
         foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.ActionLink(item.CustomerId.ToString(), "Update", "Restaurant", new { userId = item.UserId }, new { })
+    <tr>
+        <td>
+            @Html.ActionLink(item.CustomerId.ToString(), "Update", "Restaurant", new { userId = item.UserId }, new { })
 
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CustomerName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Isactive)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DiscountRating)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.SettlementRating)
-                </td>
-                <td>
-                    @Html.ActionLink("Transactions", "Transactions", new { customerId = item.CustomerId, pageIndex = 0 })
-                </td>
-            </tr>
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustomerName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Isactive)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DiscountRating)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SettlementRating)
+        </td>
+        <td>
+            @Html.ActionLink("Transactions", "Transactions", new { customerId = item.CustomerId, pageIndex = 0 })
+        </td>
+    </tr>
         }
     }
     else
     {
-        <tr>
-            No Data.
-        </tr>
+    <tr>
+        No Data.
+    </tr>
     }
 </table>

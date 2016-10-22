@@ -1,0 +1,39 @@
+﻿@model Ares.Core.Domain.RegistryModel
+<div class="container">
+    <!--login modal-->
+    <div id="loginModal" class="modal show">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="text-center">Change Password</h1>
+                </div>
+                <div class="modal-body">
+                    @Html.ValidationSummary()
+                    @using (Html.BeginForm("Registry", "Restaurant", FormMethod.Post, new { @class = "form col-md-12 center-block" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="form-group">
+                            @Html.TextBoxFor(m => m.LoginName, new { @class = "form-control input-lg", placeholder = "Login Name" })
+                        </div>
+                        <div class="form-group">
+                            @Html.TextBoxFor(m => m.PhoneNum, new { @class = "form-control input-lg", placeholder = "Phone Number" })
+                        </div>
+                            <div class="form-group">
+                                @Html.PasswordFor(m => m.Password, new { @class = "form-control input-lg", placeholder = "Password" })
+                            </div>
+                            <div class="form-group">
+                                @Html.TextBoxFor(m => m.Name, new { @class = "form-control input-lg", placeholder = "Company Name" })
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-6"><button class="btn btn-primary btn-lg btn-block">Submit</button></div>
+                                    <div class="col-md-6"><button class="btn btn-primary btn-lg btn-block" onclick="window.location.href('index')">Cancel</button></div>
+                                </div>
+
+                            </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
