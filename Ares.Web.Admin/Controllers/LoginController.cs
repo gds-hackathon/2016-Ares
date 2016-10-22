@@ -106,5 +106,16 @@ namespace Ares.Web.Admin.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult ChangePassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ChangePassword(LoginModel login)
+        {
+            _accountManager.ChangePassword(login.UserName, login.Password, login.NewPassword);
+            return RedirectToAction("Index");
+        }
     }
 }

@@ -9,7 +9,7 @@ namespace Ares.BusinessManager.Interfaces
         LoginResult EmployeeLogin(string userName, string password);
         LoginResult LoginByPhoneNum(string phoneNum, string password);
         void RegistryUser(string loginName, string phoneNum, string password, string name, RoleTypes roleType);
-        void ChangePassword(int userId, string oldPassword, string newPassword);
+        void ChangePassword(string userName, string oldPassword, string newPassword);
 
         void UpdateBalanceType(BalanceType balanceType);
         void AddBalanceType(BalanceType newBalanceType);

@@ -334,6 +334,7 @@
     <Content Include="Views\Restaurant\Transactions.cshtml" />
     <Content Include="Views\Summary\GetCustomerTransHistory.cshtml" />
     <Content Include="Views\Summary\GetAdministratorTransHistory.cshtml" />
+    <Content Include="Views\Login\ChangePassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

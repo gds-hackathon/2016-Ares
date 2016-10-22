@@ -159,10 +159,10 @@ namespace Ares.BusinessManager.Implementation
             return loginResult;
         }
 
-        public void ChangePassword(int userId, string oldPassword, string newPassword)
+        public void ChangePassword(string userName, string oldPassword, string newPassword)
         {
             var hashedPsd = _hashingService.Hash(oldPassword);
-            var user = _userRoleRepository.FindAll(c => c.UserId == userId && c.Password == hashedPsd).FirstOrDefault();
+            var user = _userRoleRepository.FindAll(c => c.UserName == userName && c.Password == hashedPsd).FirstOrDefault();
             if (user == null)
             {
                 throw new Exception("No user or Password is invalid.");

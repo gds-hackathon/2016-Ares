@@ -19,6 +19,10 @@ namespace Ares.Core.Domain
         [Display(Name = "Password")]
         public string Password { get; set; }
 
+        [Required]
+        [DataType(DataType.Password)]
+        [Display(Name = "New Password")]
+        public string NewPassword { get; set; }
 
         [Display(Name = "RememberMe")]
         public bool RememberMe { get; set; }
