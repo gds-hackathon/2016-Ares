@@ -10,10 +10,12 @@ namespace Ares.BusinessManager.Implementation
     public class TransactionManager : ITransactionManager
     {
         private ITransactionRepository _transactionRepository;
+        private ITransInfoDetailRepository _transactionDetailInfoRepository;
 
-        public TransactionManager(ITransactionRepository transactionRepository)
+        public TransactionManager(ITransactionRepository transactionRepository,ITransInfoDetailRepository transactionInfoDetailRespository)
         {
             _transactionRepository = transactionRepository;
+            _transactionDetailInfoRepository = transactionInfoDetailRespository;
         }
 
 
@@ -58,5 +60,17 @@ namespace Ares.BusinessManager.Implementation
 
             return _transactionRepository.SettlementForCustomer(startDate, endDate);
         }
+
+
+        public IEnumerable<TransInfoDetail> GetTransInfoDetailByCusId(int customerId)
+        {
+            return _transactionDetailInfoRepository.FindAll(c => c.CustomerId == customerId);
+        }
+
+        public IEnumerable<TransInfoDetail> GetTransInfoDetailByEmployeeId(int employeeId)
+        {
+            return _transactionDetailInfoRepository.FindAll(c => c.EmployeeId == employeeId);
+        }
+
     }
 }

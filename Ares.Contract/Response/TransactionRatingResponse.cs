@@ -4,17 +4,18 @@ using System.Runtime.Serialization;
 namespace Ares.Contract.Response
 {
     [DataContract]
-    public class CustomerResponse:BaseResponse
+    public class TransactionRatingResponse
     {
         [DataMember]
         public string CustomerName { get; set; }
 
         [DataMember]
-        public string Address { get; set; }
+        public string EmployeeName { get; set; }
 
         [DataMember]
-        public int Discount { get; set; }
+        public string Comment { get; set; }
 
-
+        [DataMember]
+        public int Score { get; set; }
     }
 }
