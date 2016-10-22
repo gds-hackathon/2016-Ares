@@ -16,15 +16,15 @@ namespace Ares.BusinessManager.Implementation
             _transactionRepository = transactionRepository;
         }
 
-        
+
         public IEnumerable<Transaction> FindTopTransactionByUser(int employeeId)
         {
-            return _transactionRepository.FindAll(e => e.EmployeeId == employeeId && e.TransactionDateTime >= DateTime.Now.AddDays(-DateTime.Now.Day), "TransactionDateTime" ,0, 5);
+            return _transactionRepository.FindAll(e => e.EmployeeId == employeeId && e.TransactionDateTime >= DateTime.Now.AddDays(-DateTime.Now.Day), "TransactionDateTime", 0, 5);
         }
 
         public IEnumerable<Transaction> FindTransactionsHistory(int employeeId, int pageIndex, int pageSize)
         {
-            return _transactionRepository.FindAll(e => e.EmployeeId == employeeId, "TransactionDateTime",pageIndex, pageSize);
+            return _transactionRepository.FindAll(e => e.EmployeeId == employeeId, "TransactionDateTime", pageIndex, pageSize);
         }
 
         public IEnumerable<Transaction> FindTransactionsHistoryByCustomer(int customerId, int pageIndex, int pageSize)
@@ -50,6 +50,13 @@ namespace Ares.BusinessManager.Implementation
         {
             int procResult = 0;
             return _transactionRepository.CheckTransactionByCustomerId(customerId, out procResult);
+        }
+
+        public List<SettlementForCustomerReturnModel> SettlementForCustomer(DateTime? startDate, DateTime? endDate)
+        {
+            int procResult = 0;
+
+            return _transactionRepository.SettlementForCustomer(startDate, endDate, out procResult);
         }
     }
 }

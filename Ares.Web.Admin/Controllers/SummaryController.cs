@@ -22,14 +22,14 @@ namespace Ares.Web.Admin.Controllers
 
         }
 
-        public SummaryController(ITransactionManager transactionManager,IUserManager userManager)
+        public SummaryController(ITransactionManager transactionManager, IUserManager userManager)
         {
             _transactionManager = transactionManager;
             _userManager = userManager;
         }
 
 
-        [CustomAuthorize(Role ="Customer")]
+        [CustomAuthorize(Role = "Customer")]
         [HttpGet]
         public ActionResult GetCustomerTransHistory()
         {
@@ -45,6 +45,24 @@ namespace Ares.Web.Admin.Controllers
         }
 
 
+        [CustomAuthorize(Role = "Administrator")]
+        [HttpGet]
+        public ActionResult GetAdministratorTransHistory(DateTime? startDate, DateTime? endDate)
+        {
+            DateTime startDt = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1);
+            if (startDate.HasValue)
+            {
+                if (startDate > DateTime.Now || (endDate.HasValue && startDate > endDate))
+                {
+                    throw new Exception("Invalid input");
+                }
 
+                startDt = startDate.Value;
+            }
+
+            var result = _transactionManager.SettlementForCustomer(startDt, endDate ?? DateTime.Now);
+            return View(result);
+        }
     }
+
 }

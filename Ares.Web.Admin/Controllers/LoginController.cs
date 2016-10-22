@@ -60,7 +60,7 @@ namespace Ares.Web.Admin.Controllers
                     case RoleTypes.Employee:
                         return RedirectToAction("index", "Employee");
                     case RoleTypes.Administrator:
-                        return RedirectToAction("index", "Summary");
+                        return RedirectToAction("GetAdministratorTransHistory", "Summary");
                     default:
                         break;
                 }
