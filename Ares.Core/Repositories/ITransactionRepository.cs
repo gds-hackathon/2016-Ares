@@ -13,6 +13,6 @@ namespace Ares.Core.Repositories
 
         System.Collections.Generic.List<CheckTransactionByCustomerIdReturnModel> CheckTransactionByCustomerId(int? customerId, out int procResult);
 
-        System.Collections.Generic.List<SettlementForCustomerReturnModel> SettlementForCustomer(System.DateTime? startDate, System.DateTime? endDate, out int procResult);
+        SettlementForCustomerReturnModel SettlementForCustomer(System.DateTime? startDate, System.DateTime? endDate);
     }
 }

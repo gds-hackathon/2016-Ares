@@ -21,9 +21,6 @@ namespace Ares.BusinessManager.Interfaces
         decimal CalculateDiscount(int? employeeId, int? customerId, decimal? totalAmount,out int? transactionId);
 
         System.Collections.Generic.List<CheckTransactionByCustomerIdReturnModel> CheckTransactionByCustomerId(int? customerId);
-
-        System.Collections.Generic.List<SettlementForCustomerReturnModel> SettlementForCustomer(System.DateTime? startDate, System.DateTime? endDate);
-
         IEnumerable<TransInfoDetail> GetTransInfoDetailByCusId(int customerId);
 
         IEnumerable<TransInfoDetail> GetTransInfoDetailByEmployeeId(int employeeId);
@@ -31,5 +28,7 @@ namespace Ares.BusinessManager.Interfaces
         void SubmitComment(TransactionRating comment);
 
         void SetTransSucess(int transactionId);
+
+        SettlementForCustomerReturnModel SettlementForCustomer(System.DateTime? startDate, System.DateTime? endDate);
     }
 }

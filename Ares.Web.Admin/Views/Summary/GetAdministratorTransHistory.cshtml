@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Ares.Core.Dto.SettlementForCustomerReturnModel>
+﻿@model Ares.Core.Dto.SettlementForCustomerReturnModel
 
 <h2>Summary</h2>
 <br />
@@ -8,29 +8,61 @@
 <table class="table table-bordered table-striped">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.CustomerID)
+            TransYear
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CustomerName)
+            TransMonth
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TransCount)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TotalAmount)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DiscountAmount)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SettlementRating)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NeedPay)
+            TotalPay
         </th>
     </tr>
 
-    @foreach (var item in Model)
+    @foreach (var item in Model.ResultSet1)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TransYear)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TransMonth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalPay)
+            </td>
+            @*<td>
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>*@
+        </tr>
+    }
+
+</table>
+
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>
+            CustomerID
+        </th>
+        <th>
+            CustomerName
+        </th>
+        <th>
+            DiscountAmount
+        </th>
+        <th>
+            TransCount
+        </th>
+        <th>
+            TotalAmount
+        </th>
+        <th>
+            NeedPay
+        </th>
+    </tr>
+
+    @foreach (var item in Model.ResultSet2)
     {
         <tr>
             <td>
@@ -40,16 +72,13 @@
                 @Html.DisplayFor(modelItem => item.CustomerName)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.DiscountAmount)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.TransCount)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.TotalAmount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DiscountAmount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SettlementRating)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.NeedPay)
@@ -63,3 +92,4 @@
     }
 
 </table>
+
