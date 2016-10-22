@@ -52,11 +52,11 @@ namespace Ares.BusinessManager.Implementation
             return _transactionRepository.CheckTransactionByCustomerId(customerId, out procResult);
         }
 
-        public List<SettlementForCustomerReturnModel> SettlementForCustomer(DateTime? startDate, DateTime? endDate)
+        public SettlementForCustomerReturnModel SettlementForCustomer(DateTime? startDate, DateTime? endDate)
         {
             int procResult = 0;
 
-            return _transactionRepository.SettlementForCustomer(startDate, endDate, out procResult);
+            return _transactionRepository.SettlementForCustomer(startDate, endDate);
         }
     }
 }

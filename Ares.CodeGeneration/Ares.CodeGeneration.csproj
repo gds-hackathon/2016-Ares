@@ -164,6 +164,12 @@
     <Compile Include="TransactionRatingMapping.cs">
       <DependentUpon>GDAres.tt</DependentUpon>
     </Compile>
+    <Compile Include="TransInfoDetail.cs">
+      <DependentUpon>GDAres.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TransInfoDetailMapping.cs">
+      <DependentUpon>GDAres.tt</DependentUpon>
+    </Compile>
     <Compile Include="UserRole.cs">
       <DependentUpon>GDAres.tt</DependentUpon>
     </Compile>

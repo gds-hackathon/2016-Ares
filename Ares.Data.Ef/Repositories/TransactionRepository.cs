@@ -68,7 +68,7 @@ namespace Ares.Data.Ef.Repositories
             {
                 this.ActiveContext.Database.Connection.Open();
                 var reader = cmd.ExecuteReader();
-                var objectContext = ((System.Data.Entity.Infrastructure.IObjectContextAdapter)this).ObjectContext;
+                var objectContext = ((System.Data.Entity.Infrastructure.IObjectContextAdapter)this.ActiveContext).ObjectContext;
 
                 procResultData.ResultSet1 = objectContext.Translate<CountTransactionByEmpIdReturnModel.ResultSetModel1>(reader).ToList();
                 reader.NextResult();
@@ -95,7 +95,7 @@ namespace Ares.Data.Ef.Repositories
             return procResultData;
         }
 
-        public System.Collections.Generic.List<SettlementForCustomerReturnModel> SettlementForCustomer(System.DateTime? startDate, System.DateTime? endDate, out int procResult)
+        public SettlementForCustomerReturnModel SettlementForCustomer(System.DateTime? startDate, System.DateTime? endDate)
         {
             var startDateParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@StartDate", SqlDbType = System.Data.SqlDbType.Date, Direction = System.Data.ParameterDirection.Input, Value = startDate.GetValueOrDefault() };
             if (!startDate.HasValue)
@@ -105,10 +105,30 @@ namespace Ares.Data.Ef.Repositories
             if (!endDate.HasValue)
                 endDateParam.Value = System.DBNull.Value;
 
-            var procResultParam = new System.Data.SqlClient.SqlParameter { ParameterName = "@procResult", SqlDbType = System.Data.SqlDbType.Int, Direction = System.Data.ParameterDirection.Output };
-            var procResultData = this.ActiveContext.Database.SqlQuery<SettlementForCustomerReturnModel>("EXEC @procResult = [dbo].[settlementForCustomer] @StartDate, @EndDate", startDateParam, endDateParam, procResultParam).ToList();
 
-            procResult = (int)procResultParam.Value;
+            var procResultData = new SettlementForCustomerReturnModel();
+            var cmd = this.ActiveContext.Database.Connection.CreateCommand();
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.CommandText = "[dbo].[settlementForCustomer]";
+            cmd.Parameters.Add(startDateParam);
+            cmd.Parameters.Add(endDateParam);
+
+            try
+            {
+                this.ActiveContext.Database.Connection.Open();
+                var reader = cmd.ExecuteReader();
+                var objectContext = ((System.Data.Entity.Infrastructure.IObjectContextAdapter)this.ActiveContext).ObjectContext;
+
+                procResultData.ResultSet1 = objectContext.Translate<SettlementForCustomerReturnModel.ResultSetModel1>(reader).ToList();
+                reader.NextResult();
+
+                procResultData.ResultSet2 = objectContext.Translate<SettlementForCustomerReturnModel.ResultSetModel2>(reader).ToList();
+            }
+            finally
+            {
+                this.ActiveContext.Database.Connection.Close();
+            }
+
             return procResultData;
         }
     }

@@ -8,7 +8,7 @@ using Ares.Infrastructure.Logging;
 
 namespace Ares.Web.Admin.Controllers
 {
-    [Compress]
+    //[Compress]
     public class BaseController : Controller
     {
         public BaseController()
