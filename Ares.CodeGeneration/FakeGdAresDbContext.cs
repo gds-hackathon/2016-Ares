@@ -29,6 +29,7 @@ namespace Ares.CodeGeneration
         public System.Data.Entity.DbSet<Sysdiagram> Sysdiagrams { get; set; }
         public System.Data.Entity.DbSet<Transaction> Transactions { get; set; }
         public System.Data.Entity.DbSet<TransactionRating> TransactionRatings { get; set; }
+        public System.Data.Entity.DbSet<TransInfoDetail> TransInfoDetails { get; set; }
         public System.Data.Entity.DbSet<UserRole> UserRoles { get; set; }
 
         public FakeGdAresDbContext()
@@ -44,6 +45,7 @@ namespace Ares.CodeGeneration
             Sysdiagrams = new FakeDbSet<Sysdiagram>("DiagramId");
             Transactions = new FakeDbSet<Transaction>("TransactionId");
             TransactionRatings = new FakeDbSet<TransactionRating>("TransactionId");
+            TransInfoDetails = new FakeDbSet<TransInfoDetail>("TransactionId", "EmployeeId", "CustomerId", "TransactionDateTime", "TotalAmount", "DiscountAmount", "IsSuccessful", "EmployeeName", "CustomerName");
             UserRoles = new FakeDbSet<UserRole>("UserId");
         }
 

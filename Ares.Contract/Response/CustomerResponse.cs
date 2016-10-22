@@ -13,7 +13,7 @@ namespace Ares.Contract.Response
         public string Address { get; set; }
 
         [DataMember]
-        public int DiscountRating { get; set; }
+        public int Discount { get; set; }
 
 
     }

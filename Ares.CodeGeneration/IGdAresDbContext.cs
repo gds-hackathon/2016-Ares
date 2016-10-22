@@ -26,6 +26,7 @@ namespace Ares.CodeGeneration
         System.Data.Entity.DbSet<Sysdiagram> Sysdiagrams { get; set; } // sysdiagrams
         System.Data.Entity.DbSet<Transaction> Transactions { get; set; } // Transactions
         System.Data.Entity.DbSet<TransactionRating> TransactionRatings { get; set; } // TransactionRating
+        System.Data.Entity.DbSet<TransInfoDetail> TransInfoDetails { get; set; } // TransInfoDetail
         System.Data.Entity.DbSet<UserRole> UserRoles { get; set; } // UserRole
 
         int SaveChanges();

@@ -29,6 +29,7 @@ namespace Ares.CodeGeneration
         public System.Data.Entity.DbSet<Sysdiagram> Sysdiagrams { get; set; } // sysdiagrams
         public System.Data.Entity.DbSet<Transaction> Transactions { get; set; } // Transactions
         public System.Data.Entity.DbSet<TransactionRating> TransactionRatings { get; set; } // TransactionRating
+        public System.Data.Entity.DbSet<TransInfoDetail> TransInfoDetails { get; set; } // TransInfoDetail
         public System.Data.Entity.DbSet<UserRole> UserRoles { get; set; } // UserRole
 
         static GdAresDbContext()
@@ -90,6 +91,7 @@ namespace Ares.CodeGeneration
             modelBuilder.Configurations.Add(new SysdiagramMapping());
             modelBuilder.Configurations.Add(new TransactionMapping());
             modelBuilder.Configurations.Add(new TransactionRatingMapping());
+            modelBuilder.Configurations.Add(new TransInfoDetailMapping());
             modelBuilder.Configurations.Add(new UserRoleMapping());
         }
 
@@ -106,6 +108,7 @@ namespace Ares.CodeGeneration
             modelBuilder.Configurations.Add(new SysdiagramMapping(schema));
             modelBuilder.Configurations.Add(new TransactionMapping(schema));
             modelBuilder.Configurations.Add(new TransactionRatingMapping(schema));
+            modelBuilder.Configurations.Add(new TransInfoDetailMapping(schema));
             modelBuilder.Configurations.Add(new UserRoleMapping(schema));
             return modelBuilder;
         }

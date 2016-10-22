@@ -84,17 +84,37 @@ namespace Ares.WebApi.Controllers
 
         }
 
-        //[HttpGet]
-        //public IEnumerable<TransactionRatingResponse> GetTransactionRatingListByCusId(int customerId)
-        //{
+        [Route("~/Restaurant/v1/Transaction/CustomerTransRatingList")]
+        [HttpGet]
+        public IEnumerable<TransactionRatingResponse> GetTransactionRatingListByCusId(int customerId)
+        {
+            List<TransactionRatingResponse> response = new List<TransactionRatingResponse>();
 
-        //}
+            var result =  _transactionManager.GetTransInfoDetailByCusId(customerId).Select(c=>new TransactionRatingResponse
+            {
+                Comment = c.FeedBack,
+                CustomerName = c.CustomerName,
+                EmployeeName = c.EmployeeName,
+                Score = Convert.ToInt32(c.RateLevel)
+            }).ToList();
+            return result;
+        }
 
-        //[HttpGet]
-        //public IEnumerable<TransactionRatingResponse> GetTransactionRatingListByEmployeeId(int employeeId)
-        //{
+        [Route("~/Restaurant/v1/Transaction/EmployeeTransRatingList")]
+        [HttpGet]
+        public IEnumerable<TransactionRatingResponse> GetTransactionRatingListByEmployeeId(int employeeId)
+        {
+            List<TransactionRatingResponse> response = new List<TransactionRatingResponse>();
 
-        //}
+            var result = _transactionManager.GetTransInfoDetailByEmployeeId(employeeId).Select(c => new TransactionRatingResponse
+            {
+                Comment = c.FeedBack,
+                CustomerName = c.CustomerName,
+                EmployeeName = c.EmployeeName,
+                Score = Convert.ToInt32(c.RateLevel)
+            }).ToList();
+            return result;
+        }
 
 
     }

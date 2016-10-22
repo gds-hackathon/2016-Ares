@@ -56,6 +56,7 @@
     <Compile Include="Domain\Transaction.cs" />
     <Compile Include="Domain\TransactionModel.cs" />
     <Compile Include="Domain\TransactionRating.cs" />
+    <Compile Include="Domain\TransInfoDetail.cs" />
     <Compile Include="Domain\UserRole.cs" />
     <Compile Include="Domain\LoginModel.cs" />
     <Compile Include="Dto\CalculateDiscountReturnModel.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="Repositories\IRoleTypeRepository.cs" />
     <Compile Include="Repositories\ITransactionRatingRepository.cs" />
     <Compile Include="Repositories\ITransactionRepository.cs" />
+    <Compile Include="Repositories\ITransInfoDetailRepository.cs" />
     <Compile Include="Repositories\IUserRoleRepository.cs" />
   </ItemGroup>
   <ItemGroup />

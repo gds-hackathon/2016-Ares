@@ -75,7 +75,7 @@ namespace Ares.WebApi.Controllers
             }
             var customer = _userManaget.FindByCustomerId(request.CustomerId);
             response.CustomerName = customer.CustomerName;
-            response.DiscountRating = customer.DiscountRating;
+            response.Discount = customer.DiscountRating;
             response.Address = customer.Address;
             return response;
         }
